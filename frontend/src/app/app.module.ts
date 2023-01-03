@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AddBookComponent } from './add-book/add-book.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PublisherFormComponent } from './publisher-form/publisher-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    AddBookComponent
+    AddBookComponent,
+    PublisherFormComponent
   ],
   imports: [
     BrowserModule,
