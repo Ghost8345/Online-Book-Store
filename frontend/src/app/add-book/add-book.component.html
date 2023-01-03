@@ -3,11 +3,24 @@
         <form action method="post" #uploadForm="ngForm">
 
             <h1><strong>Add Book</strong></h1>
+            <div class="form-group">
+                <label for="isbn" style="font-weight: 600; font-size:large ;">ISBN</label>
+                <input type="text" name="isbn" id="isbn" class="form-controll" [(ngModel)]="uploadItem.ISBN" required />
+            </div>
 
             <div class="form-group">
                 <label for="title" style="font-weight: 600; font-size:large ;">Title </label>
                 <input type="text" name="title" id="title" class="form-controll" [(ngModel)]="uploadItem.title"
                     required />
+            </div>
+            <div class="form-group">
+                <label for="Publisher" style="font-weight: 600; font-size:large ;">Publisher</label>
+                <input type="text" name="Publisher" id="Publisher" class="form-controll"
+                    [(ngModel)]="uploadItem.publisher" required />
+            </div>
+
+            <div class="form-groupp">
+                <button type="submit" class="btn btn-success" routerLink='/publisherform'>Add a New Publisher</button>
             </div>
             <div class="form-group">
                 <label for="authors" style="font-weight: 600; font-size:large ;">Author(s) </label>
@@ -37,7 +50,6 @@
                     required />
             </div>
 
-
             <div class="form-groupp file-area">
                 <input for="images" type="button" value="Upload Cover Photo">
                 <input id="images" type="file" class="form-control" (change)="onFileChange($event)">
@@ -46,6 +58,7 @@
             <div class="form-groupp">
                 <img [src]="imageSrc" *ngIf="imageSrc" style="height:auto">
             </div>
+
             <div class="form-groupp">
                 <button type="submit" class="btn btn-success">Add Book</button>
             </div>
@@ -62,7 +75,7 @@
             type='text/css'>
 
         <!--<a  class="back-to-article" target="_blank" routerLink="/home">back to Home</a>-->
-        <a class="back-to-article" style="font-weight: 600; font-size:large ;" routerLink="/home">back to Home</a>
+        <a class="back-to-article" style="font-weight: 600; font-size:large ;" routerLink="/home">Back To Home</a>
 
     </div>
 </body>
