@@ -45,10 +45,12 @@ public class BookController {
     @PutMapping("/edit/{isbn}")
     public ResponseEntity<String> editBook(@PathVariable int isbn, @RequestBody Book book) {
         try {
-            System.out.println(book);
+            System.out.println(isbn+" jjjj "+book);
+            book.setCoverImage(bookService.StorePhotoInPath(book.getCoverImage(), book.getIsbn()));
             bookService.editBook(isbn, book);
             return new ResponseEntity<>("Book edited successfully", HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println(e.getMessage()+book.getIsbn());
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
