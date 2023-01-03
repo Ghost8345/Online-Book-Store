@@ -1,0 +1,70 @@
+<html>
+<head>
+    <link rel="stylesheet" href="category.component.css" type="text/css" />
+</head>
+
+<body>
+    <table id="table">
+        <tr>
+            <td colspan="2">
+                <div class="header">Categories</div>
+            </td>
+           
+        </tr>
+        
+        <tr>
+            <td>
+                <div #science id="Science" routerLink="/selectedcategory" routerLinkActive="activebutton"(click)="SendSelectedCategory(science.id)"class="div1" >
+                    <img src="https://th-thumbnailer.cdn-si-edu.com/2Tuqndlpb4JohiNCrRAnze9GSaE=/fit-in/300x0/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/amazon/amazon_image_d998396cdde46cc8873df378af37d448b4208737.jpg" class="img" />
+                    
+                    <button class="btn btn1">Science</button>
+
+                    <br /><br />
+                </div>
+            </td>
+            <td>
+                <div #religion routerLink="/selectedcategory" routerLinkActive="activebutton" id="Religion" (click)="SendSelectedCategory(religion.id)"class="div1">
+                <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT844dElSa4YG5-8Fb0BT4vZW9C_MirYOXDxw&usqp=CAU"class="img" />
+               
+                <button   class="btn btn2">Religion</button>
+                <br /><br />
+                
+                </div>
+            </td>
+            <td>
+                <div #Art routerLink="/selectedcategory" routerLinkActive="activebutton" id="Art" (click)="SendSelectedCategory(Art.id)"class="div1">
+                <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDbZ20WByInpqmJpg_z-UqM4CxjT12awfsNQ&usqp=CAU" class="img"/>
+                
+                <button  class="btn ">Art</button>
+                <br /><br />
+                </div>
+            </td>
+        </tr>
+        <br>
+        <br>
+        <tr>
+            <td>
+                <div #History routerLink="/selectedcategory" routerLinkActive="activebutton"id="History" (click)="SendSelectedCategory(History.id)" class="div1">
+                <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXy36_hHx1M7UOMWenDwf82S6c9dipYiox3A&usqp=CAU" class="img" />
+                
+                <button  class="btn ">History</button>
+                <br /><br />
+                </div>
+            </td>
+            <td>
+                <div #History routerLink="/selectedcategory" routerLinkActive="activebutton"id="Geography" (click)="SendSelectedCategory(History.id)" class="div1">
+                <img  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXy36_hHx1M7UOMWenDwf82S6c9dipYiox3A&usqp=CAU" class="img" />
+                
+                <button  class="btn ">Geography</button>
+                <br /><br />
+                </div>
+            </td>
+        </tr>
+        <br /><br />
+        <br /><br />
+       
+        
+    </table>
+</body>
+
+</html>

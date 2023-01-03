@@ -14,6 +14,12 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './components/cart/cart.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PromoteComponent } from './components/promote/promote.component';
+import { CategoryComponent } from './components/category/category.component';
+import { SelectedCategoryComponent } from './components/selected-category/selected-category.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { AcceptorderComponent } from './components/acceptorder/acceptorder.component';
+import { PlaceorderComponent } from './components/placeorder/placeorder.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { InfoComponent } from './components/info/info.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
@@ -31,6 +37,12 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     CartComponent,
     PaymentComponent,
     PromoteComponent,
+    CategoryComponent,
+    SelectedCategoryComponent,
+    NotificationsComponent,
+    AcceptorderComponent,
+    PlaceorderComponent,
+    EditFormComponent,
     ProfileComponent,
     InfoComponent,
     EditProfileComponent

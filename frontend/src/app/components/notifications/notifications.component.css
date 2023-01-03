@@ -1,0 +1,43 @@
+.notify{
+    position: relative;
+    top: 150px;
+    font-size: larger;
+    left: 20px;
+   
+}
+.neworder{
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    width: 300px;
+    font-size: xx-large;
+    background-color: white;
+    border-bottom: 3px solid rgb(21, 189, 169);
+    color: gray;
+}
+.placeorder{
+    top: -80px;
+    left: 120px; 
+    width: 300px;
+    font-size: xx-large;
+    background-color: white;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    color: gray;
+}
+.orders{
+    position: relative;
+    top: 170px;
+    left: 20px;
+    font-size: xx-large;
+    color: gray;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    background-color: white;
+    width: 300px;
+
+    border-bottom: 1px solid gray ;
+}

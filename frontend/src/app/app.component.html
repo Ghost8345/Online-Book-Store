@@ -4,12 +4,13 @@
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
         <nav>
-        <a href="#" #categories  id="cate" routerLink="/categories"  routerLinkActive="activebutton" (click)="submit($event)">Categories</a>
+        <a href="#" #categories  id="cate" routerLink="/category"  routerLinkActive="activebutton" (click)="submit($event)">Categories</a>
         <a href="#" #addbook  id="cate" routerLink="/addbook"  routerLinkActive="activebutton" >Add Book</a>
         <a href="#" #addbook  id="cate" routerLink="/promote"  routerLinkActive="activebutton" >Promote User</a>
+        <a href="#" #addbook  id="cate" routerLink="/placeorder"  routerLinkActive="activebutton"(click)="submit($event)" >Place Order</a>
+
         </nav>
       </div>
-      <router-outlet></router-outlet>
       <img  class="logo" height="100" width="100"  src="https://img.freepik.com/free-vector/gradient-quill-pen-logo-template_52683-99051.jpg?size=338&ext=jpg&ga=GA1.2.1979898065.1669814332" />
       <span class="store">Book<br>Store</span>
       <form class="search_button">
@@ -20,30 +21,31 @@
 
       <form class="profile" >
 
-        <button type="submit" routerLink="/registeduser" routerLinkActive="activebutton"><i class="fa fa-home" style="font-size:35px ;"></i></button>
-    
+        <button type="submit" routerLink="/user" routerLinkActive="activebutton"><i class="fa fa-home" style="font-size:35px ;"></i></button>
+
         <button type="submit" routerLink="/shoppingcart" routerLinkActive="activebutton"><i class="fa fa-shopping-cart" style="font-size:35px ;"></i></button>
         <button type="submit" routerLink="/profile" routerLinkActive="activebutton"><i class="fa fa-user" style="font-size:35px ;"></i></button>
+        <button type="submit"routerLink="/notifications" routerLinkActive="activebutton" ><i class="fa fa-bell" style="font-size:35px ;"></i></button>
 
-       
-    
+
+
+
         <!--<button type="submit" *ngSwitchCase="true" routerLink="/profile" routerLinkActive="activebutton" ><i class="fa fa-user" style="font-size:35px ;"></i></button>
         -->
-    
+
         <p id="Welcome"class="logged"style="margin-left:700px; margin-top: 30px;; color: rgb(249, 208, 24); font-family:Arial, Helvetica, sans-serif; font-size:xx-large;" >
-    
+
         </p>
-        
+
         <label id="Welcome" style="margin-left: 220px; color: rgb(249, 208, 24); font-family:Arial, Helvetica, sans-serif; font-size:xx-large;" >
         <br></label>
       </form>
-    
+
       <p #num id="itemsnum" class="numofitemsinshoppingcart" style="display: none;">0</p>
     </div>
-    
-    
-    <router-outlet></router-outlet>
-    
+
+
+
     </body>
 <nav></nav>
 <router-outlet></router-outlet>

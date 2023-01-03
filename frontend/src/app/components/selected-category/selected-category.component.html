@@ -1,0 +1,35 @@
+<body>
+    <div  class="page">
+        <div *ngIf="name!=null">
+        <p class="bestseller" id="categoryname" >{{name}} Books  </p>
+    </div>
+        <form class="shape">
+            <input class="text" type="text" disabled="true">
+            </form>
+            <p class="decoration">_________________________________________</p>
+    </div>
+        <div>
+            <a *ngFor="let product of categorybooks">
+    
+                <button #w id={{product.isbn}} class="products"><div class="decor"  routerLink="/aboutbook" routerLinkActive="activebutton" (click)="aboutproduct(product.isbn,product.title,product.publisherName,product.authors,product.publicationYear,product.coverImage,product.price,product.stockQuantity,product.threshold,product.category)" >
+                    <img height="200px" width="200px" class=" img" src="../assets/images/{{product.coverImage}}"><p class="info" >{{product.title}}<br><p class="price">{{product.price}} LE</p></p>
+            </div><button  class="cart"(click)="AddProduct(product.isbn)">Add to Cart</button>
+            <span id="outofstock"  class="tooltiptext">Out Of Stock</span>
+    
+    
+        </button>
+            </a>
+        </div>
+        <div id="myModal3" class="modal">
+            <div class="modalcontent3">
+              <span class="close" (click)="clossing()">&times;</span>
+              <img  class="logo" height="50"  src="https://seeklogo.com/images/P/pharmacy-logo-DF4F78C50E-seeklogo.com.png">
+              <span class="Pharmacyname"style=" position :relative, top:-20px">AHMENA<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHARMACY</span>
+              <p  style="font-size: xx-large;">⚠️❗<br>This medicine is scheduled and you cannot get it online.<br> You must go to the nearest branch and bring the prescription to get this medicine </p>
+              <p  style="font-size: xx-large;"></p>
+              <pre style="font-size: xx-large;"></pre>
+            </div>
+        </div>
+    </body>
+    
+    
