@@ -1,4 +1,7 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UploadItem } from '../add-book/add-book';
 
 @Component({
   selector: 'app-selected-category',
@@ -6,21 +9,43 @@ import { Component } from '@angular/core';
   styleUrls: ['./selected-category.component.css']
 })
 export class SelectedCategoryComponent {
-  categorybooks=[{id:0,cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
-  ,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:0,authors:"lol"}];
+  categorybooks:any;
   name=localStorage.getItem("categoryName")
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
+
   ngOnInit(): void {
-  
+    const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("token") + "" });
+
+    this.http.get<UploadItem[]>('http://localhost:8080/api/book/category/'+this.name, { headers: headerr }
+    ).subscribe({
+      next: (data: any) => {
+        this.categorybooks=data;
+        console.log(data);
+      },
+      error: (error: any) => {
+
+      }
+    });
     }
       
 
 
-  aboutproduct(id:number,cover:string,name:string,price:number,category:string,Quantity:number,authors:string,publisher:string){
-    let  product={id:id,img:cover,name:name,price:price,category:category,Quantity:Quantity,authors:authors,publisher:publisher};
-      localStorage.setItem("aboutProduct",JSON.stringify(product));
-
-
-}
+    aboutproduct(
+      isbn: number,
+      title: string,
+      publisherName:String,
+      authors: string,
+      publicationYear:string,
+      coverImage: string,
+      price: number,
+      stockQuantity: number,
+      threshold:number,
+      category: string){
+      let  product={id:isbn,name:title,publisher:publisherName,authors:authors,publicationYear:publicationYear,img:"/../assets/images/"+coverImage,price:price,Quantity:stockQuantity,threshold:threshold,category:category};
+    localStorage.setItem("aboutProduct",JSON.stringify(product));
+   
+  
+  }
 
 AddProduct(id:any){
   ///call back to get rate
