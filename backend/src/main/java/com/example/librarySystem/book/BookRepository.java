@@ -21,6 +21,11 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     @Query("UPDATE book SET title = :title, publisherName = :publisherName, authors = :authors, publicationYear = :publicationYear, coverImage = :coverImage, price = :price, category = :category, threshold = :threshold, stockQuantity = :stockQuantity WHERE isbn = :isbn")
     void edit(@Param("isbn") int isbn, @Param("title") String title, @Param("publisherName") String publisherName, @Param("authors") String authors, @Param("publicationYear") String publicationYear, @Param("coverImage") String coverImage, @Param("price") float price, @Param("category") Category category, @Param("threshold") int threshold, @Param("stockQuantity") int stockQuantity);
 
+    @Transactional
+    @Modifying
+    @Query("UPDATE book SET stockQuantity = :stockQuantity WHERE isbn = :isbn")
+    void updateStockQuantity(@Param("isbn") int isbn, @Param("stockQuantity") int stockQuantity);
+
     Book findBookByTitle(String title);
 
     List<Book> findBooksByCategory(Category category);

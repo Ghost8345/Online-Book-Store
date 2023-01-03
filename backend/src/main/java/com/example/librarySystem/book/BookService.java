@@ -83,5 +83,17 @@ public class BookService {
         return bookRepository.findByAuthorsContaining(author);
     }
 
+    public void reduceStockQuantity(int isbn, int copiesToBeRemoved){
+        Book book = getBookByIsbn(isbn);
+
+        int oldQuantity = book.getStockQuantity();
+        if  (oldQuantity < copiesToBeRemoved || copiesToBeRemoved < 0){
+            throw new IllegalArgumentException();
+        }
+
+        int newQuantity = oldQuantity - copiesToBeRemoved;
+        bookRepository.updateStockQuantity(isbn, newQuantity);
+    }
+
 
 }
