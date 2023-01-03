@@ -9,6 +9,7 @@ import { PromoteComponent } from './components/promote/promote.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { CartComponent } from './components/cart/cart.component'
 import { UserComponent } from './components/user/user.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'registration', pathMatch: 'full' }, // redirect to `first-component`
@@ -20,7 +21,8 @@ const routes: Routes = [
   { path: "shoppingcart", component: CartComponent },
   { path: "addbook", component: AddBookComponent },
   { path: "payment", component: PaymentComponent },
-  { path: "user", component: UserComponent }
+  { path: "user", component: UserComponent },
+  {path: "editbook", component:EditFormComponent}
 
 ];
 

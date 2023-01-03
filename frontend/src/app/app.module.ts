@@ -14,6 +14,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './components/cart/cart.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PromoteComponent } from './components/promote/promote.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 
 @NgModule({
@@ -27,7 +28,8 @@ import { PromoteComponent } from './components/promote/promote.component';
     AboutbookComponent,
     CartComponent,
     PaymentComponent,
-    PromoteComponent
+    PromoteComponent,
+    EditFormComponent
   ],
   imports: [
     BrowserModule,

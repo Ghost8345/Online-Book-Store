@@ -13,12 +13,20 @@ export class UserComponent implements OnInit{
   }
   //mostRecent:{id:0,cover:"",Title:"",price:0,category:"",publisher:"",Quantity:0}[]=[];
  
-  mostRecent=[{id:0,cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
-,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:120,authors:"lol"}];
+  mostRecent=[{isbn:0,coverImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
+,title:"Harry Poter",price:600,category:"action",publisherName:"Elshrouk",stockQuantity:120,authors:"lol"}];
 
 
-  aboutproduct(id:number,cover:string,name:string,price:number,category:string,Quantity:number,authors:string,publisher:string){
-    let  product={id:id,img:cover,name:name,price:price,category:category,Quantity:Quantity,authors:authors,publisher:publisher};
+  aboutproduct(
+    isbn: number,
+    title: string,
+    publisherName:String,
+    authors: string,
+    coverImage: string,
+    price: number,
+    stockQuantity: number,
+    category: string){
+    let  product={id:isbn,name:title,publisher:publisherName,authors:authors,img:coverImage,price:price,Quantity:stockQuantity,category:category};
   localStorage.setItem("aboutProduct",JSON.stringify(product));
  
 
@@ -30,7 +38,7 @@ AddProduct(id:any){
   ///call back to get rate
   let pos=0;
   for(var i=0;i<this. mostRecent.length;i++){
-    if(this. mostRecent[i].id==id){
+    if(this. mostRecent[i].isbn==id){
            pos=i;
            break;
     }
@@ -42,9 +50,9 @@ AddProduct(id:any){
   let duplicate:{id:number,num:number}[]=[]
   let aux:{product_id:number,image:string,name:string,price:number,duplication:number}={product_id:0,image:"",name:"",price:0,duplication:0};
   let subtotal=0;
-  aux.product_id=this. mostRecent[pos].id;
-  aux.image=this. mostRecent[pos].cover;
-  aux.name=this. mostRecent[pos].Title;
+  aux.product_id=this. mostRecent[pos].isbn;
+  aux.image=this. mostRecent[pos].coverImage;
+  aux.name=this. mostRecent[pos].title;
   ;
   aux.price=this. mostRecent[pos].price;
   aux.duplication=1;
@@ -60,7 +68,7 @@ AddProduct(id:any){
   else{
   cart=JSON.parse (localStorage.getItem("CartProducts")!)
   for(var i=0;i<cart.length;i++){
-    if(cart[i].product_id==this. mostRecent[pos].id){
+    if(cart[i].product_id==this. mostRecent[pos].isbn){
       
        flag=1;
        cart[i].duplication+=1;
