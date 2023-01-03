@@ -95,5 +95,9 @@ public class BookService {
         bookRepository.updateStockQuantity(isbn, newQuantity);
     }
 
+    public boolean BookExists(int isbn){ return bookRepository.existsById(isbn);}
+
+    public boolean BookExistsByTitle(String title){return bookRepository.existsByTitle(title);}
+
 
 }
