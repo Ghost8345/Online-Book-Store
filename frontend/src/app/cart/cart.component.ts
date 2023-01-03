@@ -8,7 +8,9 @@ import { Router } from '@angular/router';
 })
 export class CartComponent {
   constructor(private router:Router){}
-
+  ngOnInit(): void {
+    document.getElementById("body")!.style.display="block";
+    }
   subtotal=JSON.parse(localStorage.getItem("subtotal")!);
   Total=JSON.parse(localStorage.getItem("subtotal")!)+20;
 bestsellerproducts= JSON.parse(localStorage.getItem("CartProducts")!) ;

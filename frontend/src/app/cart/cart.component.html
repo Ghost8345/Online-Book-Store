@@ -20,23 +20,19 @@
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Total}} LE</div>
                 <p class="seprator2">_______________________________________________________________________</p>
-                
-                    <div *ngIf="loggedin==1">
+               
+               
                     <div *ngIf="EmptyCart !=0"> 
-    <button class="proceed"(click)="proceedToCheckOut()">Proceed To Checkout</button>
+    <button class="proceed" routerLink="/payment" (click)="proceedToCheckOut()">Proceed To Checkout</button>
                     </div>
-</div>
+
 <div  class="checker">
-<div *ngIf="loggedin==1">
     <div *ngIf="EmptyCart==0">
     <button class="proceed" disabled="true">Proceed To Checkout</button>
     <span id="Emptycart"  class="tooltiptext">Your Cart Is Empty</span>
 </div>
-</div>
-<div *ngIf="loggedin==null">
-    <button class="proceed" disabled="true">Proceed To Checkout</button>
-    <span id="notloggedin"  class="tooltiptext">SignIn/SignUp Before Checkout please</span>
-</div>
+
+
     
 </div>
     <div class="vl"></div>

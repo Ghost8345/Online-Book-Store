@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PublisherFormComponent } from './publisher-form/publisher-form.component';
 import { AboutbookComponent } from './aboutbook/aboutbook.component';
 import { CartComponent } from './cart/cart.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -19,12 +20,13 @@ import { CartComponent } from './cart/cart.component';
     RegistrationComponent,
     UserComponent,
     AddBookComponent,
-    CartComponent
+    CartComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-   RouterModule.forRoot([{path:'',redirectTo:'registration',pathMatch:'full'},{path:"registration",component:RegistrationComponent},{path:"registeduser",component:UserComponent},{path:"aboutbook",component:AboutbookComponent},{path:"shoppingcart",component:CartComponent},{path:"addbook",component:AddBookComponent}]),
+   RouterModule.forRoot([{path:'',redirectTo:'registration',pathMatch:'full'},{path:"registration",component:RegistrationComponent},{path:"registeduser",component:UserComponent},{path:"aboutbook",component:AboutbookComponent},{path:"shoppingcart",component:CartComponent},{path:"addbook",component:AddBookComponent},{path:"payment",component:PaymentComponent}]),
 
     FormsModule,
     ReactiveFormsModule,
