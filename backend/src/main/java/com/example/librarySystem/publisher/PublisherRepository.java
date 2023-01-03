@@ -25,4 +25,6 @@ public interface PublisherRepository extends CrudRepository<Publisher, String> {
     @Query("UPDATE publisher SET name = :newName, address = :address, phone = :phone WHERE name = :oldName")
     void edit(@Param("oldName") String oldName, @Param("newName") String newName, @Param("address") String address, @Param("phone") String phone);
 
+    boolean existsByPhone(String phone);
+
 }
