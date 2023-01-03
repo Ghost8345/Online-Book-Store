@@ -19,6 +19,7 @@ import { SelectedCategoryComponent } from './components/selected-category/select
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { AcceptorderComponent } from './components/acceptorder/acceptorder.component';
 import { PlaceorderComponent } from './components/placeorder/placeorder.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 
 @NgModule({
@@ -38,7 +39,7 @@ import { PlaceorderComponent } from './components/placeorder/placeorder.componen
     NotificationsComponent,
     AcceptorderComponent,
     PlaceorderComponent,
-    
+    EditFormComponent
   ],
   imports: [
     BrowserModule,

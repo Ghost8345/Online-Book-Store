@@ -13,6 +13,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { SelectedCategoryComponent } from './components/selected-category/selected-category.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PlaceorderComponent } from './components/placeorder/placeorder.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'registration', pathMatch: 'full' }, // redirect to `first-component`
@@ -28,10 +29,8 @@ const routes: Routes = [
   { path: "category", component: CategoryComponent },
   { path: "selectedcategory", component: SelectedCategoryComponent },
   { path: "notifications", component: NotificationsComponent },
-  { path: "placeorder", component: PlaceorderComponent }
-
-
-
+  { path: "placeorder", component: PlaceorderComponent },
+  {path: "editbook", component:EditFormComponent}
 
 
 ];

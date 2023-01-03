@@ -1,4 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UploadItem } from '../add-book/add-book';
 
 @Component({
   selector: 'app-user',
@@ -7,18 +11,40 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class UserComponent implements OnInit{
-
+  constructor(private router: Router, private http: HttpClient, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
+  mostRecent:any;
   ngOnInit(): void {
     document.getElementById("body")!.style.display="block";
+    const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("token") + "" });
+
+    this.http.get<UploadItem[]>('http://localhost:8080/api/book', { headers: headerr }
+    ).subscribe({
+      next: (data: any) => {
+        this.mostRecent=data;
+        console.log(data);
+      },
+      error: (error: any) => {
+
+      }
+    });
   }
   //mostRecent:{id:0,cover:"",Title:"",price:0,category:"",publisher:"",Quantity:0}[]=[];
  
-  mostRecent=[{id:0,cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
-,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:1,authors:"lol"}];
+ /* mostRecent=[{id:0,cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
+,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:1,authors:"lol"}];*/
 
-
-  aboutproduct(id:number,cover:string,name:string,price:number,category:string,Quantity:number,authors:string,publisher:string){
-    let  product={id:id,img:cover,name:name,price:price,category:category,Quantity:Quantity,authors:authors,publisher:publisher};
+  aboutproduct(
+    isbn: number,
+    title: string,
+    publisherName:String,
+    authors: string,
+    publicationYear:string,
+    coverImage: string,
+    price: number,
+    stockQuantity: number,
+    threshold:number,
+    category: string){
+    let  product={id:isbn,name:title,publisher:publisherName,authors:authors,publicationYear:publicationYear,img:"/../assets/images/"+coverImage,price:price,Quantity:stockQuantity,threshold:threshold,category:category};
   localStorage.setItem("aboutProduct",JSON.stringify(product));
  
 
@@ -30,7 +56,7 @@ AddProduct(id:any){
   ///call back to get rate
   let pos=0;
   for(var i=0;i<this. mostRecent.length;i++){
-    if(this. mostRecent[i].id==id){
+    if(this. mostRecent[i].isbn==id){
            pos=i;
            break;
     }
@@ -65,7 +91,7 @@ AddProduct(id:any){
   else{
   cart=JSON.parse (localStorage.getItem("CartProducts")!)
   for(var i=0;i<cart.length;i++){
-    if(cart[i].product_id==this. mostRecent[pos].id){
+    if(cart[i].product_id==this. mostRecent[pos].isbn){
       
        flag=1;
        cart[i].duplication+=1;

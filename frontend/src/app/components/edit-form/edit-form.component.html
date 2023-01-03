@@ -2,11 +2,8 @@
     <div class="form-box">
         <form action method="post" #uploadForm="ngForm">
 
-            <h1><strong>Add Book</strong></h1>
-            <div class="form-group">
-                <label for="isbn" style="font-weight: 600; font-size:large ;">ISBN</label>
-                <input type="text" name="isbn" id="isbn" class="form-controll" [(ngModel)]="uploadItem.isbn" required />
-            </div>
+            <h1><strong>Edit Book</strong></h1>
+            <h1><strong>ISBN : {{uploadItem.isbn}}</strong></h1>
 
             <div class="form-group">
                 <label for="title" style="font-weight: 600; font-size:large ;">Title </label>
@@ -56,7 +53,7 @@
             </div>
 
             <div class="form-groupp file-area">
-                <input for="images" type="button" value="Upload Cover Photo">
+                <input for="images" type="button" value="Upload New Cover Photo">
                 <input id="images" type="file" class="form-control" (change)="onFileChange($event)">
             </div>
 
@@ -65,7 +62,7 @@
             </div>
 
             <div class="form-groupp">
-                <button type="submit" (click)='onSubmit()' class="btn btn-success">Add Book</button>
+                <button type="submit" (click)='onSubmit()' class="btn btn-success">Save Edit</button>
             </div>
 
 

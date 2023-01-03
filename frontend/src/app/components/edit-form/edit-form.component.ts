@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UploadItem } from './add-book';
+import { UploadItem } from './edit';
 @Component({
-  selector: 'app-add-book',
-  templateUrl: './add-book.component.html',
-  styleUrls: ['./add-book.component.css']
+  selector: 'app-edit-form',
+  templateUrl: './edit-form.component.html',
+  styleUrls: ['./edit-form.component.css']
 })
-export class AddBookComponent implements OnInit {
+export class EditFormComponent implements OnInit {
 
   //selectedFile : File = null
   ngOnInit(): void {
@@ -16,14 +16,17 @@ export class AddBookComponent implements OnInit {
     document.getElementById("mySidenav")!.style.width="0";
   }
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
+  SelectedProduct=JSON.parse(localStorage.getItem("aboutProduct")!);
 
-
-  uploadItem = new UploadItem(0,'','','', '','', 0, 0, 0, '');
   categories = ['Science', 'Art', 'Religion', 'History', 'Geography'];
-  categoryName: string = "";
-  imageSrc: string = "";
+  
+  uploadItem = new UploadItem(this.SelectedProduct.id,this.SelectedProduct.name,this.SelectedProduct.publisher,this.SelectedProduct.authors,this.SelectedProduct.publicationYear,this.SelectedProduct.img,this.SelectedProduct.price , this.SelectedProduct.Quantity, this.SelectedProduct.threshold, this.SelectedProduct.category);
+  categoryName=this.uploadItem.category;
+
+  imageSrc=this.SelectedProduct.img;
   imageName: string = "";
   imageBlob: string = "";
+  
   myForm = new FormGroup({
     name: new FormControl(''),
     file: new FormControl(''),
@@ -116,7 +119,7 @@ export class AddBookComponent implements OnInit {
 
 
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post('http://localhost:8080/api/book', this.uploadItem, { headers: headerr, responseType: 'text' })
+    this.http.put('http://localhost:8080/api/book/edit/'+this.uploadItem.isbn, this.uploadItem, { headers: headerr, responseType: 'text' })
       .subscribe({
 
         next: (data: any) => {

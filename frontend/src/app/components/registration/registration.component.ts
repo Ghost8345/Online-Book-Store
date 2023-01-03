@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Registration } from './registration';
 import { Login } from './login'
+import { UserInfo } from './login';
 
 @Component({
   selector: 'app-registration',
@@ -16,7 +17,7 @@ export class RegistrationComponent {
 
   registration = new Registration('', '', '', '');
   login = new Login('', '')
-
+   userInfo =new UserInfo(0,false)
 
 
   ValidateRequest(e: Event) {
@@ -37,39 +38,29 @@ export class RegistrationComponent {
     }
 
   }
+ 
 
   loginn() {
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' });
-    this.http.post('http://localhost:8080/login/', this.login, { headers: headerr, responseType: 'text' })
+    this.http.post('http://localhost:8080/login/', this.login, { headers: headerr, responseType: 'json'  })
       .subscribe({
-        next: (data: string) => {
-          if (data === "-1") {
-            // Swal.fire({
-            //   position: 'center',
-            //   icon: 'error',
-            //   title: 'Email not Found',
-            //   showConfirmButton: false,
-            //   timer: 1500
-            // })
+        next: (data: any) => {
+          console.log(data)
+          if (data.id === "-1") {       
             alert("wrong")
-
-          // } else if (data === "Incorrect password") {
-          //   // Swal.fire({
-          //   //   position: 'center',
-          //   //   icon: 'error',
-          //   //   title: 'Incorrect password',
-          //   //   showConfirmButton: false,
-          //   //   timer: 1500
-          //   // })
-
           }
           else {
             // from token store token & user id
             // localStorage.setItem("token", data.split(" ")[0]);
-            console.log("hi" +data)
-             localStorage.setItem("user_id", data);
+             
+             localStorage.setItem("user_id", data.id);
+             localStorage.setItem("ismanager",data.ismanager);
              console.log(localStorage.getItem("user_id"))
-             this.router.navigateByUrl('user')
+             console.log(localStorage.getItem("ismanager"))
+            if(data.ismanager===true)
+                 this.router.navigateByUrl('addbook')
+            else
+                 this.router.navigateByUrl('user')
           }
         },
         error: (error: any) => {
