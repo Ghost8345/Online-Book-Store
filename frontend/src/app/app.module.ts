@@ -13,6 +13,7 @@ import { AboutbookComponent } from './components/aboutbook/aboutbook.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
 import { CartComponent } from './cart/cart.component';
+import { PaymentComponent } from './payment/payment.component';
 import { PromoteComponent } from './promote/promote.component';
 
 
@@ -27,6 +28,7 @@ import { PromoteComponent } from './promote/promote.component';
     LoginComponent,
     AboutbookComponent,
     CartComponent,
+    PaymentComponent,
     PromoteComponent
   ],
   imports: [

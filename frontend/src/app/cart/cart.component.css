@@ -284,8 +284,8 @@
       .checker:hover .tooltiptext {
         visibility: visible;
       }
-      
+      .input-group{
+        position: relative;
+        left: 850px;
+      }
      
-    
-      
-      
