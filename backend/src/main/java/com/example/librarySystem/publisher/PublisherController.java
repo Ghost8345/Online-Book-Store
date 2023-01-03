@@ -1,7 +1,5 @@
-package com.example.librarySystem.controller;
+package com.example.librarySystem.publisher;
 
-import com.example.librarySystem.model.Publisher;
-import com.example.librarySystem.service.PublisherService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,21 +15,21 @@ public class PublisherController {
     private final PublisherService publisherService;
 
 
-    @PutMapping("/edit/{id}")
-    public ResponseEntity<String> editPublisher(@PathVariable int id, @RequestBody Publisher publisher) {
+    @PutMapping("/edit/{name}")
+    public ResponseEntity<String> editPublisher(@PathVariable String name, @RequestBody Publisher publisher) {
         try {
             System.out.println(publisher);
-            publisherService.editPublisher(id, publisher);
+            publisherService.editPublisher(name, publisher);
             return new ResponseEntity<>("Publisher edited successfully", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-    @DeleteMapping("/delete/{id}")
-    public ResponseEntity<String> deletePublisher(@PathVariable int id) {
+    @DeleteMapping("/delete/{name}")
+    public ResponseEntity<String> deletePublisher(@PathVariable String name) {
         try{
-            publisherService.deletePublisher(id);
+            publisherService.deletePublisher(name);
             return new ResponseEntity<>("Publisher was deleted successfully.", HttpStatus.CREATED);
         }
         catch(Exception e){
@@ -55,12 +53,11 @@ public class PublisherController {
 
     @PostMapping
     public ResponseEntity<String> createPublisher(@RequestBody Publisher publisher) {
-        try {
-            publisherService.createPublisher(publisher);
-            return new ResponseEntity<>("Publisher was created successfully.", HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+        System.out.println("IN Create");
+
+        publisherService.createPublisher(publisher);
+        return new ResponseEntity<>("Publisher was created successfully.", HttpStatus.CREATED);
+
     }
 
     @GetMapping("/name/{name}")
@@ -73,13 +70,4 @@ public class PublisherController {
         }
     }
 
-    @GetMapping("/id/{id}")
-    public ResponseEntity<Publisher> getPublisherById(@PathVariable int id) {
-        try {
-            Publisher publisher = publisherService.getPublisherById(id);
-            return new ResponseEntity<>(publisher, HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-    }
 }
