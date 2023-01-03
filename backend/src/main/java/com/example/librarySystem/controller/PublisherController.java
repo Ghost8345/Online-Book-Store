@@ -55,6 +55,7 @@ public class PublisherController {
 
     @PostMapping
     public ResponseEntity<String> createPublisher(@RequestBody Publisher publisher) {
+        System.out.println(publisher.getName()+"  "+publisher.getAddress()+"  "+publisher.getPhone());
         try {
             publisherService.createPublisher(publisher);
             return new ResponseEntity<>("Publisher was created successfully.", HttpStatus.CREATED);
