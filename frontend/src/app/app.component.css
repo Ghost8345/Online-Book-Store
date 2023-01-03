@@ -1,0 +1,205 @@
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 130px;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-weight: 600;
+  }
+.profile{
+  position: relative;
+  bottom:  -40px;
+  left: -300px;
+}
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  
+
+  .store{
+     color: rgb(21, 189, 169);
+     font-size: 20px;
+     line-height: 1cm;
+     position: relative;
+     bottom:  -10px;
+
+}
+.button{
+ position: relative;
+  
+  background-color:rgb(21, 189, 169);
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size:large;
+    font-weight: bold;
+    color: rgb(99, 101, 102);
+	
+  top: -70px;
+  right: 500px;
+	padding:15px 5px;
+	border-radius:25px;
+	
+}
+.logged{
+  position: relative;
+  left: -20px;
+}
+.logo{
+    position: relative;
+    bottom:  -10px;
+}
+.search {
+  border-radius: 20px;
+  font-size:smaller;
+  border: none;
+  background-color: rgb(223, 221, 221);
+  outline: none;
+  position: relative;
+  left: 250px;
+  padding: 0 20px;
+  width: 400px;
+    height: 40px;
+    bottom:  -10px;
+  
+}
+
+
+/* Style the submit button */
+form.search_button button {
+  float: left;
+  width: 20%;
+  padding: 7px;
+  background: none;
+  color: gray;
+  font-size: 17px;
+  border: none;
+  border-left: none; /* Prevent double borders */
+  cursor: pointer;
+  position: relative;
+  left: 800px;
+  bottom: 50px;
+}
+form.profile button{
+    float: left;
+    padding: 7px;
+    background: none;
+    color: rgb(21, 189, 169);
+    font-size: 17px;
+    border: none;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+    position: relative;
+    bottom: 25px;
+   left: 670px;
+}
+.filter{
+    position: relative;
+    right:  750px;
+    top: 50px;
+    font-size: 23px;
+    background: none;
+    width: 1200px;
+    height: 500px;
+    border: none;
+    color: rgb(21, 189, 169);
+font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
+}
+
+/* Clear floats */
+form.search_button::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(99, 101, 102);
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+ 
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(21, 189, 169);
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  .sidenav button {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: rgb(21, 189, 169);
+    background-color: #111;
+    display: block;
+    transition: 0.3s;
+    border: none;
+  }
+  
+  .sidenav button:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+  }
+  .open{
+    font-size:30px;cursor:pointer; border:none; background:none;color: rgb(21, 189, 169);
+    position: relative;
+    bottom: -20px;
+    left: 7px;
+  }
+  .open:hover{
+    background-color: rgb(136, 135, 132);
+    ;
+    
+}
+.numofitemsinshoppingcart{
+  text-align:center;
+position:relative;
+right: 210px; 
+bottom: 49px; 
+border-radius: 50px;
+background-color: rgb(236, 5, 5);
+font-size: large;
+width: 30px;
+border: none;
+color: #f1f1f1;
+}
+.navbar{
+  position: relative;
+  background:transparent;
+  color:rgb(21, 189, 169) ;
+  border:none;
+ right: 700px;
+ top: 50px;
+ font-size: 80px;
+}
+
+ 
+  
