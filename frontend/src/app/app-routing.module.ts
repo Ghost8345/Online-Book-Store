@@ -12,6 +12,7 @@ import { UserComponent } from './components/user/user.component';
 import { CategoryComponent } from './components/category/category.component';
 import { SelectedCategoryComponent } from './components/selected-category/selected-category.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
+import { PlaceorderComponent } from './components/placeorder/placeorder.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'registration', pathMatch: 'full' }, // redirect to `first-component`
@@ -26,7 +27,9 @@ const routes: Routes = [
   { path: "user", component: UserComponent },
   { path: "category", component: CategoryComponent },
   { path: "selectedcategory", component: SelectedCategoryComponent },
-  { path: "notifications", component: NotificationsComponent }
+  { path: "notifications", component: NotificationsComponent },
+  { path: "placeorder", component: PlaceorderComponent }
+
 
 
 

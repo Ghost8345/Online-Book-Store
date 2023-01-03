@@ -18,6 +18,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { SelectedCategoryComponent } from './components/selected-category/selected-category.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { AcceptorderComponent } from './components/acceptorder/acceptorder.component';
+import { PlaceorderComponent } from './components/placeorder/placeorder.component';
 
 
 @NgModule({
@@ -36,6 +37,7 @@ import { AcceptorderComponent } from './components/acceptorder/acceptorder.compo
     SelectedCategoryComponent,
     NotificationsComponent,
     AcceptorderComponent,
+    PlaceorderComponent,
     
   ],
   imports: [

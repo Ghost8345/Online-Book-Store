@@ -14,7 +14,7 @@ export class UserComponent implements OnInit{
   //mostRecent:{id:0,cover:"",Title:"",price:0,category:"",publisher:"",Quantity:0}[]=[];
  
   mostRecent=[{id:0,cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
-,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:120,authors:"lol"}];
+,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:1,authors:"lol"}];
 
 
   aboutproduct(id:number,cover:string,name:string,price:number,category:string,Quantity:number,authors:string,publisher:string){
@@ -35,17 +35,22 @@ AddProduct(id:any){
            break;
     }
   }
+  if(this.mostRecent[pos].Quantity<=0){
+    document.getElementById("outofstock")!.style.visibility="visible"
+  }
+  else{
  /* localStorage.removeItem("CartProducts");
   localStorage.removeItem("subtotal");
   localStorage.removeItem('itemsincart')*/
+  this.mostRecent[pos].Quantity-=1;
    let cart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
   let duplicate:{id:number,num:number}[]=[]
-  let aux:{product_id:number,image:string,name:string,price:number,duplication:number}={product_id:0,image:"",name:"",price:0,duplication:0};
+  let aux:{product_id:number,image:string,name:string,price:number,duplication:number,quantity:number}={product_id:0,image:"",name:"",price:0,duplication:0,quantity:0};
   let subtotal=0;
   aux.product_id=this. mostRecent[pos].id;
   aux.image=this. mostRecent[pos].cover;
   aux.name=this. mostRecent[pos].Title;
-  ;
+  aux.quantity=this.mostRecent[pos].Quantity;
   aux.price=this. mostRecent[pos].price;
   aux.duplication=1;
   let flag=0;
@@ -92,6 +97,7 @@ localStorage.setItem("itemsincart",JSON.stringify(val));
   console.log("in cart -->"+(<HTMLInputElement>document.getElementById("itemsnum")).textContent)
   document.getElementById("itemsnum")!.style.display="block"
 
+}
 }
 
 clossing(){

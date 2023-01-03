@@ -13,6 +13,8 @@
     
                 <button #w id={{product.id}} class="products"><div class="decor"  routerLink="/aboutbook" routerLinkActive="activebutton" (click)="aboutproduct(product.id,product.cover,product.Title,product.price,product.category,product.Quantity,product.authors,product.publisher)" ><img height="200" width="200" class=" img" src={{product.cover}}><p class="info" >{{product.Title}}<br>{{product.price}} LE</p>
                 </div><button  class="cart" (click)="AddProduct(product.id)">Add to Cart</button>
+                <span id="outofstock3"  class="tooltiptext">Out Of Stock</span>
+
     
         </button>
             </a>

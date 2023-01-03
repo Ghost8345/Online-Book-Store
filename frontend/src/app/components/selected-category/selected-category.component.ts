@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class SelectedCategoryComponent {
   categorybooks=[{id:0,cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
-  ,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:120,authors:"lol"}];
+  ,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:0,authors:"lol"}];
   name=localStorage.getItem("categoryName")
   ngOnInit(): void {
   
@@ -21,26 +21,6 @@ export class SelectedCategoryComponent {
 
 
 }
-getStars(rating:any) {
-
-  // Round to nearest half
-  rating = Math.round(rating * 2) / 2;
-  let output = [];
-
-  // Append all the filled whole stars
-  for (var i = rating; i >= 1; i--)
-    output.push('<i class="fa fa-star" aria-hidden="true" style="color: gold;"></i>&nbsp;');
-
-  // If there is a half a star, append it
-  if (i == .5) output.push('<i class="fa fa-star-half-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
-
-  // Fill the empty stars
-  for (let i = (5 - rating); i >= 1; i--)
-    output.push('<i class="fa fa-star-o" aria-hidden="true" style="color: gold;"></i>&nbsp;');
-
-  return output.join('');
-
-}
 
 AddProduct(id:any){
   ///call back to get rate
@@ -52,18 +32,24 @@ AddProduct(id:any){
     }
   }
   
+  if(this.categorybooks[pos].Quantity<=0){
+    document.getElementById("outofstock3")!.style.visibility="visible";
+  }
+  else{
  /* localStorage.removeItem("CartProducts");
   localStorage.removeItem("subtotal");
   localStorage.removeItem('itemsincart')*/
+  this.categorybooks[pos].Quantity--;
    let cart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
   let duplicate:{id:number,num:number}[]=[]
-  let aux:{product_id:number,image:string,name:string,price:number,duplication:number}={product_id:0,image:"",name:"",price:0,duplication:0};
+  let aux:{product_id:number,image:string,name:string,price:number,duplication:number,quantity:number}={product_id:0,image:"",name:"",price:0,duplication:0,quantity:0};
   let subtotal=0;
   aux.product_id=this.categorybooks[pos].id;
   aux.image=this.categorybooks[pos].cover;
   aux.name=this.categorybooks[pos].Title;
   aux.price=this.categorybooks[pos].price;
   aux.duplication=1;
+  aux.quantity=this.categorybooks[pos].Quantity;
   let flag=0;
 
   if(localStorage.getItem("CartProducts")==null){
@@ -108,6 +94,7 @@ localStorage.setItem("itemsincart",JSON.stringify(val));
   document.getElementById("itemsnum")!.style.display="block"
 
 
+}
 }
 clossing(){
  

@@ -106,6 +106,21 @@ border: none;
   .bold{
     font-weight: 1000;
   }
+  .tooltiptext {
+    width: 120px;
+    background-color: rgb(99, 101, 102);
+    color: rgb(21, 189, 169);
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+  
+  visibility: hidden;
+    /* Position the tooltip */
+    position: relative;
+   top: 90px;
+   left:   -400px;
+    z-index: 1;
+  }
  
  
 
