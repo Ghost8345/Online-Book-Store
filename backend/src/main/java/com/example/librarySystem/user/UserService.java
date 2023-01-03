@@ -8,8 +8,13 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
     UserRepository userRepository;
+
     public Integer editUser(User user) {
         userRepository.save(user);
         return 1;
+    }
+
+    public User getUserById(int id) {
+        return userRepository.findById(id).get();
     }
 }
