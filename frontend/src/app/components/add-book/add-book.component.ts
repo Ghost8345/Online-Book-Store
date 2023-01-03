@@ -10,9 +10,6 @@ import { UploadItem } from './add-book';
 })
 export class AddBookComponent implements OnInit {
 
-
-
-
   //selectedFile : File = null
   ngOnInit(): void {
     document.getElementById("body")!.style.display="none";
