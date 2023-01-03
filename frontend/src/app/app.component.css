@@ -182,8 +182,8 @@ form.search_button::after {
 .numofitemsinshoppingcart{
   text-align:center;
 position:relative;
-right: 210px; 
-bottom: 49px; 
+right: 260px; 
+bottom: 12px; 
 border-radius: 50px;
 background-color: rgb(236, 5, 5);
 font-size: large;

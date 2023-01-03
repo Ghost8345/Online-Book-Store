@@ -47,13 +47,12 @@ border: none;
     border-radius: 10px;
     background-color: white;
     width: 120px;
-    border-color:rgb(249, 208, 24) ;
+    border-color:rgb(21, 189, 169);
     border: 100;
     font-size: 15px;
     line-height: 1cm;
     position: relative;
     top: 50px;
-    left: -150px;
     
   }
   .rateproduct{
@@ -61,7 +60,7 @@ border: none;
     right: 10px;
   }
   .cart:hover{
-  background-color: rgb(249, 208, 24);
+  background-color: rgb(21, 189, 169);
   }
   .page{
     width: 100%;
