@@ -15,13 +15,13 @@ public class StockOrderController {
 
     //AUTOMATIC WHEN QUANTITY OF BOOK X DECREASES THAN THRESHOLD
     @PutMapping("/{managerId}")
-    public ResponseEntity<StockOrder> makeOrder(@PathVariable int managerId,
+    public ResponseEntity<Integer> makeOrder(@PathVariable int managerId,
                                                 @RequestBody StockOrder newOrder){
         try {
             System.out.println("entered");
             return new ResponseEntity<>(stockOrderService.makeOrder(managerId, newOrder), HttpStatus.OK);
         }catch (Exception e){
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(-1, HttpStatus.BAD_REQUEST);
         }
     }
 

@@ -14,14 +14,10 @@ import java.util.Optional;
 
 @Repository
 public interface StockOrderRepository  extends CrudRepository<StockOrder, Integer> {
+//
+//    @Transactional
+//    @Modifying
+//    @Query("INSERT INTO stock_order (isbn, quantity) VALUES (:isbn, :quantity)")
+//    void insert(@Param("isbn") int isbn, @Param("quantity") int quantity);
 
-    @Transactional
-    @Modifying
-    @Query("INSERT INTO stock_order (isbn, quantity) VALUES (:isbn, :quantity)")
-    void insert(@Param("isbn") int isbn, @Param("quantity") int quantity);
-
-    @Transactional
-    @Modifying
-    @Query("SELECT * FROM stock_order s WHERE s.isbn = :isbn AND s.quantity = :quantity")
-    StockOrder findByAttr(@Param("isbn") int isbn, @Param("quantity") int quantity);
 }
