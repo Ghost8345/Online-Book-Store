@@ -2,21 +2,21 @@
     <div class="form-box">
         <form action method="post" #uploadForm="ngForm">
 
-            <h1><strong>Add Book</strong></h1>
+            <h1><strong>Edit Book</strong></h1>
             <div class="form-group">
                 <label for="isbn" style="font-weight: 600; font-size:large ;">ISBN</label>
-                <input type="text" name="isbn" id="isbn" class="form-controll" [(ngModel)]="uploadItem.isbn" required />
+                <input type="text" name="isbn" id="isbn" class="form-controll" [(ngModel)]="editbook.ISBN" required />
             </div>
 
             <div class="form-group">
                 <label for="title" style="font-weight: 600; font-size:large ;">Title </label>
-                <input type="text" name="title" id="title" class="form-controll" [(ngModel)]="uploadItem.title"
+                <input type="text" name="title" id="title" class="form-controll" [(ngModel)]="editbook.title"
                     required />
             </div>
             <div class="form-group">
                 <label for="Publisher" style="font-weight: 600; font-size:large ;">Publisher</label>
                 <input type="text" name="Publisher" id="Publisher" class="form-controll"
-                    [(ngModel)]="uploadItem.publisherName" required />
+                    [(ngModel)]="editbook.publisher" required />
             </div>
 
             <div class="form-groupp">
@@ -24,23 +24,23 @@
             </div>
             <div class="form-group">
                 <label for="authors" style="font-weight: 600; font-size:large ;">Author(s) </label>
-                <input type="text" name="authors" id="authors" class="form-controll" [(ngModel)]="uploadItem.authors"
+                <input type="text" name="authors" id="authors" class="form-controll" [(ngModel)]="editbook.authors"
                     required />
             </div>
             <div class="form-group">
                 <label for="pubyear" style="font-weight: 600; font-size:large ;">Publishing Year </label>
-                <input type="text" name="pubyear" id="pubyear" class="form-controll" [(ngModel)]="uploadItem.publicationYear"
+                <input type="text" name="pubyear" id="pubyear" class="form-controll" [(ngModel)]="editbook.pubYear"
                     required />
             </div>
             <div class="form-group">
                 <label for="threshold" style="font-weight: 600; font-size:large ;">Threshold</label>
                 <input type="number" name="threshold" id="threshold" class="form-controll"
-                    [(ngModel)]="uploadItem.threshold" required />
+                    [(ngModel)]="editbook.threshold" required />
             </div>
             <div class="form-group">
                 <label for="quantity" style="font-weight: 600; font-size:large ;">Quantity</label>
                 <input type="number" name="quantity" id="quantity" class="form-controll"
-                    [(ngModel)]="uploadItem.stockQuantity" required />
+                    [(ngModel)]="editbook.quantity" required />
             </div>
             <div class="form-group">
                 <label for="category" style="font-weight: 600; font-size:large ;"><strong>Category</strong></label>
@@ -51,7 +51,7 @@
             <div class="form-group">
                 <label for="price" style="font-weight: 600; font-size:large ;">Price <span>in Egyption
                         pound</span></label>
-                <input type="number" name="price" id="price" class="form-controll" [(ngModel)]="uploadItem.price"
+                <input type="number" name="price" id="price" class="form-controll" [(ngModel)]="editbook.price"
                     required />
             </div>
 
