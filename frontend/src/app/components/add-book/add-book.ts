@@ -1,14 +1,14 @@
 export class UploadItem {
     constructor(
-        public ISBN: string,
+        public isbn: number,
         public title: string,
-        public publisher:string,
+        public publisherName:String,
         public authors: string,
-        public pubYear:string,
-        public cover: string,
+        public publicationYear:string,
+        public coverImage: string,
         public price: Number,
-        public quantity: number,
+        public stockQuantity: number,
         public threshold: number,
-        public quantityId: number
+        public category: string
     ) { }
 }

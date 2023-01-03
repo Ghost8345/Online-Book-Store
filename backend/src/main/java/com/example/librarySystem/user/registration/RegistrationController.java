@@ -3,12 +3,10 @@ package com.example.librarySystem.user.registration;
 import com.example.librarySystem.user.User;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/register")
 @AllArgsConstructor
 public class RegistrationController {
@@ -18,7 +16,8 @@ public class RegistrationController {
     @PostMapping("/")
     public ResponseEntity<String> registerUser(@RequestBody User user){
         try {
-            return ResponseEntity.ok().body(registrationService.createUser(user));
+            registrationService.createUser(user);
+            return ResponseEntity.ok().body("succeeded");
         }
         catch (Exception e){
             return ResponseEntity.badRequest().body("Couldn't create the user");
