@@ -1,6 +1,7 @@
 package com.example.librarySystem.stockOrder;
 
 
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -8,23 +9,24 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin
 @RequestMapping("/api/stock")
+@AllArgsConstructor
 public class StockOrderController {
-    StockOrderService stockOrderService;
+    private final StockOrderService stockOrderService;
 
     //AUTOMATIC WHEN QUANTITY OF BOOK X DECREASES THAN THRESHOLD
-    @PutMapping("/{managerId}/{isbn}/{quantity}")
+    @PutMapping("/{managerId}")
     public ResponseEntity<StockOrder> makeOrder(@PathVariable int managerId,
-                                                @PathVariable int isbn,
-                                                @PathVariable int quantity){
+                                                @RequestBody StockOrder newOrder){
         try {
-            return new ResponseEntity<>(stockOrderService.makeOrder(managerId, isbn, quantity), HttpStatus.OK);
+            System.out.println("entered");
+            return new ResponseEntity<>(stockOrderService.makeOrder(managerId, newOrder), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
         }
     }
 
     @DeleteMapping("/{userId}/{orderId}")
-    public ResponseEntity<StockOrder> makeOrder(@PathVariable int userId,
+    public ResponseEntity<StockOrder> confirmOrder(@PathVariable int userId,
                                                 @PathVariable int orderId){
         return null;
     }

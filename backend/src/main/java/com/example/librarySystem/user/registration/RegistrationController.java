@@ -14,7 +14,7 @@ public class RegistrationController {
     RegistrationService registrationService;
 
     @PostMapping("/")
-    public ResponseEntity<String> registerUser(@RequestBody User user){
+        public ResponseEntity<String> registerUser(@RequestBody User user){
         try {
             registrationService.createUser(user);
             return ResponseEntity.ok().body("succeeded");
