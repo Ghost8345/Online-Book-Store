@@ -1,7 +1,7 @@
 
 .bestseller{
     position: relative;
-    top: 0px;
+    top: -170px;
     font-size: 40px;
     color: rgb(21, 189, 169);
     font-weight: 700;
@@ -27,7 +27,7 @@
     outline: none;
     position: relative;
     left: 10px;
-    top: -90px;
+    top: -260px;
     padding: 0 20px;
     width: 350px;
       height: 50px;
@@ -39,7 +39,7 @@
     color: rgb(205, 205, 205);
     left: 405px;
     font-size: 50px;
-    bottom: 220px;
+    bottom: 390px;
     font-weight: 300;
     
   }
@@ -58,7 +58,7 @@
   }
   .products{
     position: relative;
-    top: -200px;
+    top: -390px;
     padding: -50 ;
   margin-top: 20px;
   padding-top: 1000;
@@ -119,15 +119,15 @@
     align-items: center;
   }
   .slider{
-    width: 1000px;
-    height: 500px;
+    width: 800px;
+    height: 300px;
     border-radius: 10px;
     overflow: hidden;
   
   }
   .slides{
-    width: 1000%;
-    height: 500px;
+    width: 800%;
+    height: 300px;
     display: flex;
   }
   .slides input{
@@ -139,12 +139,12 @@
   
   }
   .slide img{
-    width: 1000px;
-    height: 500px;
+    width: 800px;
+    height: 300px;
   }
   .navigation-manual{
     position:absolute;
-    width: 1000px;
+    width: 800px;
     margin-top: -40px;
     display: flex;
     justify-content: center;
@@ -185,9 +185,9 @@
   .navigation-auto{
     position:absolute;
     display: flex;
-    width: 1000px;
+    width: 800px;
     justify-content: center;
-    margin-top: 460px;
+    margin-top: 260px;
   }
   .navigation-auto div{
     border: 2px solid rgb(21, 189, 169) ;

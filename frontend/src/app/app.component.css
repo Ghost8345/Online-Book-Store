@@ -13,7 +13,7 @@
 .profile{
   position: relative;
   bottom:  -40px;
-  left: -90px;
+  left: -300px;
 }
   .toolbar img {
     margin: 0 16px;
@@ -23,7 +23,7 @@
 
   .store{
      color: rgb(21, 189, 169);
-     font-size: 40px;
+     font-size: 20px;
      line-height: 1cm;
      position: relative;
      bottom:  -10px;
@@ -54,15 +54,15 @@
 }
 .search {
   border-radius: 20px;
-  font-size: x-large;
+  font-size:smaller;
   border: none;
   background-color: rgb(223, 221, 221);
   outline: none;
   position: relative;
-  left: 350px;
+  left: 250px;
   padding: 0 20px;
-  width: 500px;
-    height: 43px;
+  width: 400px;
+    height: 40px;
     bottom:  -10px;
   
 }
@@ -169,7 +169,7 @@ form.search_button::after {
     .sidenav a {font-size: 18px;}
   }
   .open{
-    font-size:50px;cursor:pointer; border:none; background:none;color: rgb(21, 189, 169);
+    font-size:30px;cursor:pointer; border:none; background:none;color: rgb(21, 189, 169);
     position: relative;
     bottom: -20px;
     left: 7px;
