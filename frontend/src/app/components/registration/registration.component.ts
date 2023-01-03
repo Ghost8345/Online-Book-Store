@@ -38,7 +38,7 @@ export class RegistrationComponent {
 
   }
 
-  loginn(){
+  loginn() {
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' });
     this.http.post('http://localhost:8080/login', this.login, { headers: headerr, responseType: 'text' })
       .subscribe({
@@ -66,7 +66,7 @@ export class RegistrationComponent {
             // from token store token & user id
             // localStorage.setItem("token", data.split(" ")[0]);
             // localStorage.setItem("user_id", data.split(" ")[1]);
-           // this.router.navigateByUrl('home')
+            // this.router.navigateByUrl('home')
           }
         },
         error: (error: any) => {
@@ -75,7 +75,7 @@ export class RegistrationComponent {
       });
 
   }
-/******************************************************Registration***********************************************************/
+  /******************************************************Registration***********************************************************/
   onSubmit() {
     var First = document.getElementById("FirstName") as HTMLInputElement;
     var Last = document.getElementById("LastName") as HTMLInputElement;
@@ -112,36 +112,36 @@ export class RegistrationComponent {
   }
 
   signup() {
-      const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
-      this.http.post('http://localhost:8080/signup', this.registration, { headers: headerr, responseType:'text'})
+    const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' });
+    this.http.post('http://localhost:8080/signup', this.registration, { headers: headerr, responseType: 'text' })
       .subscribe({
-          next: (data: any) => {
-              console.log("hii")
-              console.log(data)
-              if(data==='Registration Succeeded'){        
-                // Swal.fire({
-                //   position: 'center',
-                //   icon: 'success',
-                //   title: 'Registeration Succeeded, please login',
-                //   showConfirmButton: false,
-                //   timer: 1500
-                // })
-                 //if there is token 
-               // this.router.navigateByUrl('login')         
-              }else{
-                // Swal.fire({
-                //   position: 'center',
-                //   icon: 'error',
-                //   title: 'his Email is already used',
-                //   showConfirmButton: false,
-                //   timer: 1500
-                // })            
-              }         
-              },
-              error: (error: any) => {
-              console.error(error);
-              }
-          });
+        next: (data: any) => {
+          console.log("hii")
+          console.log(data)
+          if (data === 'Registration Succeeded') {
+            // Swal.fire({
+            //   position: 'center',
+            //   icon: 'success',
+            //   title: 'Registeration Succeeded, please login',
+            //   showConfirmButton: false,
+            //   timer: 1500
+            // })
+            //if there is token 
+            // this.router.navigateByUrl('login')         
+          } else {
+            // Swal.fire({
+            //   position: 'center',
+            //   icon: 'error',
+            //   title: 'his Email is already used',
+            //   showConfirmButton: false,
+            //   timer: 1500
+            // })            
+          }
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
   }
 
 
