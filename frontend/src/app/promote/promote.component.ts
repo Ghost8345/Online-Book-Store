@@ -2,14 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Publisher } from './publisher';
+import { Promote } from './promote';
 @Component({
-  selector: 'app-publisher-form',
-  templateUrl: './publisher-form.component.html',
-  styleUrls: ['./publisher-form.component.css']
+  selector: 'app-promote',
+  templateUrl: './promote.component.html',
+  styleUrls: ['./promote.component.css']
 })
-export class PublisherFormComponent implements OnInit {
-
+export class PromoteComponent implements OnInit{
   ngOnInit(): void {
     document.getElementById("body")!.style.display="none";
     document.getElementById("mySidenav")!.style.width="0";
@@ -17,10 +16,9 @@ export class PublisherFormComponent implements OnInit {
   constructor(private router: Router) { }
 
 
-  Publisher = new Publisher('','', '');
+  Promote = new Promote('');
   
-
-  onSubmit() {
-   
+  goback(){
+    document.getElementById("body")!.style.display="block";
   }
 }

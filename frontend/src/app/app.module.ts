@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PublisherFormComponent } from './publisher-form/publisher-form.component';
 import { AboutbookComponent } from './aboutbook/aboutbook.component';
 import { CartComponent } from './cart/cart.component';
+import { PromoteComponent } from './promote/promote.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CartComponent } from './cart/cart.component';
     RegistrationComponent,
     UserComponent,
     AddBookComponent,
-    CartComponent
+    CartComponent,
+    PromoteComponent
   ],
   imports: [
     BrowserModule,

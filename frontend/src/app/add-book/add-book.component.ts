@@ -15,7 +15,8 @@ export class AddBookComponent implements OnInit {
 
   //selectedFile : File = null
   ngOnInit(): void {
-
+    document.getElementById("body")!.style.display="none";
+    document.getElementById("mySidenav")!.style.width="0";
   }
   constructor(private router: Router) { }
 
