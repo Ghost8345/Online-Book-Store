@@ -11,6 +11,7 @@ import { PublisherFormComponent } from './publisher-form/publisher-form.componen
 import { AboutbookComponent } from './aboutbook/aboutbook.component';
 import { CartComponent } from './cart/cart.component';
 import { PaymentComponent } from './payment/payment.component';
+import { PromoteComponent } from './promote/promote.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PaymentComponent } from './payment/payment.component';
     UserComponent,
     AddBookComponent,
     CartComponent,
-    PaymentComponent
+    PaymentComponent,
+    PromoteComponent
   ],
   imports: [
     BrowserModule,

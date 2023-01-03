@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 
-export class UserComponent {
+export class UserComponent implements OnInit{
+
+  ngOnInit(): void {
+    document.getElementById("body")!.style.display="block";
+  }
   //mostRecent:{id:0,cover:"",Title:"",price:0,category:"",publisher:"",Quantity:0}[]=[];
   ngOnInit(): void {
   document.getElementById("body")!.style.display="block";
