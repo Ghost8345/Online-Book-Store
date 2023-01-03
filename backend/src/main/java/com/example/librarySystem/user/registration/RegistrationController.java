@@ -16,12 +16,12 @@ public class RegistrationController {
     RegistrationService registrationService;
 
     @PostMapping("/")
-    public ResponseEntity<User> registerUser(@RequestBody User user){
+    public ResponseEntity<String> registerUser(@RequestBody User user){
         try {
             return ResponseEntity.ok().body(registrationService.createUser(user));
         }
         catch (Exception e){
-            return ResponseEntity.badRequest().body(null);
+            return ResponseEntity.badRequest().body("Couldn't create the user");
         }
     }
 }

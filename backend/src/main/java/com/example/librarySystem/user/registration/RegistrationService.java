@@ -15,10 +15,10 @@ public class RegistrationService {
     UserRepository userRepository;
 
 
-    public User createUser(User user) throws Exception {
+    public String createUser(User user) throws Exception {
         if (userRepository.emailExists(user.getEmail()).isPresent())
             throw new Exception("Email already exists");
         userRepository.save(user);
-        return user;
+        return "User has been created";
     }
 }
