@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AddBookComponent } from './components/add-book/add-book.component';
@@ -9,6 +9,7 @@ import { PromoteComponent } from './components/promote/promote.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { CartComponent } from './components/cart/cart.component'
 import { UserComponent } from './components/user/user.component';
+
 const routes: Routes = [
   { path: '', redirectTo: 'registration', pathMatch: 'full' }, // redirect to `first-component`
   { path: 'addbook', component: AddBookComponent },

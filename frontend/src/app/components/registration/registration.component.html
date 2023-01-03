@@ -2,22 +2,23 @@
 	<div class="login-html">
 	
          <span class="Store">Book Store</span><br>
-		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
-		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<input id="tab-1" type="radio" name="tab" class="sign-in"  checked ><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up" ><label for="tab-2" class="tab">Sign Up</label>
 		<div class="login-form">
-			<form class="sign-in-htm" class="inputs" (ngSubmit)="onSubmit()"  #loginForm="ngForm" >
+			<div class="sign-in-htm">
 				<div class="group">
 					<label for="userSignIn" class="label"><span ><i for="userSignIn" class="fa fa-envelope"></i>
 					</span> Email Address</label><br>
-					<input id="userSignIn" type="email"  pattern=".+@globex\.com" class="input" name="uEmail" [(ngModel)]="login.email"  #email="ngModel" required>							
-				</div>
+					<input id="userSignIn" type="email"  pattern=".+@globex\.com" class="input">
 
+
+				</div>
 				<div class="group">
 					<label for="passSignIn" class="label" >
-                         <span ><i for="user" class="fa fa-key"></i></span> Password</label><br>
-                      <!-- <input id="passSignIn" type="password" class="input" minlength="9" oninvalid="alert('Weak password');" data-type="password"> -->4		
-					  <input id="passSignIn" type="password" class="input" data-type="password"  name="password" [(ngModel)]="login.password" #pswd="ngModel" required>
-							
+                         <span ><i for="user" class="fa fa-key"></i></span>
+                        Password</label><br>
+                      <input id="passSignIn" type="password" class="input" minlength="9" oninvalid="alert('Weak password');" data-type="password">
+
 				</div>
 				<!-- <div class="group">
 					<input id="checkSignIn" type="checkbox" class="check" checked>
@@ -31,7 +32,7 @@
 				<div class="foot-lnk">
 					<a href="#forgot">Forgot Password?</a>
 				</div>
-			</form>
+			</div>
 
 			
 		 <form name="register" class="inputs"  (ngSubmit)="onSubmit()" #signupForm="ngForm">

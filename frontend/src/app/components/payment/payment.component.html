@@ -44,17 +44,17 @@
             </div>
             <div class="input-group">
                 <div class="input-box">
-                    <input type="tel" placeholder="Card Number" required class="name">
+                    <input type="tel" placeholder="Card Number" required class="name" name='card' [(ngModel)]="payment.CardNumber">
                     <i class="fa fa-credit-card icon"></i>
                 </div>
             </div>
             <div class="input-group">
                 <div class="input-box">
-                    <input type="tel" placeholder="Card CVC" required class="name">
+                    <input type="tel" placeholder="Card CVC" required class="name" name='cvc' [(ngModel)]="payment.CVC">
                     <i class="fa fa-user icon"></i>
                 </div>
                 <div class="input-box">
-                    <select>
+                    <select >
                         <option>01 jun</option>
                         <option>02 jun</option>
                         <option>03 jun</option>
@@ -68,7 +68,7 @@
             </div>
             <div class="input-group">
                 <div class="input-box">
-                    <button type="submit">PAY NOW</button>
+                    <button type="submit" (click)="submit()">PAY NOW</button>
                 </div>
             </div>
         </form>

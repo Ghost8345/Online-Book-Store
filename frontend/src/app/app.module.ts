@@ -11,7 +11,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PublisherFormComponent } from './components/publisher-form/publisher-form.component';
 import { AboutbookComponent } from './components/aboutbook/aboutbook.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { LoginComponent } from './components/login/login.component';
 import { CartComponent } from './components/cart/cart.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PromoteComponent } from './components/promote/promote.component';
@@ -25,7 +24,6 @@ import { PromoteComponent } from './components/promote/promote.component';
     RegistrationComponent,
     UserComponent,
     AddBookComponent,
-    LoginComponent,
     AboutbookComponent,
     CartComponent,
     PaymentComponent,
