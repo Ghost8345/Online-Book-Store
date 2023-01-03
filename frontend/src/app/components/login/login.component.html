@@ -1,0 +1,35 @@
+<div class="login-wrap">
+	<div class="login-html">	
+         <span class="Store">Book Store</span><br>
+		<input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up"><label for="tab-2" class="tab">Sign Up</label>
+		<div class="login-form">
+			<form class="sign-in-htm" class="inputs"   #loginForm="ngForm" >
+				<div class="group">
+					<label for="userSignIn" class="label"><span ><i for="userSignIn" class="fa fa-envelope"></i>
+					</span> Email Address</label><br>
+					<input id="userSignIn" type="email"  pattern=".+@globex\.com" class="input" name="uEmail" [(ngModel)]="login.email"  #email="ngModel" required>							
+				</div>
+
+				<div class="group">
+					<label for="passSignIn" class="label" >
+                         <span ><i for="user" class="fa fa-key"></i></span> Password</label><br>
+                      <!-- <input id="passSignIn" type="password" class="input" minlength="9" oninvalid="alert('Weak password');" data-type="password"> -->4		
+					  <input id="passSignIn" type="password" class="input" data-type="password"  name="password" [(ngModel)]="login.password" #pswd="ngModel" required>
+							
+				</div>
+				<div class="group">
+                    <!-- <button style="color: black;" class="button" (click)="ValidateRequest($event)"> Sign In</button> -->
+
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot">Forgot Password?</a>
+				</div>
+			</form>
+		</div>
+	</div>
+   
+
+</div>
+

@@ -1,5 +1,14 @@
 
 
+.box-form .right .form-group .ng-valid[required],.box-form .right .form-group .ng-valid.required  {
+	border-left: 5px solid #42A948; /* green */
+  }
+   
+  .box-form .right .form-group .ng-invalid:not(form)  {
+	border-left: 5px solid #a94442; /* red */
+	
+  }
+  
 *,:after,:before{box-sizing:border-box}
 .clearfix:after,.clearfix:before{content:'';display:table}
 .clearfix:after{clear:both;display:block}

@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { RegistrationComponent } from './registration/registration.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 import { RouterModule } from '@angular/router';
-import { UserComponent } from './user/user.component';
-import { AddBookComponent } from './add-book/add-book.component';
+import { UserComponent } from './components/user/user.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { PublisherFormComponent } from './publisher-form/publisher-form.component';
-import { AboutbookComponent } from './aboutbook/aboutbook.component';
+import { PublisherFormComponent } from './components/publisher-form/publisher-form.component';
+import { AboutbookComponent } from './components/aboutbook/aboutbook.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,15 @@ import { AboutbookComponent } from './aboutbook/aboutbook.component';
     PublisherFormComponent,
     RegistrationComponent,
     UserComponent,
-    AddBookComponent
+    AddBookComponent,
+    LoginComponent,
+    AboutbookComponent
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
-    RouterModule.forRoot([{path:'',redirectTo:'registration',pathMatch:'full'},{path:"registration",component:RegistrationComponent},{path:"registeduser",component:UserComponent},{path:"aboutbook",component:AboutbookComponent}]),
+    RouterModule,
     FormsModule,
     ReactiveFormsModule,
   ],
