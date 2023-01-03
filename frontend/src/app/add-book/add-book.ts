@@ -4,6 +4,7 @@ export class UploadItem {
         public title: string,
         public publisher:string,
         public authors: string,
+        public pubYear:string,
         public cover: string,
         public price: Number,
         public quantity: number,

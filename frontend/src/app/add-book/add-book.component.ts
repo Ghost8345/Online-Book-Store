@@ -20,7 +20,7 @@ export class AddBookComponent implements OnInit {
   constructor(private router: Router) { }
 
 
-  uploadItem = new UploadItem('','', '','', '', 0, 0, 0, 0);
+  uploadItem = new UploadItem('','', '','', '','', 0, 0, 0, 0);
   categories = ['Science', 'Art', 'Religion', 'History Geography'];
   categoryName: string = "";
 
