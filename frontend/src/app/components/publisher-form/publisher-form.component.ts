@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Publisher } from './publisher';
 @Component({
   selector: 'app-publisher-form',
@@ -14,13 +15,35 @@ export class PublisherFormComponent implements OnInit {
     document.getElementById("body")!.style.display="none";
     document.getElementById("mySidenav")!.style.width="0";
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
 
   Publisher = new Publisher('','', '');
   
 
-  onSubmit() {
+  submit() {
+   console.log(this.Publisher.address);
+   //this.publisher()
    
+  }
+  publisher(){
+    const headerr = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.http.post('http://localhost:8080/publisher', this.Publisher, { headers: headerr, responseType: 'text' })
+      .subscribe({
+
+        next: (data: any) => {
+          // Swal.fire({
+          //   position: 'center',
+          //   icon: 'success',
+          //   title: 'Publisher added',
+          //   showConfirmButton: false,
+          //   timer: 1500
+          // })
+          //this.router.navigateByUrl('home')
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
   }
 }

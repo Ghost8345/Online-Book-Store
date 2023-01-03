@@ -5,12 +5,12 @@
             <h1><strong>Promote User</strong></h1>
             <div class="form-group">
                 <label for="email" style="font-weight: 600; font-size:large ;">Email</label>
-                <input type="text" name="email" id="email" class="form-controll" [(ngModel)]="Promote.email" required />
+                <input id="email" type="text" name="email" id="email" class="form-controll"  email required />
             </div>
 
 
             <div class="form-groupp">
-                <button type="submit" class="btn btn-success">Promote</button>
+                <button type="submit" class="btn btn-success" (click)='submit()'>Promote</button>
             </div>
 
             <router-outlet></router-outlet>
