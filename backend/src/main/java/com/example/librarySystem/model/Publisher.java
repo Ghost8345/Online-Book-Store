@@ -5,7 +5,6 @@ import org.springframework.data.annotation.Id;
 
 @Data
 public class Publisher {
-    @Id
     private int id;
     private String name;
     private String address;
