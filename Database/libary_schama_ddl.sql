@@ -30,7 +30,7 @@ CREATE TABLE BOOK(
     authors VARCHAR(500) NOT NULL,
     publicationYear CHAR(4),
     coverImage VARCHAR(7000),
-    price INT NOT NULL,
+    price Float NOT NULL,
     CONSTRAINT PRICE_RANGE CHECK (PRICE >= 0),
     category ENUM('Science','Art','Religion','History','Geography') NOT NULL,
 	threshold INT NOT NULL,
