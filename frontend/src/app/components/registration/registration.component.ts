@@ -33,17 +33,17 @@ export class RegistrationComponent {
       //this.router.navigate(['/registeduser']);
 
       console.log("Entered info : " + this.login.email, this.login.password);
-      //this.login();
+      this.loginn();
     }
 
   }
 
   loginn() {
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' });
-    this.http.post('http://localhost:8080/login', this.login, { headers: headerr, responseType: 'text' })
+    this.http.post('http://localhost:8080/login/', this.login, { headers: headerr, responseType: 'text' })
       .subscribe({
         next: (data: string) => {
-          if (data === "Email not found") {
+          if (data === "-1") {
             // Swal.fire({
             //   position: 'center',
             //   icon: 'error',
@@ -51,28 +51,32 @@ export class RegistrationComponent {
             //   showConfirmButton: false,
             //   timer: 1500
             // })
+            alert("wrong")
 
-          } else if (data === "Incorrect password") {
-            // Swal.fire({
-            //   position: 'center',
-            //   icon: 'error',
-            //   title: 'Incorrect password',
-            //   showConfirmButton: false,
-            //   timer: 1500
-            // })
+          // } else if (data === "Incorrect password") {
+          //   // Swal.fire({
+          //   //   position: 'center',
+          //   //   icon: 'error',
+          //   //   title: 'Incorrect password',
+          //   //   showConfirmButton: false,
+          //   //   timer: 1500
+          //   // })
 
           }
           else {
             // from token store token & user id
             // localStorage.setItem("token", data.split(" ")[0]);
-            // localStorage.setItem("user_id", data.split(" ")[1]);
-            // this.router.navigateByUrl('home')
+            console.log("hi" +data)
+             localStorage.setItem("user_id", data);
+             console.log(localStorage.getItem("user_id"))
+             this.router.navigateByUrl('user')
           }
         },
         error: (error: any) => {
           console.error(error);
         }
       });
+      
 
   }
   /******************************************************Registration***********************************************************/
@@ -105,20 +109,21 @@ export class RegistrationComponent {
       //   timer: 1500
       // })    
     } else {
-      // this.signup() 
+      console.log('email: ' + this.registration.email + ', fname: ' + this.registration.firstName + ', lname: ' + this.registration.lastName + ', pass: ' + this.registration.password);
+       this.signup() 
       //tmam
-      console.log('email: ' + this.registration.email + ', fname: ' + this.registration.fname + ', lname: ' + this.registration.lname + ', pass: ' + this.registration.password);
+      
     }
   }
 
   signup() {
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' });
-    this.http.post('http://localhost:8080/signup', this.registration, { headers: headerr, responseType: 'text' })
+    this.http.post('http://localhost:8080/register/', this.registration, { headers: headerr, responseType: 'text' })
       .subscribe({
         next: (data: any) => {
           console.log("hii")
           console.log(data)
-          if (data === 'Registration Succeeded') {
+          if (data === 'succeeded') {           
             // Swal.fire({
             //   position: 'center',
             //   icon: 'success',
@@ -127,7 +132,7 @@ export class RegistrationComponent {
             //   timer: 1500
             // })
             //if there is token 
-            // this.router.navigateByUrl('login')         
+            this.router.navigateByUrl('user')         
           } else {
             // Swal.fire({
             //   position: 'center',
@@ -135,7 +140,8 @@ export class RegistrationComponent {
             //   title: 'his Email is already used',
             //   showConfirmButton: false,
             //   timer: 1500
-            // })            
+            // })    
+            alert("email already in use")        
           }
         },
         error: (error: any) => {
