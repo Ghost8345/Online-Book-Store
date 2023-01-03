@@ -7,10 +7,14 @@ import { RouterModule } from '@angular/router';
 import { UserComponent } from './components/user/user.component';
 import { AddBookComponent } from './components/add-book/add-book.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 import { PublisherFormComponent } from './components/publisher-form/publisher-form.component';
 import { AboutbookComponent } from './components/aboutbook/aboutbook.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { LoginComponent } from './components/login/login.component';
+import { CartComponent } from './cart/cart.component';
+import { PromoteComponent } from './promote/promote.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +25,9 @@ import { LoginComponent } from './components/login/login.component';
     UserComponent,
     AddBookComponent,
     LoginComponent,
-    AboutbookComponent
+    AboutbookComponent,
+    CartComponent,
+    PromoteComponent
   ],
   imports: [
     BrowserModule,

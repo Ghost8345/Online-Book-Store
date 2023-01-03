@@ -16,8 +16,8 @@ export class AppComponent {
     document.getElementById("mySidenav")!.style.width="0";
   }
   submit(e:Event){
-    e.preventDefault();
     document.getElementById("mySidenav")!.style.width="0";
 
   }
+
 }

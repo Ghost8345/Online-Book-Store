@@ -15,12 +15,13 @@ export class AddBookComponent implements OnInit {
 
   //selectedFile : File = null
   ngOnInit(): void {
-
+    document.getElementById("body")!.style.display="none";
+    document.getElementById("mySidenav")!.style.width="0";
   }
   constructor(private router: Router) { }
 
 
-  uploadItem = new UploadItem('','', '','', '', 0, 0, 0, 0);
+  uploadItem = new UploadItem('','', '','', '','', 0, 0, 0, 0);
   categories = ['Science', 'Art', 'Religion', 'History Geography'];
   categoryName: string = "";
 
@@ -69,5 +70,8 @@ export class AddBookComponent implements OnInit {
 
   onSubmit() {
     console.log(' title: ' + this.uploadItem.title + ', description: ' + 'price: ' + this.uploadItem.price + 'category ');
+  }
+  goback(){
+    document.getElementById("body")!.style.display="block";
   }
 }

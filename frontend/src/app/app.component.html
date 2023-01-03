@@ -1,10 +1,12 @@
-<body class="body">
+<body id="body" class="body">
     <div class="toolbar" role="banner">
       <button class="open" id="option"(click)="openNav()">&#9776;</button>
       <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
         <nav>
         <a href="#" #categories  id="cate" routerLink="/categories"  routerLinkActive="activebutton" (click)="submit($event)">Categories</a>
+        <a href="#" #addbook  id="cate" routerLink="/addbook"  routerLinkActive="activebutton" >Add Book</a>
+        <a href="#" #addbook  id="cate" routerLink="/promote"  routerLinkActive="activebutton" >Promote User</a>
         </nav>
       </div>
       <router-outlet></router-outlet>
@@ -18,7 +20,7 @@
 
       <form class="profile" >
 
-        <button type="submit"><i class="fa fa-home" style="font-size:35px ;"></i></button>
+        <button type="submit" routerLink="/registeduser" routerLinkActive="activebutton"><i class="fa fa-home" style="font-size:35px ;"></i></button>
     
         <button type="submit" routerLink="/shoppingcart" routerLinkActive="activebutton"><i class="fa fa-shopping-cart" style="font-size:35px ;"></i></button>
         <button type="submit" ><i class="fa fa-user" style="font-size:35px ;"></i></button>
