@@ -13,13 +13,13 @@ public class AuthenticationController {
     AuthenticationService authenticationService;
 
     @PostMapping("/")
-    public ResponseEntity<Integer> authenticateUser(@RequestBody AuthenticationRequest userLoginInfo){
+    public ResponseEntity<UserInfo> authenticateUser(@RequestBody AuthenticationRequest userLoginInfo){
         try {
 
             return ResponseEntity.ok().body(authenticationService.authenticateUser(userLoginInfo));
         }
         catch (Exception e){
-            return ResponseEntity.badRequest().body(-1);
+            return ResponseEntity.badRequest().body(null);
         }
     }
 }
