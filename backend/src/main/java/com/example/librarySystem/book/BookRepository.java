@@ -19,7 +19,12 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     @Transactional
     @Modifying
     @Query("UPDATE book SET title = :title, publisherName = :publisherName, authors = :authors, publicationYear = :publicationYear, coverImage = :coverImage, price = :price, category = :category, threshold = :threshold, stockQuantity = :stockQuantity WHERE isbn = :isbn")
-    void edit(@Param("ISBN") int isbn, @Param("title") String title, @Param("publisherName") String publisherName, @Param("authors") String authors, @Param("publicationYear") String publicationYear, @Param("coverImage") String coverImage, @Param("price") float price, @Param("category") Category category, @Param("threshold") int threshold, @Param("stockQuantity") int stockQuantity);
+    void edit(@Param("isbn") int isbn, @Param("title") String title, @Param("publisherName") String publisherName, @Param("authors") String authors, @Param("publicationYear") String publicationYear, @Param("coverImage") String coverImage, @Param("price") float price, @Param("category") Category category, @Param("threshold") int threshold, @Param("stockQuantity") int stockQuantity);
+
+    @Transactional
+    @Modifying
+    @Query("UPDATE book SET stockQuantity = :stockQuantity WHERE isbn = :isbn")
+    void updateStockQuantity(@Param("isbn") int isbn, @Param("stockQuantity") int stockQuantity);
 
     Book findBookByTitle(String title);
 
@@ -27,4 +32,8 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     List<Book> findBooksByPublisherName(String publisherName);
 
     List<Book> findByAuthorsContaining(String author);
+
+    boolean existsByTitle(String title);
+
+
 }

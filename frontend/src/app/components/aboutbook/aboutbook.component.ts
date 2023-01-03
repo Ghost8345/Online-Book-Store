@@ -1,4 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-aboutbook',
@@ -8,13 +10,14 @@ import { Component } from '@angular/core';
 export class AboutbookComponent {
   loggedin=JSON.parse( localStorage.getItem("UserLoggedIn")!);
   SelectedProduct=JSON.parse(localStorage.getItem("aboutProduct")!);
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
   
   //to submit rating of product
  
   AddProduct(){
-    if(this.SelectedProduct.permission==true){
-      document.getElementById("myModal3")!.style.display="block";
+    if(this.SelectedProduct.Quantity<=0){
+      document.getElementById("outofstock2")!.style.visibility="visible"
 
     }
     else{
@@ -23,13 +26,14 @@ export class AboutbookComponent {
     localStorage.removeItem('itemsincart')*/
      let cart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
     let duplicate:{id:number,num:number}[]=[]
-    let aux:{product_id:number,image:string,name:string,price:number,duplication:number}={product_id:0,image:"",name:"",price:0,duplication:0};
+    let aux:{product_id:number,image:string,name:string,price:number,duplication:number,quantity:number}={product_id:0,image:"",name:"",price:0,duplication:0,quantity:0};
     let subtotal=0;
     aux.product_id=this.SelectedProduct.id;
     aux.image=this.SelectedProduct.img;
     aux.name=this.SelectedProduct.name;
     aux.price=this.SelectedProduct.price;
     aux.duplication=1;
+    aux.quantity=this.SelectedProduct.Quantity;
     let flag=0;
   
     if(localStorage.getItem("CartProducts")==null){
@@ -76,4 +80,20 @@ export class AboutbookComponent {
   
     }
 }
+delete(){
+const headerrr = new HttpHeaders({ 'Content-Type': 'application/json' });
+this.http.delete('http://localhost:8080/api/book/delete/'+this.SelectedProduct.id, { headers: headerrr, responseType: 'text' })
+  .subscribe({
+
+    next: (data: any) => {
+     console.log(data)
+    },
+    error: (error: any) => {
+      console.error(error);
+    }
+  });
+
 }
+}
+
+

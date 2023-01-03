@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Registration } from './registration';
 import { Login } from './login'
+import { UserInfo } from './login';
 
 @Component({
   selector: 'app-registration',
@@ -16,7 +17,7 @@ export class RegistrationComponent {
 
   registration = new Registration('', '', '', '');
   login = new Login('', '')
-
+   userInfo =new UserInfo(0,false)
 
 
   ValidateRequest(e: Event) {
@@ -37,39 +38,29 @@ export class RegistrationComponent {
     }
 
   }
+ 
 
   loginn() {
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' });
-    this.http.post('http://localhost:8080/login/', this.login, { headers: headerr, responseType: 'text' })
+    this.http.post('http://localhost:8080/login/', this.login, { headers: headerr, responseType: 'json'  })
       .subscribe({
-        next: (data: string) => {
-          if (data === "-1") {
-            // Swal.fire({
-            //   position: 'center',
-            //   icon: 'error',
-            //   title: 'Email not Found',
-            //   showConfirmButton: false,
-            //   timer: 1500
-            // })
+        next: (data: any) => {
+          console.log(data)
+          if (data=== null) {       
             alert("wrong")
-
-          // } else if (data === "Incorrect password") {
-          //   // Swal.fire({
-          //   //   position: 'center',
-          //   //   icon: 'error',
-          //   //   title: 'Incorrect password',
-          //   //   showConfirmButton: false,
-          //   //   timer: 1500
-          //   // })
-
           }
           else {
             // from token store token & user id
             // localStorage.setItem("token", data.split(" ")[0]);
-            console.log("hi" +data)
-             localStorage.setItem("user_id", data);
+             
+             localStorage.setItem("user_id", data.id);
+             localStorage.setItem("ismanager",data.ismanager);
              console.log(localStorage.getItem("user_id"))
-             this.router.navigateByUrl('user')
+             console.log(localStorage.getItem("ismanager"))
+            if(data.ismanager===true)
+                 this.router.navigateByUrl('user')
+            else
+                 this.router.navigateByUrl('shoppingcart')
           }
         },
         error: (error: any) => {
@@ -121,30 +112,20 @@ export class RegistrationComponent {
     this.http.post('http://localhost:8080/register/', this.registration, { headers: headerr, responseType: 'text' })
       .subscribe({
         next: (data: any) => {
-          console.log("hii")
-          console.log(data)
-          if (data === 'succeeded') {           
-            // Swal.fire({
-            //   position: 'center',
-            //   icon: 'success',
-            //   title: 'Registeration Succeeded, please login',
-            //   showConfirmButton: false,
-            //   timer: 1500
-            // })
-            //if there is token 
-            this.router.navigateByUrl('user')         
+          
+          console.log("hi "+data)
+          if (data === -1) {           
+           
+            alert("email already in use")      
           } else {
-            // Swal.fire({
-            //   position: 'center',
-            //   icon: 'error',
-            //   title: 'his Email is already used',
-            //   showConfirmButton: false,
-            //   timer: 1500
-            // })    
-            alert("email already in use")        
+          
+            // id of user 
+            localStorage.setItem("user_id", data);
+            this.router.navigateByUrl('user')               
           }
         },
         error: (error: any) => {
+          alert("email already in use")      
           console.error(error);
         }
       });

@@ -27,6 +27,11 @@ EmptyCart=JSON.parse(localStorage.getItem("CartProducts")!).length;
   }
   var value = parseInt((<HTMLInputElement>document.getElementById(id)).value, 10);
   value = isNaN(value) ? 1 : value;
+  if(this.bestsellerproducts[pos].quantity<=0){
+    return;
+  }
+  else{
+    this.bestsellerproducts[pos].quantity--;
   value++;
   let val=String(value);
  let  productprice=value*this.bestsellerproducts[pos].price;
@@ -41,6 +46,7 @@ EmptyCart=JSON.parse(localStorage.getItem("CartProducts")!).length;
   (<HTMLInputElement>document.getElementById("sub"+id)).textContent=sub ;
 
   console.log("kkkkkkkkk")
+  }
 }
 decreaseValue(id:any) {
   console.log("kkkkkkkkk")
@@ -55,6 +61,7 @@ decreaseValue(id:any) {
   value = isNaN(value) ? 1 : value;
   if(value>1){
     value--;
+    this.bestsellerproducts[pos].quantity++;
   let val=String(value);
   (<HTMLInputElement>document.getElementById(id)).value = val;
   this.bestsellerproducts[pos].duplication-=1;

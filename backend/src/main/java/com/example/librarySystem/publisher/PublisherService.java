@@ -33,6 +33,10 @@ public class PublisherService {
         return publisherRepository.findPublisherByName(name);
     }
 
+    public boolean publisherExists(String name){ return publisherRepository.existsById(name);}
+
+    public boolean PublisherExistsByPhone(String phone) {return publisherRepository.existsByPhone(phone);}
+
 
 
 }

@@ -34,6 +34,9 @@ public class BookService {
         return books;
     }
     public String StorePhotoInPath(String photo, int i) {
+        if(photo.contains("/../assets/images/")){
+            return photo.replaceAll("/../assets/images/","");
+        }
         String base64String = photo;
         String[] strings = base64String.split(",");
         String extension = switch (strings[0]) {//check image's extension
@@ -79,6 +82,22 @@ public class BookService {
         System.out.println(author);
         return bookRepository.findByAuthorsContaining(author);
     }
+
+    public void reduceStockQuantity(int isbn, int copiesToBeRemoved){
+        Book book = getBookByIsbn(isbn);
+
+        int oldQuantity = book.getStockQuantity();
+        if  (oldQuantity < copiesToBeRemoved || copiesToBeRemoved < 0){
+            throw new IllegalArgumentException();
+        }
+
+        int newQuantity = oldQuantity - copiesToBeRemoved;
+        bookRepository.updateStockQuantity(isbn, newQuantity);
+    }
+
+    public boolean BookExists(int isbn){ return bookRepository.existsById(isbn);}
+
+    public boolean BookExistsByTitle(String title){return bookRepository.existsByTitle(title);}
 
 
 }

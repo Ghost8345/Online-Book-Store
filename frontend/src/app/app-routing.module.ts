@@ -9,6 +9,11 @@ import { PromoteComponent } from './components/promote/promote.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { CartComponent } from './components/cart/cart.component'
 import { UserComponent } from './components/user/user.component';
+import { CategoryComponent } from './components/category/category.component';
+import { SelectedCategoryComponent } from './components/selected-category/selected-category.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { PlaceorderComponent } from './components/placeorder/placeorder.component';
+import { EditFormComponent } from './components/edit-form/edit-form.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'registration', pathMatch: 'full' }, // redirect to `first-component`
@@ -20,7 +25,13 @@ const routes: Routes = [
   { path: "shoppingcart", component: CartComponent },
   { path: "addbook", component: AddBookComponent },
   { path: "payment", component: PaymentComponent },
-  { path: "user", component: UserComponent }
+  { path: "user", component: UserComponent },
+  { path: "category", component: CategoryComponent },
+  { path: "selectedcategory", component: SelectedCategoryComponent },
+  { path: "notifications", component: NotificationsComponent },
+  { path: "placeorder", component: PlaceorderComponent },
+  {path: "editbook", component:EditFormComponent}
+
 
 ];
 
