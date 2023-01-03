@@ -18,14 +18,15 @@ export class EditFormComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
   SelectedProduct=JSON.parse(localStorage.getItem("aboutProduct")!);
 
-  uploadItem = new UploadItem(this.SelectedProduct.id,this.SelectedProduct.name,this.SelectedProduct.publisher,this.SelectedProduct.authors,this.SelectedProduct.publicationYear,this.SelectedProduct.img,this.SelectedProduct.price , this.SelectedProduct.quantity, this.SelectedProduct.threshold, this.SelectedProduct.category);
-  
   categories = ['Science', 'Art', 'Religion', 'History', 'Geography'];
-  categoryName: string = "";
-  imageSrc: string = "";
+  
+  uploadItem = new UploadItem(this.SelectedProduct.id,this.SelectedProduct.name,this.SelectedProduct.publisher,this.SelectedProduct.authors,this.SelectedProduct.publicationYear,this.SelectedProduct.img,this.SelectedProduct.price , this.SelectedProduct.Quantity, this.SelectedProduct.threshold, this.SelectedProduct.category);
+  categoryName=this.uploadItem.category;
+
+  imageSrc=this.SelectedProduct.img;
   imageName: string = "";
   imageBlob: string = "";
-
+  
   myForm = new FormGroup({
     name: new FormControl(''),
     file: new FormControl(''),
