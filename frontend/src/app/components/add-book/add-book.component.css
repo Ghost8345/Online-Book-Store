@@ -10,7 +10,7 @@ body {
     font-weight: 300;
     min-height: 100vh;
     background-image: url('/../assets/images/img1.jpg');
-
+    background-size:contain;
     font-size: 16px;
     overflow: hidden;
 }

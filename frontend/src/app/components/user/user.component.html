@@ -1,0 +1,61 @@
+<body>
+    <div class="slider">
+        <div class="slides">
+            <input type="radio" name="radio-btn" id="radio1">
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+            <input type="radio" name="radio-btn" id="radio4">
+            <input type="radio" name="radio-btn" id="radio5">
+            <div class="slide first">
+              <img  src="https://m.media-amazon.com/images/I/51C7VWtkUtL._SX416_BO1,204,203,200_.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU">
+            </div >
+            <div class="slide">
+                <img src="https://f.nooncdn.com/products/tr:n-t_400/v1573041990/N31805576A_1.avif">
+            </div>
+            <div class="slide">
+                <img src="https://m.media-amazon.com/images/I/51SI-+4BX2S._SX418_BO1,204,203,200_.jpg">
+            </div>
+            <div class="slide">
+                <img src="https://m.media-amazon.com/images/I/51SLdWoBCDL._SX418_BO1,204,203,200_.jpg">
+            </div>
+            <div class="navigation-auto">
+                <div class="auto-btn1"></div>
+                <div class="auto-btn2"></div>
+                <div class="auto-btn3"></div>
+                <div class="auto-btn4"></div>
+                <div class="auto-btn5"></div>
+
+            </div>
+        </div>
+        <div class="navigation-manual">
+            <label for="radio1" class="manual-btn"></label>
+            <label for="radio2" class="manual-btn"></label>
+            <label for="radio3" class="manual-btn"></label>
+            <label for="radio4" class="manual-btn"></label>
+            <label for="radio5" class="manual-btn"></label>
+
+
+        </div>
+    </div>
+</body>
+
+<div  class="page">
+    <p class="bestseller">Most Recent</p>
+    <form class="shape">
+        <input class="text" type="text" disabled="true">
+        </form>
+        <p class="decoration">_________________________________________</p>
+</div>
+    <div>
+        <a *ngFor="let product of  mostRecent">
+        <button #w id={{product.id}} class="products"><div class="decor"  routerLink="/aboutbook" routerLinkActive="activebutton" (click)="aboutproduct(product.id,product.cover,product.Title,product.price,product.category,product.Quantity,product.authors,product.publisher)" >
+                <img height="200px" width="200px" class=" img" src={{product.cover}}><p class="info" >{{product.Title}}<br><p class="price">{{product.price}} LE</p></p>
+        </div><button  class="cart"(click)="AddProduct(product.id)">Add to Cart</button>
+    </button>
+        </a>
+    </div>
+   
+   

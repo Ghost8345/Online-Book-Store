@@ -1,26 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { UploadItem } from './add-book';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { editbook } from './editbook';
 @Component({
-  selector: 'app-add-book',
-  templateUrl: './add-book.component.html',
-  styleUrls: ['./add-book.component.css']
+  selector: 'app-edit-book',
+  templateUrl: './edit-book.component.html',
+  styleUrls: ['./edit-book.component.css']
 })
-export class AddBookComponent implements OnInit {
-
-
-
+export class EditBookComponent implements OnInit {
 
   //selectedFile : File = null
   ngOnInit(): void {
-
+    document.getElementById("body")!.style.display="none";
+    document.getElementById("mySidenav")!.style.width="0";
   }
-  constructor(private router: Router) { }
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
 
-  uploadItem = new UploadItem('', '', '', 0, 0, 0, 0);
+  editbook = new editbook('','', '','', '','', 0, 0, 0, 0);
   categories = ['Science', 'Art', 'Religion', 'History Geography'];
   categoryName: string = "";
 
@@ -52,7 +50,7 @@ export class AddBookComponent implements OnInit {
         this.imageName = file.name
         this.imageBlob = file
         this.imageSrc = reader.result as string;
-        this.uploadItem.cover = this.imageSrc
+        this.editbook.cover = this.imageSrc
         console.log(reader.result)
 
         this.myForm.patchValue({ fileSource: reader.result as string });
@@ -63,10 +61,16 @@ export class AddBookComponent implements OnInit {
   }
 
 
-
+  addPublisher(){
+    
+  }
 
   onSubmit() {
+    console.log(' title: ' + this.editbook.title + ', description: ' + 'price: ' + this.editbook.price + 'category ');
+//this.upload
+  }
 
-    console.log(' title: ' + this.uploadItem.title + ', description: ' + 'price: ' + this.uploadItem.price + 'category ');
+  goback(){
+    document.getElementById("body")!.style.display="block";
   }
 }
