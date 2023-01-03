@@ -14,6 +14,10 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { CartComponent } from './components/cart/cart.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { PromoteComponent } from './components/promote/promote.component';
+import { CategoryComponent } from './components/category/category.component';
+import { SelectedCategoryComponent } from './components/selected-category/selected-category.component';
+import { NotificationsComponent } from './components/notifications/notifications.component';
+import { AcceptorderComponent } from './components/acceptorder/acceptorder.component';
 
 
 @NgModule({
@@ -27,7 +31,12 @@ import { PromoteComponent } from './components/promote/promote.component';
     AboutbookComponent,
     CartComponent,
     PaymentComponent,
-    PromoteComponent
+    PromoteComponent,
+    CategoryComponent,
+    SelectedCategoryComponent,
+    NotificationsComponent,
+    AcceptorderComponent,
+    
   ],
   imports: [
     BrowserModule,
