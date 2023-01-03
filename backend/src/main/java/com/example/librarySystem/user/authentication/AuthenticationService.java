@@ -10,11 +10,11 @@ import org.springframework.stereotype.Service;
 public class AuthenticationService {
 
     UserRepository userRepository;
-    public int authenticateUser(AuthenticationRequest userLoginInfo) throws Exception {
+    public UserInfo authenticateUser(AuthenticationRequest userLoginInfo) throws Exception {
         User user = userRepository.emailExists(userLoginInfo.getEmail()).orElseThrow();
         if (!user.getPassword().equals(userLoginInfo.getPassword())){
             throw new Exception("Password mismatch");
         }
-        return user.getId();
+        return new UserInfo(user.getId(), user.isManager());
     }
 }
