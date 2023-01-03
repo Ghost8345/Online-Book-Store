@@ -1,4 +1,6 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-aboutbook',
@@ -8,6 +10,7 @@ import { Component } from '@angular/core';
 export class AboutbookComponent {
   loggedin=JSON.parse( localStorage.getItem("UserLoggedIn")!);
   SelectedProduct=JSON.parse(localStorage.getItem("aboutProduct")!);
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
   
   //to submit rating of product
@@ -77,4 +80,20 @@ export class AboutbookComponent {
   
     }
 }
+delete(){
+const headerrr = new HttpHeaders({ 'Content-Type': 'application/json' });
+this.http.delete('http://localhost:8080/api/book/delete/'+this.SelectedProduct.id, { headers: headerrr, responseType: 'text' })
+  .subscribe({
+
+    next: (data: any) => {
+     console.log(data)
+    },
+    error: (error: any) => {
+      console.error(error);
+    }
+  });
+
 }
+}
+
+

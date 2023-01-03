@@ -13,7 +13,7 @@
     <p class="price"><a class="bold">Price: </a>{{SelectedProduct.price}} LE</p>
     <button  class="cart" (click)="AddProduct()">Add to Cart</button>
     <button  class="cart" routerLink="/editbook">Edit</button>
-    <button  class="cart" >Delete</button>
+    <button  class="cart" (click)="delete()" >Delete</button>
     <span id="outofstock2"  class="tooltiptext">Out Of Stock</span>
 
 

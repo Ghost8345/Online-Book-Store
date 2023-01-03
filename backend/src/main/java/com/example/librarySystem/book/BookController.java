@@ -44,8 +44,8 @@ public class BookController {
     @PutMapping("/edit/{isbn}")
     public ResponseEntity<String> editBook(@PathVariable int isbn, @RequestBody Book book) {
         try {
-            System.out.println(isbn+" jjjj "+book);
             book.setCoverImage(bookService.StorePhotoInPath(book.getCoverImage(), book.getIsbn()));
+            System.out.println(isbn+" jjjj "+book);
             bookService.editBook(isbn, book);
             return new ResponseEntity<>("Book edited successfully", HttpStatus.OK);
         } catch (Exception e) {

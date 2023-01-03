@@ -34,6 +34,9 @@ public class BookService {
         return books;
     }
     public String StorePhotoInPath(String photo, int i) {
+        if(photo.contains("/../assets/images/")){
+            return photo.replaceAll("/../assets/images/","");
+        }
         String base64String = photo;
         String[] strings = base64String.split(",");
         String extension = switch (strings[0]) {//check image's extension
