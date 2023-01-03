@@ -1,7 +1,7 @@
 package com.example.librarySystem.model;
-
 import lombok.Data;
 import org.springframework.data.annotation.Id;
+
 
 @Data
 public class Publisher {
@@ -15,5 +15,6 @@ public class Publisher {
         this.name = name;
         this.address = address;
         this.phone = phone;
+
     }
 }
