@@ -5,7 +5,7 @@
             <h1><strong>Add Book</strong></h1>
             <div class="form-group">
                 <label for="isbn" style="font-weight: 600; font-size:large ;">ISBN</label>
-                <input type="text" name="isbn" id="isbn" class="form-controll" [(ngModel)]="uploadItem.ISBN" required />
+                <input type="text" name="isbn" id="isbn" class="form-controll" [(ngModel)]="uploadItem.isbn" required />
             </div>
 
             <div class="form-group">
@@ -16,7 +16,7 @@
             <div class="form-group">
                 <label for="Publisher" style="font-weight: 600; font-size:large ;">Publisher</label>
                 <input type="text" name="Publisher" id="Publisher" class="form-controll"
-                    [(ngModel)]="uploadItem.publisher" required />
+                    [(ngModel)]="uploadItem.publisherName" required />
             </div>
 
             <div class="form-groupp">
@@ -29,7 +29,7 @@
             </div>
             <div class="form-group">
                 <label for="pubyear" style="font-weight: 600; font-size:large ;">Publishing Year </label>
-                <input type="text" name="pubyear" id="pubyear" class="form-controll" [(ngModel)]="uploadItem.pubYear"
+                <input type="text" name="pubyear" id="pubyear" class="form-controll" [(ngModel)]="uploadItem.publicationYear"
                     required />
             </div>
             <div class="form-group">
@@ -40,7 +40,7 @@
             <div class="form-group">
                 <label for="quantity" style="font-weight: 600; font-size:large ;">Quantity</label>
                 <input type="number" name="quantity" id="quantity" class="form-controll"
-                    [(ngModel)]="uploadItem.quantity" required />
+                    [(ngModel)]="uploadItem.stockQuantity" required />
             </div>
             <div class="form-group">
                 <label for="category" style="font-weight: 600; font-size:large ;"><strong>Category</strong></label>

@@ -13,8 +13,8 @@ export class AboutbookComponent {
   //to submit rating of product
  
   AddProduct(){
-    if(this.SelectedProduct.permission==true){
-      document.getElementById("myModal3")!.style.display="block";
+    if(this.SelectedProduct.Quantity<=0){
+      document.getElementById("outofstock2")!.style.visibility="visible"
 
     }
     else{
@@ -23,13 +23,14 @@ export class AboutbookComponent {
     localStorage.removeItem('itemsincart')*/
      let cart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
     let duplicate:{id:number,num:number}[]=[]
-    let aux:{product_id:number,image:string,name:string,price:number,duplication:number}={product_id:0,image:"",name:"",price:0,duplication:0};
+    let aux:{product_id:number,image:string,name:string,price:number,duplication:number,quantity:number}={product_id:0,image:"",name:"",price:0,duplication:0,quantity:0};
     let subtotal=0;
     aux.product_id=this.SelectedProduct.id;
     aux.image=this.SelectedProduct.img;
     aux.name=this.SelectedProduct.name;
     aux.price=this.SelectedProduct.price;
     aux.duplication=1;
+    aux.quantity=this.SelectedProduct.Quantity;
     let flag=0;
   
     if(localStorage.getItem("CartProducts")==null){

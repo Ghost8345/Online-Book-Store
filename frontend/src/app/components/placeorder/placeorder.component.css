@@ -1,0 +1,47 @@
+.header{
+    position: relative;
+    top: 120px;
+    color: gray;
+left: 10px;
+font-size: xx-large;
+}
+    
+.data{
+    position: relative;
+    top: 120px;
+    left: 30px;
+    font-size: xx-large;
+    color: gray;
+    color: rgb(21, 189, 169);
+
+   
+}
+.bookid{
+    border-radius: 10px;
+    position: relative;
+left: 5px;
+border: 2px solid rgb(21, 189, 169) ;
+
+}
+.q{
+    border-radius: 10px;
+    position: relative;
+left: 5px;
+border: 2px solid rgb(21, 189, 169) ;
+
+}
+.order{
+    position: relative;
+    top: 170px;
+    left: 420px;
+    border-radius: 10px;
+    background-color:white ;
+    border: 2px solid rgb(21, 189, 169) ;
+    width: 100px;
+    font-size: x-large;
+
+}
+.order:hover{
+    background-color: rgb(21, 189, 169);
+
+}

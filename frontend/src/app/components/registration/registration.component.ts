@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Registration } from './registration';
 import { Login } from './login'
+import { UserInfo } from './login';
 
 @Component({
   selector: 'app-registration',
@@ -16,7 +17,7 @@ export class RegistrationComponent {
 
   registration = new Registration('', '', '', '');
   login = new Login('', '')
-
+   userInfo =new UserInfo(0,false)
 
 
   ValidateRequest(e: Event) {
@@ -33,49 +34,43 @@ export class RegistrationComponent {
       //this.router.navigate(['/registeduser']);
 
       console.log("Entered info : " + this.login.email, this.login.password);
-      //this.login();
+      this.loginn();
     }
 
   }
+ 
 
-  loginn(){
+  loginn() {
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' });
-    this.http.post('http://localhost:8080/login', this.login, { headers: headerr, responseType: 'text' })
+    this.http.post('http://localhost:8080/login/', this.login, { headers: headerr, responseType: 'json'  })
       .subscribe({
-        next: (data: string) => {
-          if (data === "Email not found") {
-            // Swal.fire({
-            //   position: 'center',
-            //   icon: 'error',
-            //   title: 'Email not Found',
-            //   showConfirmButton: false,
-            //   timer: 1500
-            // })
-
-          } else if (data === "Incorrect password") {
-            // Swal.fire({
-            //   position: 'center',
-            //   icon: 'error',
-            //   title: 'Incorrect password',
-            //   showConfirmButton: false,
-            //   timer: 1500
-            // })
-
+        next: (data: any) => {
+          console.log(data)
+          if (data.id === "-1") {       
+            alert("wrong")
           }
           else {
             // from token store token & user id
             // localStorage.setItem("token", data.split(" ")[0]);
-            // localStorage.setItem("user_id", data.split(" ")[1]);
-           // this.router.navigateByUrl('home')
+             
+             localStorage.setItem("user_id", data.id);
+             localStorage.setItem("ismanager",data.ismanager);
+             console.log(localStorage.getItem("user_id"))
+             console.log(localStorage.getItem("ismanager"))
+            if(data.ismanager===true)
+                 this.router.navigateByUrl('addbook')
+            else
+                 this.router.navigateByUrl('user')
           }
         },
         error: (error: any) => {
           console.error(error);
         }
       });
+      
 
   }
-/******************************************************Registration***********************************************************/
+  /******************************************************Registration***********************************************************/
   onSubmit() {
     var First = document.getElementById("FirstName") as HTMLInputElement;
     var Last = document.getElementById("LastName") as HTMLInputElement;
@@ -105,43 +100,45 @@ export class RegistrationComponent {
       //   timer: 1500
       // })    
     } else {
-      // this.signup() 
+      console.log('email: ' + this.registration.email + ', fname: ' + this.registration.firstName + ', lname: ' + this.registration.lastName + ', pass: ' + this.registration.password);
+       this.signup() 
       //tmam
-      console.log('email: ' + this.registration.email + ', fname: ' + this.registration.fname + ', lname: ' + this.registration.lname + ', pass: ' + this.registration.password);
+      
     }
   }
 
   signup() {
-      const headerr=new HttpHeaders({'Content-Type': 'application/json' ,'authentication': 'key' });
-      this.http.post('http://localhost:8080/signup', this.registration, { headers: headerr, responseType:'text'})
+    const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' });
+    this.http.post('http://localhost:8080/register/', this.registration, { headers: headerr, responseType: 'text' })
       .subscribe({
-          next: (data: any) => {
-              console.log("hii")
-              console.log(data)
-              if(data==='Registration Succeeded'){        
-                // Swal.fire({
-                //   position: 'center',
-                //   icon: 'success',
-                //   title: 'Registeration Succeeded, please login',
-                //   showConfirmButton: false,
-                //   timer: 1500
-                // })
-                 //if there is token 
-               // this.router.navigateByUrl('login')         
-              }else{
-                // Swal.fire({
-                //   position: 'center',
-                //   icon: 'error',
-                //   title: 'his Email is already used',
-                //   showConfirmButton: false,
-                //   timer: 1500
-                // })            
-              }         
-              },
-              error: (error: any) => {
-              console.error(error);
-              }
-          });
+        next: (data: any) => {
+          console.log("hii")
+          console.log(data)
+          if (data === 'succeeded') {           
+            // Swal.fire({
+            //   position: 'center',
+            //   icon: 'success',
+            //   title: 'Registeration Succeeded, please login',
+            //   showConfirmButton: false,
+            //   timer: 1500
+            // })
+            //if there is token 
+            this.router.navigateByUrl('user')         
+          } else {
+            // Swal.fire({
+            //   position: 'center',
+            //   icon: 'error',
+            //   title: 'his Email is already used',
+            //   showConfirmButton: false,
+            //   timer: 1500
+            // })    
+            alert("email already in use")        
+          }
+        },
+        error: (error: any) => {
+          console.error(error);
+        }
+      });
   }
 
 

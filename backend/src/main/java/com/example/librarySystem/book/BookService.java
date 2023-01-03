@@ -2,7 +2,11 @@ package com.example.librarySystem.book;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import javax.xml.bind.DatatypeConverter;
+import java.io.BufferedOutputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +17,7 @@ public class BookService {
     BookRepository bookRepository;
 
     public void createBook(Book book){
-        bookRepository.insert(book.getIsbn(), book.getTitle(), book.getPublisherName(), book.getAuthors(), book.getPublicationYear(), book.getCoverImage(), book.getPrice(), book.getCategory(), book.getThreshold(), book.getStockQuantity());
+        bookRepository.insert(book.getIsbn(), book.getTitle(), book.getPublisherName(), book.getAuthors(), book.getPublicationYear(), book.getCoverImage(), book.getPrice(), book.getStockQuantity(), book.getThreshold(),book.getCategory());
     }
 
     public void deleteBook(int isbn){
@@ -28,6 +32,35 @@ public class BookService {
         List<Book> books = new ArrayList();
         bookRepository.findAll().forEach(books::add);
         return books;
+    }
+    public String StorePhotoInPath(String photo, int i) {
+        if(photo.contains("/../assets/images/")){
+            return photo.replaceAll("/../assets/images/","");
+        }
+        String base64String = photo;
+        String[] strings = base64String.split(",");
+        String extension = switch (strings[0]) {//check image's extension
+            case "data:image/jpeg;base64" -> "jpeg";
+            case "data:image/png;base64" -> "png";
+            default ->//should write cases for more images types
+                    "jpg";
+        };
+        //convert base64 string to binary data
+        byte[] data = DatatypeConverter.parseBase64Binary(strings[1]);
+        System.out.println(System.getProperty("user.dir"));
+        String[] s1 = System.getProperty("user.dir").split("backend");
+        String out;
+        if (s1[0].contains("/")) {
+            out = s1[0] + "frontend/src/assets/images/" + i + "." + extension;//for Linux Users
+        } else {
+            out = s1[0] + "frontend\\src\\assets\\images\\" + i + "." + extension;//for Windows Users
+        }
+        try (OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(out))) {
+            outputStream.write(data);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return i + "." + extension;
     }
 
     public Book getBookByIsbn(int isbn){
@@ -48,6 +81,18 @@ public class BookService {
     public List<Book> getBooksByAuthor(String author) {
         System.out.println(author);
         return bookRepository.findByAuthorsContaining(author);
+    }
+
+    public void reduceStockQuantity(int isbn, int copiesToBeRemoved){
+        Book book = getBookByIsbn(isbn);
+
+        int oldQuantity = book.getStockQuantity();
+        if  (oldQuantity < copiesToBeRemoved || copiesToBeRemoved < 0){
+            throw new IllegalArgumentException();
+        }
+
+        int newQuantity = oldQuantity - copiesToBeRemoved;
+        bookRepository.updateStockQuantity(isbn, newQuantity);
     }
 
 

@@ -4,3 +4,9 @@ export class Login{
         public password: string,
     ) { }
 }
+export class UserInfo{
+    constructor(
+        public id: Number,
+        public ismanager: boolean,
+    ) { }
+}

@@ -36,8 +36,6 @@
             <label for="radio3" class="manual-btn"></label>
             <label for="radio4" class="manual-btn"></label>
             <label for="radio5" class="manual-btn"></label>
-
-
         </div>
     </div>
 </body>
@@ -51,9 +49,12 @@
 </div>
     <div>
         <a *ngFor="let product of  mostRecent">
-        <button #w id={{product.id}} class="products"><div class="decor"  routerLink="/aboutbook" routerLinkActive="activebutton" (click)="aboutproduct(product.id,product.cover,product.Title,product.price,product.category,product.Quantity,product.authors,product.publisher)" >
-                <img height="200px" width="200px" class=" img" src={{product.cover}}><p class="info" >{{product.Title}}<br><p class="price">{{product.price}} LE</p></p>
-        </div><button  class="cart"(click)="AddProduct(product.id)">Add to Cart</button>
+       
+        <button #w id={{product.isbn}} class="products"><div class="decor"  routerLink="/aboutbook" routerLinkActive="activebutton" (click)="aboutproduct(product.isbn,product.title,product.publisherName,product.authors,product.publicationYear,product.coverImage,product.price,product.stockQuantity,product.threshold,product.category)" >
+                <img height="200px" width="200px" class=" img" src="../assets/images/{{product.coverImage}}"><p class="info" >{{product.title}}<br><p class="price">{{product.price}} LE</p></p>
+        </div><button  class="cart"(click)="AddProduct(product.isbn)">Add to Cart</button>
+        <span id="outofstock"  class="tooltiptext">Out Of Stock</span>
+
     </button>
         </a>
     </div>

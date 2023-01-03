@@ -23,23 +23,18 @@ export class PublisherFormComponent implements OnInit {
 
   submit() {
    console.log(this.Publisher.address);
-   //this.publisher()
+   this.publisher()
    
   }
   publisher(){
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json' });
-    this.http.post('http://localhost:8080/publisher', this.Publisher, { headers: headerr, responseType: 'text' })
+    this.http.post('http://localhost:8080/api/publisher', this.Publisher, { headers: headerr, responseType: 'text' })
       .subscribe({
 
         next: (data: any) => {
-          // Swal.fire({
-          //   position: 'center',
-          //   icon: 'success',
-          //   title: 'Publisher added',
-          //   showConfirmButton: false,
-          //   timer: 1500
-          // })
-          //this.router.navigateByUrl('home')
+         if(data=="Publisher was created successfully."){
+          console.log("Publisher was created successfully.")
+         }
         },
         error: (error: any) => {
           console.error(error);

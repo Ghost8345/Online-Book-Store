@@ -1,7 +1,7 @@
 export class Registration {
     constructor(
-        public fname: string,
-        public lname: string,
+        public firstName: string,
+        public lastName: string,
         public email: string,
         public password: string,
 

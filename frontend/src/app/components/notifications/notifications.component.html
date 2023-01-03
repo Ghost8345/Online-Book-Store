@@ -1,0 +1,8 @@
+<div class="notify">
+<button class="neworder">new order</button>
+<button class="placeorder">place order</button>
+</div>
+<div *ngFor="let order of neworders; let i=index">
+    <button class="orders">Order {{i+1}}</button>
+</div>
+
