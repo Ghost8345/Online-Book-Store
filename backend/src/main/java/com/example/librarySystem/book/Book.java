@@ -20,11 +20,11 @@ public class Book {
     @Column("coverImage")
     private String coverImage;
     private float price;
-    // Category Enum
-    private Category category;
-    private int threshold;
     @Column("stockQuantity")
     private int stockQuantity;
+    private int threshold;
+    // Category Enum
+    private Category category;
 
 
 

@@ -19,10 +19,12 @@ public class BookController {
         try{
             System.out.println("I'm In Create");
             System.out.println(book);
+            book.setCoverImage(bookService.StorePhotoInPath(book.getCoverImage(), book.getIsbn()));
             bookService.createBook(book);
             return new ResponseEntity<>("Book was created successfully.", HttpStatus.CREATED);
         }
         catch(Exception e){
+            System.out.println(e.getMessage());
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
 
