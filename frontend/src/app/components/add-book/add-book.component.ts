@@ -18,11 +18,9 @@ export class AddBookComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
 
-  uploadItem = new UploadItem(0,'', 0,'', '','', 0, 0, 0, '');
+  uploadItem = new UploadItem(0,'','','', '','', 0, 0, 0, '');
   categories = ['Science', 'Art', 'Religion', 'History', 'Geography'];
   categoryName: string = "";
-  publishers = [];
-  publihserName: string = "";
   imageSrc: string = "";
   imageName: string = "";
   imageBlob: string = "";
@@ -63,11 +61,11 @@ export class AddBookComponent implements OnInit {
 
 
   addPublisher(){
-    
+
   }
 
   onSubmit() {
-    console.log(' title: ' + this.uploadItem.title + ', description: ' + 'price: ' + this.uploadItem.price + 'category ');
+    console.log(' title: ' + this.uploadItem.isbn + ', description: ' + 'price: ' + this.uploadItem.price + 'category ');
     this.uploadItem.category=this.categoryName;
     this.upload();
   }
@@ -83,7 +81,7 @@ export class AddBookComponent implements OnInit {
     //   // })
     //   return;
     // }
-   
+
     // if (this.uploadItem.price == 0) {
     //   // Swal.fire({
     //   //   position: 'center',
