@@ -9,6 +9,7 @@ import { UserComponent } from './user/user.component';
 
 import { AddBookComponent } from './add-book/add-book.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AboutbookComponent } from './aboutbook/aboutbook.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-   RouterModule.forRoot([{path:'',redirectTo:'registration',pathMatch:'full'},{path:"registration",component:RegistrationComponent},{path:"registeduser",component:UserComponent}])
+   RouterModule.forRoot([{path:'',redirectTo:'registration',pathMatch:'full'},{path:"registration",component:RegistrationComponent},{path:"registeduser",component:UserComponent},{path:"aboutbook",component:AboutbookComponent}]),
     FormsModule,
     ReactiveFormsModule,
   ],

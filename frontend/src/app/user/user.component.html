@@ -51,21 +51,11 @@
 </div>
     <div>
         <a *ngFor="let product of  mostRecent">
-        <button #w id={{product.id}} class="products"><div class="decor"  routerLink="/aboutproduct" routerLinkActive="activebutton" (click)="aboutproduct(product.id,product.cover,product.Title,product.price,product.category)" >
+        <button #w id={{product.id}} class="products"><div class="decor"  routerLink="/aboutbook" routerLinkActive="activebutton" (click)="aboutproduct(product.id,product.cover,product.Title,product.price,product.category,product.Quantity,product.authors,product.publisher)" >
                 <img height="200px" width="200px" class=" img" src={{product.cover}}><p class="info" >{{product.Title}}<br><p class="price">{{product.price}} LE</p></p>
         </div><button  class="cart"(click)="AddProduct(product.id)">Add to Cart</button>
     </button>
-
         </a>
     </div>
-    <div id="myModal3" class="modal">
-        <div class="modalcontent3">
-          <span class="close" (click)="clossing()">&times;</span>
-          <img  class="logo" height="50"  src="https://seeklogo.com/images/P/pharmacy-logo-DF4F78C50E-seeklogo.com.png">
-          <span class="Pharmacyname"style=" position :relative, top:-20px">AHMENA<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHARMACY</span>
-          <p  style="font-size: xx-large;">⚠️❗<br>This medicine is scheduled and you cannot get it online.<br> You must go to the nearest branch and bring the prescription to get this medicine </p>
-          <p  style="font-size: xx-large;"></p>
-          <pre style="font-size: xx-large;"></pre>
-        </div>
-    </div>
+   
    

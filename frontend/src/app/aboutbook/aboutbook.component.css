@@ -1,0 +1,112 @@
+.text {
+    border-radius: 20px;
+    background-color: transparent;
+    outline: none;
+    position: relative;
+    left: 10px;
+    top: 60px;
+    padding: 0 20px;
+    width: 350px;
+      height: 50px;
+      bottom:  10px;
+    
+  }
+  .decoration{
+    position: relative;
+    color: rgb(205, 205, 205);
+    left: 405px;
+    font-size: 50px;
+    bottom: 75px;
+    font-weight: 300;
+    
+  }
+  .info{
+    position:relative;
+    left: 0px;
+    font-size: 17px;
+    color: rgb(99, 101, 102);
+  }
+  .products{
+border: none;
+    background: none;
+  }
+.productimg{
+    position: relative;
+    top: 170px;
+    width: 350px;
+    height: 350px;
+    left: 120px;
+}
+  .img:hover{
+    opacity: .7;
+  }
+  .decor:hover{
+    opacity: .8;
+  }
+  .cart{
+    border-radius: 10px;
+    background-color: white;
+    width: 120px;
+    border-color:rgb(249, 208, 24) ;
+    border: 100;
+    font-size: 15px;
+    line-height: 1cm;
+    position: relative;
+    top: 50px;
+    left: -150px;
+    
+  }
+  .rateproduct{
+    position:relative;
+    right: 10px;
+  }
+  .cart:hover{
+  background-color: rgb(249, 208, 24);
+  }
+  .page{
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding: 0;
+  }
+  .productname{
+    font-size: 50px;
+    line-height: 1.5cm;
+    max-width: 40%;
+
+  }
+  .info{
+    position: relative;
+    left: 700px;
+    bottom:  250px;  
+       line-height: .6cm;
+
+  }
+  .category{
+    line-height: .1cm;
+    font-weight: 1000px;
+    font-size: larger;
+
+  }
+  .productdescription{
+    font-weight: 1000px;
+    font-size: larger;
+    max-width: 30%;
+  }
+ .Availability{
+    line-height: .7cm;
+
+  }
+  .price{
+    font-weight: 1000px;
+    font-size: larger;
+    color:  rgb(249, 24, 24);
+    line-height: .1cm;
+  }
+  .bold{
+    font-weight: 1000;
+  }
+ 
+ 
+
+
