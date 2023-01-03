@@ -16,7 +16,11 @@ export class AppComponent {
     document.getElementById("mySidenav")!.style.width="0";
   }
   submit(e:Event){
-    e.preventDefault();
+    document.getElementById("mySidenav")!.style.width="0";
+
+  }
+  addbooks(){
+    document.getElementById("body")!.style.display="none";
     document.getElementById("mySidenav")!.style.width="0";
 
   }
