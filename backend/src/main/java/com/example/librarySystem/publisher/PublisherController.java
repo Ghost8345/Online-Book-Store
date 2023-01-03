@@ -54,10 +54,12 @@ public class PublisherController {
     @PostMapping
     public ResponseEntity<String> createPublisher(@RequestBody Publisher publisher) {
         System.out.println("IN Create");
-
-        publisherService.createPublisher(publisher);
-        return new ResponseEntity<>("Publisher was created successfully.", HttpStatus.CREATED);
-
+        try {
+            publisherService.createPublisher(publisher);
+            return new ResponseEntity<>("Publisher was created successfully.", HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/name/{name}")

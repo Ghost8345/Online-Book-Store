@@ -1,0 +1,291 @@
+.header{
+    margin-top: -50px;
+    
+     font: 1.5em sans-serif;
+     color: darkgray;
+     line-height: 0;
+     font-weight: bolder;
+    }
+    .line{
+        
+        color: rgb(233, 232, 232);
+        font: 2em sans-serif;
+        line-height: 0;
+    }
+    .productimg{
+      position: relative;
+     
+        top: 0px;
+        left: 0px; 
+        line-height: 0%;
+        padding: 0 0;
+    }
+    .productname{
+        margin-left:110px ;
+        margin-top: -60px ;
+        position: relative;
+        top: 0px;
+        left: 0px; 
+        color: rgb(99, 101, 102) ;
+        max-width:30%;
+        font: 1em sans-serif;
+        font-weight: bolder;
+    }
+    .productprice{
+        
+      margin-left: 330px;
+      margin-top: -20px ;
+    
+        top: 55px;
+        left: 400px; 
+        font-weight: bolder;
+    }
+    .seprator{
+     
+      margin-top: 50px;
+        line-height: 0%;
+        left: 90px; 
+        color:rgb(233, 232, 232) ;
+        font: 1em sans-serif;
+    
+    }
+    .table{
+        border-collapse: collapse;
+      
+       margin-top: -400px;
+       
+    }
+    form {
+        width: 300px;
+        margin: 0 auto;
+        text-align: center;
+        padding-top: 10px;
+       
+        left: 230px;
+    
+      }
+      
+    
+      
+      .value-button:hover {
+        cursor: pointer;
+      }
+     .Decrease-button {
+      display: inline-block;
+      border: 1px solid #ddd;
+      margin-top: -200px;
+      width: 40px;
+      height: 20px;
+      text-align: center;
+      position: relative;
+      left: 468.7px;
+      top: -40px;
+      padding: 11px 0;
+      background: #eee;
+      cursor: pointer;
+      margin-left: -131px;
+       
+        border-radius: 8px 0 0 8px;
+      }
+      
+       .Increase-button {
+        display: inline-block;
+        border: 1px solid #ddd;
+        margin-top: -20px;
+        width: 40px;
+        height: 20px;
+        text-align: center;
+        padding: 11px 0;
+        background: #eee;
+        position: relative;
+        cursor: pointer;
+        margin-left: 45px;
+        left: 470.7px;
+        top: -40px;
+        border-radius: 0 8px 8px 0;
+      }
+      .input{
+        height: 39px;
+        text-align: center;
+        border-color: rgb(218, 218, 218);
+        border-radius: 10px;
+      
+    position: relative;
+    left: 470px;
+    top: -40px;
+        background-color: transparent;
+        border-block-end-color: rgb(218, 218, 218);
+        border-style:outset;
+        border-bottom-color: rgb(255, 255, 255);
+        border-right-color:rgb(255, 255, 255) ;
+        width: 125px;
+    cursor: pointer;
+        outline: none;
+    
+      }
+      .subtotal{
+        margin-top: -80px;
+        margin-left: 700px;
+        left: 700px;
+        bottom:  30px;
+        font-weight: bolder;
+      }
+      .vl {
+       margin-left: 840px;
+       margin-top: -400px;
+        border-left: 3px solid rgb(233, 232, 232);
+        height: 500px;
+        left: 850px;
+        bottom: 1000px;
+      }
+      .cartTotal{
+        margin-left: 855px;
+       margin-top:  120px;
+       
+        font: 1.5em sans-serif;
+        color: darkgray;
+        line-height: 0%;
+        font-weight: bolder;
+      }
+      .seprator2{
+        margin-left: 855px;
+       margin-top:  20px;
+        color:rgb(233, 232, 232) ;
+        font: 1em sans-serif;
+       
+    
+      }
+      .cartsubtotal{
+        margin-left: 855px;
+        margin-top:  20px;
+        font-size: large;
+    
+      }
+      .proceed{
+        margin-left: 950px;
+       margin-top:  20px;
+        border-radius: 10px;
+        background-color: rgb(21, 189, 169);
+      height: 50px;
+      width: 300px;
+        border-color:rgb(21, 189, 169) ;
+        border: 100;
+        font-size: 15px;
+        margin-bottom: 20px;
+        font-size: larger;
+      }
+      .row{
+    max-height: 10%;
+      }
+     
+      .checkout{
+        margin-top: 200px;
+      }
+      .removeitem{
+        margin-top: -100px;
+        border-radius: 10px;
+        position: relative;
+        top: -40px;
+        left: -5px;
+        color: white;
+        background-color:darkgray ;
+        border:none;
+      }
+      .modal2 {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      /* Modal Content */
+      .modalcontent2 {
+        background-color: rgb(99, 101, 102);
+        color: rgb(21, 189, 169);
+        margin: auto;
+        padding: 20px;
+        border: 1px solid rgb(99, 101, 102);
+        width: 80%;
+        height: 40%;
+      }
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 100px; /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      /* Modal Content */
+      .modalcontent3 {
+        background-color: rgb(99, 101, 102);
+        color: rgb(21, 189, 169);
+        margin: auto;
+        padding: 20px;
+        border: 1px solid rgb(99, 101, 102);
+        width: 80%;
+        height: 40%;
+      }
+      
+      /* The Close Button */
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+      
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      .yes{
+        background-color:rgb(21, 189, 169) ;
+        border: none;
+        position: relative;
+        left: 970px;
+        width: 120px;
+        height: 50px;
+        margin: 2px;
+        top: 80px;
+        font-size: larger;
+        color:rgb(99, 101, 102) ;
+      }
+     
+      .checker .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: rgb(99, 101, 102);
+        color: rgb(21, 189, 169);
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+      
+        /* Position the tooltip */
+        position: relative;
+       top: 40px;
+       right:  170px;
+        z-index: 1;
+      }
+      
+      .checker:hover .tooltiptext {
+        visibility: visible;
+      }
+      .input-group{
+        position: relative;
+        left: 850px;
+      }
+     
