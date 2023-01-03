@@ -12,9 +12,7 @@ export class UserComponent implements OnInit{
     document.getElementById("body")!.style.display="block";
   }
   //mostRecent:{id:0,cover:"",Title:"",price:0,category:"",publisher:"",Quantity:0}[]=[];
-  ngOnInit(): void {
-  document.getElementById("body")!.style.display="block";
-  }
+ 
   mostRecent=[{id:0,cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
 ,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:120,authors:"lol"}];
 
