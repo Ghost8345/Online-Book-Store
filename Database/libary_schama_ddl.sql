@@ -25,7 +25,7 @@ CREATE TABLE `USER`(
 
 CREATE TABLE BOOK(
 	ISBN INT,
-    title VARCHAR(100) UNIQUE,
+    title VARCHAR(100) NOT NULL UNIQUE,
     publisherId INT NOT NULL,
     authors VARCHAR(500) NOT NULL,
     publicationYear CHAR(4),
@@ -90,7 +90,6 @@ CREATE TABLE CUSTOMER_ORDER_ITEM(
 ALTER TABLE PUBLISHER ADD INDEX nameIndex(`name`);
 
 ALTER TABLE BOOK ADD INDEX categoryIndex(category);
-
 
 
 
