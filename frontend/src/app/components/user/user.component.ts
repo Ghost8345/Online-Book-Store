@@ -1,4 +1,8 @@
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UploadItem } from '../add-book/add-book';
 
 @Component({
   selector: 'app-user',
@@ -7,26 +11,38 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class UserComponent implements OnInit{
-
+  constructor(private router: Router, private http: HttpClient, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
+  mostRecent:any;
   ngOnInit(): void {
     document.getElementById("body")!.style.display="block";
+    const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("token") + "" });
+
+    this.http.get<UploadItem[]>('http://localhost:8080/api/book', { headers: headerr }
+    ).subscribe({
+      next: (data: any) => {
+        this.mostRecent=data;
+        console.log(data);
+      },
+      error: (error: any) => {
+
+      }
+    });
   }
   //mostRecent:{id:0,cover:"",Title:"",price:0,category:"",publisher:"",Quantity:0}[]=[];
  
-  mostRecent=[{isbn:0,coverImage:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
-,title:"Harry Poter",price:600,category:"action",publisherName:"Elshrouk",stockQuantity:120,authors:"lol"}];
-
-
+  
   aboutproduct(
     isbn: number,
     title: string,
     publisherName:String,
     authors: string,
+    publicationYear:string,
     coverImage: string,
     price: number,
     stockQuantity: number,
+    threshold:number,
     category: string){
-    let  product={id:isbn,name:title,publisher:publisherName,authors:authors,img:coverImage,price:price,Quantity:stockQuantity,category:category};
+    let  product={id:isbn,name:title,publisher:publisherName,authors:authors,publicationYear:publicationYear,img:"/../assets/images/"+coverImage,price:price,Quantity:stockQuantity,threshold:threshold,category:category};
   localStorage.setItem("aboutProduct",JSON.stringify(product));
  
 

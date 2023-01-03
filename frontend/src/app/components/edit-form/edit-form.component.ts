@@ -18,7 +18,7 @@ export class EditFormComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
   SelectedProduct=JSON.parse(localStorage.getItem("aboutProduct")!);
 
-  uploadItem = new UploadItem(1234123,this.SelectedProduct.name,this.SelectedProduct.publisher,this.SelectedProduct.authors,'',this.SelectedProduct.img,this.SelectedProduct.price , this.SelectedProduct.quantity, 0, this.SelectedProduct.category);
+  uploadItem = new UploadItem(this.SelectedProduct.id,this.SelectedProduct.name,this.SelectedProduct.publisher,this.SelectedProduct.authors,this.SelectedProduct.publicationYear,this.SelectedProduct.img,this.SelectedProduct.price , this.SelectedProduct.quantity, this.SelectedProduct.threshold, this.SelectedProduct.category);
   
   categories = ['Science', 'Art', 'Religion', 'History', 'Geography'];
   categoryName: string = "";
