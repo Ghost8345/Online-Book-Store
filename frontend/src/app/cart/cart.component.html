@@ -1,0 +1,95 @@
+<html>
+<head>
+    <link rel="stylesheet" href="cart.component.css" type="text/css" />
+</head>
+
+<body>
+    <div class="checkout">
+        <div class="cartTotal">Cart Totals</div>
+        <p class="seprator2">_______________________________________________________________________</p>
+        <div class="cartsubtotal">Subtotal&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{subtotal}} LE</div>
+        
+        <p class="seprator2">_______________________________________________________________________</p>
+        <div class="cartsubtotal">Shipping&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;20.0 LE</div>
+            <p class="seprator2">_______________________________________________________________________</p>
+            <div class="cartsubtotal">Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{Total}} LE</div>
+                <p class="seprator2">_______________________________________________________________________</p>
+                
+                    <div *ngIf="loggedin==1">
+                    <div *ngIf="EmptyCart !=0"> 
+    <button class="proceed"(click)="proceedToCheckOut()">Proceed To Checkout</button>
+                    </div>
+</div>
+<div  class="checker">
+<div *ngIf="loggedin==1">
+    <div *ngIf="EmptyCart==0">
+    <button class="proceed" disabled="true">Proceed To Checkout</button>
+    <span id="Emptycart"  class="tooltiptext">Your Cart Is Empty</span>
+</div>
+</div>
+<div *ngIf="loggedin==null">
+    <button class="proceed" disabled="true">Proceed To Checkout</button>
+    <span id="notloggedin"  class="tooltiptext">SignIn/SignUp Before Checkout please</span>
+</div>
+    
+</div>
+    <div class="vl"></div>
+    <div id="myModal2" class="modal">
+        <div class="modalcontent2">
+          <span class="close" (click)="clossing()">&times;</span>
+          <img  class="logo" height="50"  src="https://seeklogo.com/images/P/pharmacy-logo-DF4F78C50E-seeklogo.com.png">
+          <span class="Pharmacyname"style=" position :relative, top:-20px">AHMENA<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHARMACY</span>
+          <p id="Mfrom" style="font-size: xx-large;">Are You sure To Make Checkout</p>
+          <button class="yes"(click)="yes()">Yes</button>
+          <button class="yes"(click)="clossing()">No</button>
+          <p id="Msub" style="font-size: xx-large;"></p>
+          <pre id="Mcontent" style="font-size: xx-large;"></pre>
+        </div>
+    </div>
+    <div id="myModal3" class="modal">
+        <div class="modalcontent3">
+          <span class="close" (click)="clossing()">&times;</span>
+          <img  class="logo" height="50"  src="https://seeklogo.com/images/P/pharmacy-logo-DF4F78C50E-seeklogo.com.png">
+          <span class="Pharmacyname"style=" position :relative, top:-20px">AHMENA<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PHARMACY</span>
+          <p  style="font-size: xx-large;">Congratulation Your Oder Completed sucessfully &#9989;<br>Your Order In Progress 🚚 <br> You Will Receive Your Order Within 2 Days ⌛ </p>
+          <p  style="font-size: xx-large;"></p>
+          <pre style="font-size: xx-large;"></pre>
+        </div>
+    </div>
+    </div>
+    <table class="table" >
+        <tr>
+            <td >
+                <p class="header">Product&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    Price&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quantity&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SubTotal</p>
+                <p class="line">__________________________________________</p>
+            </td>
+        </tr>
+        <div *ngFor="let product of bestsellerproducts">
+        <tr class="table">
+            <td  class="table">
+    
+                <button class="removeitem" (click)="removeItemFromCart(product.product_id)">x</button>
+                <img class="productimg" width="80" height="70" src={{product.image}}>
+                <p class="productname">{{product.name}} </p>
+                <p class="productprice">{{product.price}}&nbsp;LE</p>
+                <input class="input"   id={{product.product_id}} value="{{product.duplication}}" readonly />
+                <div  class="Decrease-button" id="decrease" (click)="decreaseValue(product.product_id)" value="Decrease Value">-</div>
+                <div  class="Increase-button" id="increase" (click)="increaseValue(product.product_id)" value="Increase Value">+</div>
+                <div id="sub{{product.product_id}}" class="subtotal"  >{{product.price*product.duplication}}</div>
+                <p class="seprator">______________________________________________________________________________</p>
+            </td>
+        </tr>
+    </div>   
+    </table>
+ 
+   
+</body>
+
+</html>

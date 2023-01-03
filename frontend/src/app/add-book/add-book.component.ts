@@ -70,4 +70,7 @@ export class AddBookComponent implements OnInit {
   onSubmit() {
     console.log(' title: ' + this.uploadItem.title + ', description: ' + 'price: ' + this.uploadItem.price + 'category ');
   }
+  goback(){
+    document.getElementById("body")!.style.display="block";
+  }
 }
