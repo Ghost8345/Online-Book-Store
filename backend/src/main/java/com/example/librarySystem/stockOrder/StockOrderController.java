@@ -1,6 +1,7 @@
 package com.example.librarySystem.stockOrder;
 
 
+import com.example.librarySystem.user.manager.ManagerService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,11 +15,14 @@ import java.util.List;
 @AllArgsConstructor
 public class StockOrderController {
     private final StockOrderService stockOrderService;
+    private final ManagerService managerService;
+
 
     @GetMapping("/{managerId}")
     public ResponseEntity<List<StockOrder>> getPendingOrders(@PathVariable int managerId){
         try {
-            List<StockOrder> orders = stockOrderService.getOrders(managerId);
+            managerService.managerCheck(managerId);
+            List<StockOrder> orders = stockOrderService.getOrders();
             return new ResponseEntity<>(orders, HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
@@ -30,7 +34,8 @@ public class StockOrderController {
     public ResponseEntity<Integer> makeOrder(@PathVariable int managerId,
                                                 @RequestBody StockOrder newOrder){
         try {
-            return new ResponseEntity<>(stockOrderService.makeOrder(managerId, newOrder), HttpStatus.OK);
+            managerService.managerCheck(managerId);
+            return new ResponseEntity<>(stockOrderService.makeOrder(newOrder), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(-1, HttpStatus.BAD_REQUEST);
         }
@@ -40,7 +45,8 @@ public class StockOrderController {
     public ResponseEntity<String> confirmOrder(@PathVariable int managerId,
                                                 @PathVariable int orderId) {
         try {
-            return new ResponseEntity<>(stockOrderService.confirmOrder(managerId, orderId), HttpStatus.OK);
+            managerService.managerCheck(managerId);
+            return new ResponseEntity<>(stockOrderService.confirmOrder(orderId), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
