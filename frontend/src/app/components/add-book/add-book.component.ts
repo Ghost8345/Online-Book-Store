@@ -12,13 +12,13 @@ export class AddBookComponent implements OnInit {
 
   //selectedFile : File = null
   ngOnInit(): void {
-    document.getElementById("body")!.style.display="none";
-    document.getElementById("mySidenav")!.style.width="0";
+    document.getElementById("body")!.style.display = "none";
+    document.getElementById("mySidenav")!.style.width = "0";
   }
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
 
-  uploadItem = new UploadItem(0,'','','', '','', 0, 0, 0, '');
+  uploadItem = new UploadItem(0, '', '', '', '', '', 0, 0, 0, '');
   categories = ['Science', 'Art', 'Religion', 'History', 'Geography'];
   categoryName: string = "";
   imageSrc: string = "";
@@ -60,16 +60,16 @@ export class AddBookComponent implements OnInit {
   }
 
 
-  addPublisher(){
+  addPublisher() {
 
   }
 
   onSubmit() {
     console.log(' title: ' + this.uploadItem.isbn + ', description: ' + 'price: ' + this.uploadItem.price + 'category ');
-    this.uploadItem.category=this.categoryName;
+    this.uploadItem.category = this.categoryName;
     this.upload();
   }
-  upload(){
+  upload() {
     // // this.uploadItem.category_id = this.categories.indexOf(this.categoryName)
     // if (this.uploadItem.title.length < 3) {
     //   // Swal.fire({
@@ -120,26 +120,32 @@ export class AddBookComponent implements OnInit {
       .subscribe({
 
         next: (data: any) => {
-         console.log(data)
-         this.router.navigateByUrl('user')               
-        
+          console.log(data)
+          this.router.navigateByUrl('user')
+
         },
         error: (error: any) => {
-          if(error==="Publication Year must be 4 letters."){
+          if (error === "Publication Year must be 4 letters.") {
             alert("Publication Year must be 4 letters")
-           }else if("Price can't be negative."){
+          } else if (error === "Price can't be negative.") {
             alert("Price can't be negative.")
-           }else if("Threshold can't be negative."){
-               alert("Threshold can't be negative.")
-           }else if("Quantity can't be negative."){
-              alert("Quantity can't be negative.")
-           }
+          } else if (error === "Threshold can't be negative.") {
+            alert("Threshold can't be negative.")
+          } else if (error === "Quantity can't be negative.") {
+            alert("Quantity can't be negative.")
+          } else if (error === "Publisher Not Found.") {
+            alert("Publisher Not Found.")
+          } else if (error === "ISBN already in use.") {
+            alert("ISBN already in use.")
+          } else if (error === "Another book has the same title.") {
+            alert("Another book has the same title.")
+          }
           //console.error(error);
         }
       });
 
   }
-  goback(){
-    document.getElementById("body")!.style.display="block";
+  goback() {
+    document.getElementById("body")!.style.display = "block";
   }
 }

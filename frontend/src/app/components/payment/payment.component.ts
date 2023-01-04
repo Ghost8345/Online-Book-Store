@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {CreditCard} from './CreditCard';
-
+import { Requests } from './request';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -15,6 +15,7 @@ export class PaymentComponent {
     }
     //creditCard:any=""
     creditCard =new CreditCard('',0,0,0)
+    request= new Requests(0,this.creditCard,[])
     submit(){
       
 
@@ -22,9 +23,13 @@ export class PaymentComponent {
 
      let cart=JSON.parse(localStorage.getItem('cart')!);
      console.log(cart);
-     console.log(this.creditCard.number+" "+this.creditCard.cvv+" " +this.creditCard.expMonth +" "+this.creditCard.expyear)
+     this.request.userId=JSON.parse (localStorage.getItem("user_id")!)
+     this.request.creditCard=this.creditCard
+     this.request.items=cart
+
+     console.log(this.creditCard.number+" "+this.creditCard.cvv+" " +this.creditCard.expMonth +" "+this.creditCard.expYear)
      const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' });
-    this.http.post('http://localhost:8080/register/', cart, { headers: headerr, responseType: 'text' })
+    this.http.post('http://localhost:8080/api/orders', this.request, { headers: headerr, responseType: 'text' })
       .subscribe({
         next: (data: any) => {
           console.log("hii")
@@ -32,7 +37,10 @@ export class PaymentComponent {
          
         },
         error: (error: any) => {
+         console.log(error)
         
+          alert("Failed to place the order.")
+         
         }
       });
 
