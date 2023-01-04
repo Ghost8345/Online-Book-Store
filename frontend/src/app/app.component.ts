@@ -48,5 +48,13 @@ console.log("yaaaaaaaaaaa"+this.manager)
     document.getElementById("itemsnum")!.style.display="none"
 
   }
+  search(){
+  let value= (<HTMLInputElement>document.getElementById("searchingFor")).value
+  let option=(<HTMLInputElement>document.getElementById("search")).value
+  localStorage.setItem("input",value);
+  localStorage.setItem("option",option);
+  this.router.navigate(['/search'])
+  console.log("msh httl3-->"+option)
+  }
 
 }

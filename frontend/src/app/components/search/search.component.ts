@@ -16,7 +16,20 @@ export class SearchComponent implements OnInit{
   categoryName="";
   ngOnInit(): void {
     document.getElementById("body")!.style.display="block";
+    const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("token") + "" });
+console.log("option-->"+localStorage.getItem('option'))
+console.log("input-->"+localStorage.getItem('input'))
 
+    this.http.get<UploadItem[]>('http://localhost:8080/api/book/'+localStorage.getItem('option')+"/"+localStorage.getItem('input'), { headers: headerr }
+    ).subscribe({
+      next: (data: any) => {
+        this.mostRecent=data;
+        console.log("dddddddd"+data);
+      },
+      error: (error: any) => {
+
+      }
+    });
   }
 
   //mostRecent:{id:0,cover:"",Title:"",price:0,category:"",publisher:"",Quantity:0}[]=[];
@@ -29,11 +42,11 @@ searchword:any;
     console.log(this.searchword)
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("token") + "" });
 
-    this.http.get<UploadItem[]>('http://localhost:8080/api/book/'+this.categoryName+"/"+this.searchword, { headers: headerr }
+    this.http.get<UploadItem[]>('http://localhost:8080/api/book/'+localStorage.getItem('option')+"/"+localStorage.getItem('input'), { headers: headerr }
     ).subscribe({
       next: (data: any) => {
         this.mostRecent=data;
-        console.log(data);
+        console.log("dddddddd"+data);
       },
       error: (error: any) => {
 

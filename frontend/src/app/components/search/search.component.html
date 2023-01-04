@@ -1,22 +1,5 @@
-<body>
-    <div class="slider">
-        <div>
-            <input id="searchingFor" name="searchingFor"  class="search" type="text" placeholder="Search.."  ><i class="fa fa-search" style="font-size:24px"></i>
-            <button (click)="search()">Search</button>
-        </div>
-        <div class="form-group">
-            <label for="category" style="font-weight: 600; font-size:large ;"><strong>Search for book(s) by:</strong></label>
-            <select class="form-controll" [(ngModel)]="categoryName" name="caption" id="caption" required>
-                <option *ngFor="let category of categories" [value]="category">{{category}}</option>
-            </select>
-        </div>
-
-       
-    </div>
-</body>
-
 <div  class="page">
-    <p class="bestseller">Most Recent</p>
+    <p class="bestseller">search result</p>
     <form class="shape">
         <input class="text" type="text" disabled="true">
         </form>
@@ -28,7 +11,6 @@
         <button #w id={{product.isbn}} class="products"><div class="decor"  routerLink="/aboutbook" routerLinkActive="activebutton" (click)="aboutproduct(product.isbn,product.title,product.publisherName,product.authors,product.publicationYear,product.coverImage,product.price,product.stockQuantity,product.threshold,product.category)" >
                 <img height="200px" width="200px" class=" img" src="../assets/images/{{product.coverImage}}"><p class="info" >{{product.title}}<br><p class="price">{{product.price}} LE</p></p>
         </div><button  class="cart"(click)="AddProduct(product.isbn)">Add to Cart</button>
-        <span id="outofstock"  class="tooltiptext">Out Of Stock</span>
 
     </button>
         </a>
