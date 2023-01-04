@@ -20,6 +20,8 @@ import { NotificationsComponent } from './components/notifications/notifications
 import { AcceptorderComponent } from './components/acceptorder/acceptorder.component';
 import { PlaceorderComponent } from './components/placeorder/placeorder.component';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
+import { CommonModule } from '@angular/common';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -39,9 +41,11 @@ import { EditFormComponent } from './components/edit-form/edit-form.component';
     NotificationsComponent,
     AcceptorderComponent,
     PlaceorderComponent,
-    EditFormComponent
+    EditFormComponent,
+    SearchComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RegistrationComponent } from './components/registration/registration.component';
-
+import { global } from './global';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,8 +8,8 @@ import { RegistrationComponent } from './components/registration/registration.co
 })
 export class AppComponent {
   title = 'bookstore-front';
-  openNav() {
 
+  openNav() {
     document.getElementById("mySidenav")!.style.width="250px";
   }
   closeNav() {
@@ -19,5 +19,6 @@ export class AppComponent {
     document.getElementById("mySidenav")!.style.width="0";
 
   }
+  
 
 }
