@@ -5,5 +5,5 @@ export class CreditCard{
         public cvv:Number,
         public  expYear:Number,
         public expMonth:Number
-    ) { }
+    ) { };
 }

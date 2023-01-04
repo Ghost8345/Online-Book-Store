@@ -1,0 +1,24 @@
+
+.button {
+  position: center;
+  top: 120px;
+  left: 30px;
+  font-size: large;
+  color: rgb(20, 106, 93);
+  border-radius: 10px;
+  background-color:white ;
+  border: 2px solid rgb(21, 189, 169) ;
+  width: 100px;
+}
+.button:hover{
+  background-color: rgb(21, 189, 169);
+
+}
+
+.dialog {
+  font-size: x-large;
+  font-family: 'Times New Roman', Times, serif;
+  color: rgb(20, 106, 93);
+
+}
+
