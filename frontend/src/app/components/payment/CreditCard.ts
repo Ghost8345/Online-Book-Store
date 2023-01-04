@@ -1,9 +1,9 @@
 
 export class CreditCard{
     constructor(
-        public number:Number,
+        public number:string,
         public cvv:Number,
-        public  expYear:Number,
+        public  expyear:Number,
         public expMonth:Number
     ) { }
 }

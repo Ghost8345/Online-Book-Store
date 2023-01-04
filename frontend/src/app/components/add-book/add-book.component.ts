@@ -121,9 +121,20 @@ export class AddBookComponent implements OnInit {
 
         next: (data: any) => {
          console.log(data)
+         this.router.navigateByUrl('user')               
+        
         },
         error: (error: any) => {
-          console.error(error);
+          if(error==="Publication Year must be 4 letters."){
+            alert("Publication Year must be 4 letters")
+           }else if("Price can't be negative."){
+            alert("Price can't be negative.")
+           }else if("Threshold can't be negative."){
+               alert("Threshold can't be negative.")
+           }else if("Quantity can't be negative."){
+              alert("Quantity can't be negative.")
+           }
+          //console.error(error);
         }
       });
 
