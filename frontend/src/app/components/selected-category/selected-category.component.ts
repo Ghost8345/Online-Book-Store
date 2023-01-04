@@ -57,24 +57,18 @@ AddProduct(id:any){
     }
   }
   
-  if(this.categorybooks[pos].Quantity<=0){
-    document.getElementById("outofstock3")!.style.visibility="visible";
-  }
-  else{
+  
  /* localStorage.removeItem("CartProducts");
   localStorage.removeItem("subtotal");
   localStorage.removeItem('itemsincart')*/
-  this.categorybooks[pos].Quantity--;
-   let cart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
-  let duplicate:{id:number,num:number}[]=[]
-  let aux:{product_id:number,image:string,name:string,price:number,duplication:number,quantity:number}={product_id:0,image:"",name:"",price:0,duplication:0,quantity:0};
+  let cart:{isbn:number,image:string,title:string,price:number,copies:number}[]=[];
+  let aux:{isbn:number,image:string,title:string,price:number,copies:number}={isbn:0,image:"",title:"",price:0,copies:0};
   let subtotal=0;
-  aux.product_id=this.categorybooks[pos].id;
-  aux.image=this.categorybooks[pos].cover;
-  aux.name=this.categorybooks[pos].Title;
+  aux.isbn=this.categorybooks[pos].isbn;
+  aux.image=this.categorybooks[pos].coverImage;
+  aux.title=this.categorybooks[pos].title;
   aux.price=this.categorybooks[pos].price;
-  aux.duplication=1;
-  aux.quantity=this.categorybooks[pos].Quantity;
+  aux.copies=1;
   let flag=0;
 
   if(localStorage.getItem("CartProducts")==null){
@@ -87,9 +81,9 @@ AddProduct(id:any){
   else{
   cart=JSON.parse (localStorage.getItem("CartProducts")!)
   for(var i=0;i<cart.length;i++){
-    if(cart[i].product_id==this.categorybooks[pos].id){
+    if(cart[i].isbn==this.categorybooks[pos].id){
        flag=1;
-       cart[i].duplication+=1;
+       cart[i].copies+=1;
        subtotal=JSON.parse (localStorage.getItem("subtotal")!);
   subtotal+=this.categorybooks[pos].price;
   localStorage.setItem("subtotal",JSON.stringify (subtotal));
@@ -107,7 +101,7 @@ AddProduct(id:any){
 }
   let val=0;
   val=JSON.parse(localStorage.getItem("itemsincart")!);
-  if(val==null){
+  if(val==null||val<=0){
     val=1;
   }
   else{
@@ -119,7 +113,7 @@ localStorage.setItem("itemsincart",JSON.stringify(val));
   document.getElementById("itemsnum")!.style.display="block"
 
 
-}
+
 }
 clossing(){
  

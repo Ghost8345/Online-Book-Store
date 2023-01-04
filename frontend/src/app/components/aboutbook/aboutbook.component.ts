@@ -17,24 +17,18 @@ export class AboutbookComponent {
   //to submit rating of product
  
   AddProduct(){
-    if(this.SelectedProduct.Quantity<=0){
-      document.getElementById("outofstock2")!.style.visibility="visible"
-
-    }
-    else{
+   
    /* localStorage.removeItem("CartProducts");
     localStorage.removeItem("subtotal");
     localStorage.removeItem('itemsincart')*/
-     let cart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
-    let duplicate:{id:number,num:number}[]=[]
-    let aux:{product_id:number,image:string,name:string,price:number,duplication:number,quantity:number}={product_id:0,image:"",name:"",price:0,duplication:0,quantity:0};
+    let cart:{isbn:number,image:string,title:string,price:number,copies:number}[]=[];
+  let aux:{isbn:number,image:string,title:string,price:number,copies:number}={isbn:0,image:"",title:"",price:0,copies:0};
     let subtotal=0;
-    aux.product_id=this.SelectedProduct.id;
-    aux.image=this.SelectedProduct.img;
-    aux.name=this.SelectedProduct.name;
+    aux.isbn=this.SelectedProduct.isbn;
+    aux.image=this.SelectedProduct.coverImage;
+    aux.title=this.SelectedProduct.title;
     aux.price=this.SelectedProduct.price;
-    aux.duplication=1;
-    aux.quantity=this.SelectedProduct.Quantity;
+    aux.copies=1;
     let flag=0;
   
     if(localStorage.getItem("CartProducts")==null){
@@ -47,10 +41,10 @@ export class AboutbookComponent {
     else{
     cart=JSON.parse (localStorage.getItem("CartProducts")!)
     for(var i=0;i<cart.length;i++){
-      if(cart[i].product_id==this.SelectedProduct.id){
+      if(cart[i].isbn==this.SelectedProduct.id){
         
          flag=1;
-         cart[i].duplication+=1;
+         cart[i].copies+=1;
          subtotal=JSON.parse (localStorage.getItem("subtotal")!);
     subtotal+=this.SelectedProduct.price;
     localStorage.setItem("subtotal",JSON.stringify (subtotal));
@@ -68,7 +62,7 @@ export class AboutbookComponent {
   }
     let val=0;
     val=JSON.parse(localStorage.getItem("itemsincart")!);
-    if(val==null){
+    if(val==null||val<=0){
       val=1;
     }
     else{
@@ -79,7 +73,7 @@ export class AboutbookComponent {
     console.log("in cart -->"+(<HTMLInputElement>document.getElementById("itemsnum")).textContent)
     document.getElementById("itemsnum")!.style.display="block"
   
-    }
+    
 }
 delete(){
 const headerrr = new HttpHeaders({ 'Content-Type': 'application/json' });
