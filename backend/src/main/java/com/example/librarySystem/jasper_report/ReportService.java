@@ -10,6 +10,7 @@ import org.springframework.util.ResourceUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +30,8 @@ public class ReportService {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("Statistics", "Book Sales Report");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, jrBeanCollectionDataSource);
-        File dir = ResourceUtils.getFile("classpath:reports");
+        File dir = new File("public");
+
         if (format.equals("html")) {
             JasperExportManager.exportReportToHtmlFile(jasperPrint, dir.getAbsolutePath() + "\\bookSales.html");
             return dir.getAbsolutePath() + "\\bookSales.html";
@@ -48,7 +50,8 @@ public class ReportService {
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("Statistics", "Customer Purchases Report");
         JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, jrBeanCollectionDataSource);
-        File dir = ResourceUtils.getFile("classpath:reports");
+        File dir = new File("public");
+
         if (format.equals("html")) {
             JasperExportManager.exportReportToHtmlFile(jasperPrint, dir.getAbsolutePath() + "\\customerPurchases.html");
             return dir.getAbsolutePath() + "\\customerPurchases.html";
