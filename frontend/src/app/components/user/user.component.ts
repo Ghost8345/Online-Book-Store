@@ -14,6 +14,7 @@ export class UserComponent implements OnInit{
   constructor(private router: Router, private http: HttpClient, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
   mostRecent:any;
   ngOnInit(): void {
+    console.log("ismanager-->"+localStorage.getItem("ismanager"))
     document.getElementById("body")!.style.display="block";
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("token") + "" });
 
@@ -131,4 +132,5 @@ clossing(){
   document.getElementById("myModal3")!.style.display="none";
 }
 }
+
 

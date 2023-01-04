@@ -14,6 +14,7 @@ import { SelectedCategoryComponent } from './components/selected-category/select
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PlaceorderComponent } from './components/placeorder/placeorder.component';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'registration', pathMatch: 'full' }, // redirect to `first-component`
@@ -30,7 +31,9 @@ const routes: Routes = [
   { path: "selectedcategory", component: SelectedCategoryComponent },
   { path: "notifications", component: NotificationsComponent },
   { path: "placeorder", component: PlaceorderComponent },
-  {path: "editbook", component:EditFormComponent}
+  {path: "editbook", component:EditFormComponent},
+  {path: "app", component:AppComponent}
+
 
 
 ];
