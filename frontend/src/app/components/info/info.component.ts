@@ -11,7 +11,7 @@ import { ProfileService } from 'src/app/profile.service';
 })
 export class InfoComponent {
 
-  constructor(private profileService: ProfileService) { }
+  constructor(private profileService: ProfileService) { };
 
   userdata$: Observable<User> = this.profileService.profileInfo$;
 
