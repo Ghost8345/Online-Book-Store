@@ -115,11 +115,11 @@ proceedToCheckOut(){
 yes(){
 
  let listDto:{isbn:Number,copies:Number}[]=[]
-  let temp:{isbn:Number,copies:Number}={isbn:0,copies:0}
   let productInCart:{isbn:number,image:string,name:string,price:number,copies:number}[]=[];
   //temp.UserID=JSON.parse(localStorage.getItem("UserId")!);
   productInCart=JSON.parse(localStorage.getItem("CartProducts")!);
   for(var i=0;i<productInCart.length;i++){
+    let temp:{isbn:Number,copies:Number}={isbn:0,copies:0}
     temp.isbn=productInCart[i].isbn
     temp.copies=productInCart[i].copies
     listDto.push(temp);
