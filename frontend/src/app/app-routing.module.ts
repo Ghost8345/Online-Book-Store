@@ -47,7 +47,7 @@ const routes: Routes = [
   { path: "notifications", component: NotificationsComponent },
   { path: "placeorder", component: PlaceorderComponent },
   {path: "editbook", component:EditFormComponent},
-  {path:"search",component:SearchComponent}
+  {path:"search",component:SearchComponent},
   {path: "editbook", component:EditFormComponent},
   {path: "app", component:AppComponent}
 

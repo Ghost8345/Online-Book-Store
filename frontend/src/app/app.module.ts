@@ -45,7 +45,7 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     AcceptorderComponent,
     PlaceorderComponent,
     EditFormComponent,
-    SearchComponent
+    SearchComponent,
     EditFormComponent,
     ProfileComponent,
     InfoComponent,
