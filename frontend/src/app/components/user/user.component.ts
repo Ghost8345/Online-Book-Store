@@ -62,24 +62,19 @@ AddProduct(id:any){
            break;
     }
   }
-  if(this.mostRecent[pos].Quantity<=0){
-    document.getElementById("outofstock")!.style.visibility="visible"
-  }
-  else{
+ 
+  
  /* localStorage.removeItem("CartProducts");
   localStorage.removeItem("subtotal");
   localStorage.removeItem('itemsincart')*/
-  this.mostRecent[pos].Quantity-=1;
-   let cart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
-  let duplicate:{id:number,num:number}[]=[]
-  let aux:{product_id:number,image:string,name:string,price:number,duplication:number,quantity:number}={product_id:0,image:"",name:"",price:0,duplication:0,quantity:0};
+   let cart:{isbn:number,image:string,title:string,price:number,copies:number}[]=[];
+  let aux:{isbn:number,image:string,title:string,price:number,copies:number}={isbn:0,image:"",title:"",price:0,copies:0};
   let subtotal=0;
-  aux.product_id=this. mostRecent[pos].id;
-  aux.image=this. mostRecent[pos].cover;
-  aux.name=this. mostRecent[pos].Title;
-  aux.quantity=this.mostRecent[pos].Quantity;
+  aux.isbn=this. mostRecent[pos].isbn;
+  aux.image=this. mostRecent[pos].coverImage;
+  aux.title=this. mostRecent[pos].title;
   aux.price=this. mostRecent[pos].price;
-  aux.duplication=1;
+  aux.copies=1;
   let flag=0;
 
   if(localStorage.getItem("CartProducts")==null){
@@ -92,10 +87,10 @@ AddProduct(id:any){
   else{
   cart=JSON.parse (localStorage.getItem("CartProducts")!)
   for(var i=0;i<cart.length;i++){
-    if(cart[i].product_id==this. mostRecent[pos].isbn){
+    if(cart[i].isbn==this. mostRecent[pos].isbn){
       
        flag=1;
-       cart[i].duplication+=1;
+       cart[i].copies+=1;
        subtotal=JSON.parse (localStorage.getItem("subtotal")!);
   subtotal+=this. mostRecent[pos].price;
   localStorage.setItem("subtotal",JSON.stringify (subtotal));
@@ -113,7 +108,8 @@ AddProduct(id:any){
 }
   let val=0;
   val=JSON.parse(localStorage.getItem("itemsincart")!);
-  if(val==null){
+  console.log("ssssssssssssssssssssssssssssssssssssssssssss"+val)
+  if(val==null||val<=0){
     val=1;
   }
   else{
@@ -124,7 +120,6 @@ localStorage.setItem("itemsincart",JSON.stringify(val));
   console.log("in cart -->"+(<HTMLInputElement>document.getElementById("itemsnum")).textContent)
   document.getElementById("itemsnum")!.style.display="block"
 
-}
 }
 
 clossing(){

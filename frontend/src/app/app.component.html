@@ -20,6 +20,17 @@
       <form class="search_button">
     <div>
         <input id="searchingFor" class="search" type="text" placeholder="Search.." ><i class="fa fa-search" style="font-size:24px"></i>
+        <div  class="searchoption">
+        <label for="search">search By:</label>
+        <select name="search" id="search">
+          <option value="ISBN">ISBN</option>
+          <option value="Title">Title</option>
+          <option value="Category">Category</option>
+          <option value="Author">Author</option>
+          <option value="Publisher">Publisher</option>
+        
+        </select>
+      </div>
     </div>
       </form>
 
@@ -27,7 +38,7 @@
 
         <button type="submit" routerLink="/user" routerLinkActive="activebutton"><i class="fa fa-home" style="font-size:35px ;"></i></button>
 
-        <button type="submit" routerLink="/shoppingcart" routerLinkActive="activebutton"><i class="fa fa-shopping-cart" style="font-size:35px ;"></i></button>
+        <button type="submit" routerLink="/shoppingcart" routerLinkActive="activebutton" (click)="cart()"><i class="fa fa-shopping-cart" style="font-size:35px ;"></i></button>
         <button type="submit" routerLink="/profile" routerLinkActive="activebutton"><i class="fa fa-user" style="font-size:35px ;"></i></button>
         <a *ngIf="manager==true">
         <button type="submit"routerLink="/notifications" routerLinkActive="activebutton" ><i class="fa fa-bell" style="font-size:35px ;"></i></button>

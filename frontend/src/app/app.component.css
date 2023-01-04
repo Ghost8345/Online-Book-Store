@@ -200,6 +200,12 @@ color: #f1f1f1;
  top: 50px;
  font-size: 80px;
 }
+.searchoption{
+  position: relative;
+  left: 90px;
+  top: -20px;
+  color:rgb(21, 189, 169) ;
+}
 
  
   

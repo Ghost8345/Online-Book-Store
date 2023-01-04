@@ -44,5 +44,9 @@ console.log("yaaaaaaaaaaa"+this.manager)
     this.loggedin=JSON.parse(localStorage.getItem("loggedin")!)
     this.manager=JSON.parse( localStorage.getItem('ismanager')!)
   }
+  cart(){
+    document.getElementById("itemsnum")!.style.display="none"
+
+  }
 
 }

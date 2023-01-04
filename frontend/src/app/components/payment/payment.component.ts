@@ -13,6 +13,8 @@ export class PaymentComponent {
     }
     payment =new Payment('','','')
     submit(){
+     let cart=JSON.parse(localStorage.getItem('cart')!);
+     console.log(cart);
       console.log(this.payment.CVC +" "+ this.payment.CardNumber+ " "+ this.payment.expiryDate)
     }
 
