@@ -9,7 +9,7 @@ import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialo
 })
 export  class  MessageComponent {
   constructor(private  dialogRef:  MatDialogRef<MessageComponent>, @Inject(MAT_DIALOG_DATA) public data: {name: string}) {
-  }
+  };
   ngOnInit() {
     this.dialogRef.updateSize('50%', '50%');
   }

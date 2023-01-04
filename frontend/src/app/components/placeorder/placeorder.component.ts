@@ -1,4 +1,4 @@
-import { Component, OnInit } from  '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {StockServiceService} from "../../stock-service.service";
 import {ProfileService} from "../../profile.service";
 import {StockOrder} from "./StockOrder";
@@ -11,7 +11,7 @@ import {StockOrder} from "./StockOrder";
 })
 export class PlaceorderComponent {
 
-  constructor(private stockService: StockServiceService) {
+  constructor(@Inject(StockServiceService) private stockService: StockServiceService) {
   };
 
   placeOrder(book_id: number, quantity: number): void {
