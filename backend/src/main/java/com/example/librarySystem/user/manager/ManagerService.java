@@ -18,5 +18,6 @@ public class ManagerService {
     public void managerCheck(int managerId) throws Exception {
         if (!userRepository.findById(managerId).get().isManager())
             throw new Exception("User isn't a manager");
+        System.out.println("Manager: yes");
     }
 }

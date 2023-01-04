@@ -14,21 +14,25 @@ public class StockOrderController {
     private final StockOrderService stockOrderService;
 
     //AUTOMATIC WHEN QUANTITY OF BOOK X DECREASES THAN THRESHOLD
+    //RETURNS ID CREATED
     @PutMapping("/{managerId}")
     public ResponseEntity<Integer> makeOrder(@PathVariable int managerId,
                                                 @RequestBody StockOrder newOrder){
         try {
-            System.out.println("entered");
             return new ResponseEntity<>(stockOrderService.makeOrder(managerId, newOrder), HttpStatus.OK);
         }catch (Exception e){
             return new ResponseEntity<>(-1, HttpStatus.BAD_REQUEST);
         }
     }
 
-    @DeleteMapping("/{userId}/{orderId}")
-    public ResponseEntity<StockOrder> confirmOrder(@PathVariable int userId,
-                                                @PathVariable int orderId){
-        return null;
+    @DeleteMapping("/{managerId}/{orderId}")
+    public ResponseEntity<String> confirmOrder(@PathVariable int managerId,
+                                                @PathVariable int orderId) throws Exception {
+//        try {
+            return new ResponseEntity<>(stockOrderService.confirmOrder(managerId, orderId), HttpStatus.OK);
+//        }catch (Exception e){
+//            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+//        }
     }
 
 }

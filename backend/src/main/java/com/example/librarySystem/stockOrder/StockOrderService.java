@@ -10,12 +10,16 @@ import org.springframework.stereotype.Service;
 public class StockOrderService {
     private final ManagerService managerService;
     private final StockOrderDAO stockOrderDAO;
-//    private final StockOrderRepository stockOrderRepository;
-
+    private final StockOrderRepository stockOrderRepository;
 
     public int makeOrder(int managerId,StockOrder newOrder) throws Exception {
         managerService.managerCheck(managerId);
-        System.out.println("manager: yes");
         return stockOrderDAO.save(newOrder);
+    }
+
+    public String confirmOrder(int managerId, int orderId) throws Exception {
+        managerService.managerCheck(managerId);
+        stockOrderRepository.deleteById(orderId);
+        return "Order confirmed successfully ... book quantity updated";
     }
 }
