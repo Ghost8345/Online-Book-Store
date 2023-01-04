@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface PublisherRepository extends CrudRepository<Publisher, String> {
 
+
     @Query("SELECT * FROM publisher as p where p.name = :name")
     Publisher findPublisherByName(@Param("name") String name);
 
