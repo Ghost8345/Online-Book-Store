@@ -22,25 +22,6 @@ public class ReportService {
     private BookSaleRepo bookSaleRepo;
     private CustomerPurchaseRepo customerPurchaseRepo;
 
-    public String exportReport(String format) throws FileNotFoundException, JRException {
-        List<Publisher> publishers = (List<Publisher>) publisherRepository.findAll();
-        File file = ResourceUtils.getFile("classpath:reports\\publishers.jrxml");
-        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
-        JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(publishers);
-        Map<String, Object> parameters = new HashMap<>();
-        parameters.put("Statistics", "Publishers Report");
-        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, jrBeanCollectionDataSource);
-        File dir = ResourceUtils.getFile("classpath:reports");
-        if (format.equals("html")) {
-            JasperExportManager.exportReportToHtmlFile(jasperPrint, dir.getAbsolutePath() + "\\publishers.html");
-            return dir.getAbsolutePath() + "\\publishers.html";
-        } else if (format.equals("pdf")) {
-            JasperExportManager.exportReportToPdfFile(jasperPrint, dir.getAbsolutePath() + "\\publishers.pdf");
-            return dir.getAbsolutePath() + "\\publishers.pdf";
-        }
-        throw new IllegalStateException("invalid format!");
-    }
-
     private String exportSalesReport(String format, List<BookSale> bookSales) throws FileNotFoundException, JRException {
         File file = ResourceUtils.getFile("classpath:reports\\bookSales.jrxml");
         JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
@@ -82,4 +63,24 @@ public class ReportService {
             return isLastMonth ? exportSalesReport(format, bookSaleRepo.getAllBooksSalesLastMonth()) :
                     exportSalesReport(format, bookSaleRepo.getTop10Last3Months());
     }
+
+//    public String exportReport(String format) throws FileNotFoundException, JRException {
+//        List<Publisher> publishers = (List<Publisher>) publisherRepository.findAll();
+//        File file = ResourceUtils.getFile("classpath:reports\\publishers.jrxml");
+//        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+//        JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(publishers);
+//        Map<String, Object> parameters = new HashMap<>();
+//        parameters.put("Statistics", "Publishers Report");
+//        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, jrBeanCollectionDataSource);
+//        File dir = ResourceUtils.getFile("classpath:reports");
+//        if (format.equals("html")) {
+//            JasperExportManager.exportReportToHtmlFile(jasperPrint, dir.getAbsolutePath() + "\\publishers.html");
+//            return dir.getAbsolutePath() + "\\publishers.html";
+//        } else if (format.equals("pdf")) {
+//            JasperExportManager.exportReportToPdfFile(jasperPrint, dir.getAbsolutePath() + "\\publishers.pdf");
+//            return dir.getAbsolutePath() + "\\publishers.pdf";
+//        }
+//        throw new IllegalStateException("invalid format!");
+//    }
+
 }

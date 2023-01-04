@@ -16,22 +16,13 @@ import java.io.FileNotFoundException;
 public class ReportController {
     private ReportService reportService;
 
-    @GetMapping("/{format}")
-    public ResponseEntity<String> getPublisherReport(@PathVariable String format) throws JRException, FileNotFoundException {
+    @GetMapping("/topSales/{format}")
+    public ResponseEntity<String> getTopSalesReportPath(@PathVariable String format) throws JRException, FileNotFoundException {
         try{
-            return ResponseEntity.status(HttpStatus.OK).body(reportService.exportReport(format));
+            return ResponseEntity.status(HttpStatus.OK).body(reportService.exportSalesReport(format, true));
         }catch (Exception e){
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
         }
-    }
-
-    @GetMapping("/topSales/{format}")
-    public ResponseEntity<String> getTopSalesReportPath(@PathVariable String format) throws JRException, FileNotFoundException {
-//        try{
-            return ResponseEntity.status(HttpStatus.OK).body(reportService.exportSalesReport(format, true));
-//        }catch (Exception e){
-//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
-//        }
     }
 
     @GetMapping("/topCustomers/{format}")
@@ -52,7 +43,13 @@ public class ReportController {
         }
     }
 
-
-
+//    @GetMapping("/{format}")
+//    public ResponseEntity<String> getPublisherReport(@PathVariable String format) throws JRException, FileNotFoundException {
+//        try{
+//            return ResponseEntity.status(HttpStatus.OK).body(reportService.exportReport(format));
+//        }catch (Exception e){
+//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+//        }
+//    }
 
 }
