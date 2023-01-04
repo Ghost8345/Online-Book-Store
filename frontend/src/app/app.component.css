@@ -202,9 +202,15 @@ color: #f1f1f1;
 }
 .searchoption{
   position: relative;
-  left: 90px;
+  left:-10px;
   top: -20px;
   color:rgb(21, 189, 169) ;
+  font-size: larger;
+}
+.searchbtn{
+  position: relative;
+  left:-175px;
+  top: -14px;
 }
 
  
