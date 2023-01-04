@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ProfileService } from 'src/app/profile.service';
-import { Profile } from './profile';
+import { User } from './User';
 
 @Component({
   selector: 'app-profile',
@@ -15,7 +15,6 @@ export class ProfileComponent {
     this.profileService.getProfile(Number(id)).subscribe((response) => {
       this.profileService.setProfileInfo(response);
     });
-      // this.profileService.setProfileInfo(new Profile(1,"Aliaa","Ibrahem","aliaa.ebrahem@gmail.com","1234"));
 
   }
 

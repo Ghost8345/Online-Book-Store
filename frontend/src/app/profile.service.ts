@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Profile } from 'src/app/components/profile/profile'
+import { User } from 'src/app/components/profile/User'
 @Injectable({
   providedIn: 'root'
 })
@@ -9,22 +9,31 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
 
-  private profileInfo = new BehaviorSubject<Profile>(new Profile(NaN, "", "", "", ""));
+  private profileInfo = new BehaviorSubject<User>(new User(Number(localStorage.getItem("user_id")), "", "", "", "",localStorage.getItem("ismanager")=="true"));
   profileInfo$ = this.profileInfo.asObservable();
+  headerDict = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  }
 
-  getProfileInfo(): Profile {
+  requestOptions = {
+    headers: new HttpHeaders(this.headerDict),
+  };
+
+  getProfileInfo(): User {
     return this.profileInfo.value;
   }
 
-  setProfileInfo(profile: Profile): void {
-    this.profileInfo.next(profile);
+  setProfileInfo(user: User): void {
+    this.profileInfo.next(user);
   }
 
-  public getProfile(id: number): Observable<Profile> {
-    return this.http.get<Profile>(`http://localhost:8080/getProfileData?id=${id}`);
+  public getProfile(user_id: number): Observable<User> {
+    return this.http.get<User>(`http://localhost:8080/user/getUser`,{params:{user_id}});
   }
-  public editProfile(profile: Profile): Observable<number> {
-    return this.http.post<number>(`http://localhost:8080/editProfile`, profile);
+  public editProfile(user: User): Observable<number> {
+    return this.http.put<number>(`http://localhost:8080/user/edit`, JSON.stringify(user),this.requestOptions);
   }
 
 

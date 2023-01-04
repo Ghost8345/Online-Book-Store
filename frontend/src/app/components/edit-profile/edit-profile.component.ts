@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { first, Observable } from 'rxjs';
-import { Profile } from 'src/app/components/profile/profile'
+import { User } from 'src/app/components/profile/User'
 import { ProfileService } from 'src/app/profile.service';
 
 @Component({
@@ -17,14 +17,13 @@ export class EditProfileComponent {
   showPasswordFlag: boolean = false;
   passwordFieldType: string = "password";
 
-  userdata: Profile = this.profileService.getProfileInfo();
+  userdata: User = this.profileService.getProfileInfo();
 
   updatedata(fName: string, lName: string, email: string, password: string) {
-    this.userdata.email = email;
-    this.userdata.firstName = fName;
-    this.userdata.lastName = lName;
-    this.userdata.password = password;
-  //  this.profileService.setProfileInfo(this.userdata);
+    email&&(this.userdata.email = email);
+    fName&&(this.userdata.firstName = fName);
+    lName&&(this.userdata.lastName = lName);
+    password&&(this.userdata.password = password);
 
      this.profileService.editProfile(this.userdata).subscribe(() => {
       this.profileService.setProfileInfo(this.userdata);
@@ -39,7 +38,7 @@ export class EditProfileComponent {
     this.showPasswordFlag = false;
     this.passwordFieldType = "password";
   }
- 
+
   triggerPasswordButton() {
     if (this.showPasswordFlag) this.hidePassword();
     else this.showPassword();

@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { Profile } from 'src/app/components/profile/profile'
+import { User } from 'src/app/components/profile/User'
 import { ProfileService } from 'src/app/profile.service';
 
 @Component({
@@ -13,12 +13,12 @@ export class InfoComponent {
 
   constructor(private profileService: ProfileService) { }
 
-  userdata$: Observable<Profile> = this.profileService.profileInfo$;
-  
+  userdata$: Observable<User> = this.profileService.profileInfo$;
+
 
   showPasswordFlag: boolean = false;
   passwordButton: string = "Show Password";
- 
+
   getHiddenPassword(userPasswrod: string): string {
     let len = userPasswrod.length;
     let output: string = "";
