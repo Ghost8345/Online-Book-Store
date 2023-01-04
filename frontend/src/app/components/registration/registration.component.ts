@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Registration } from './registration';
 import { Login } from './login'
 import { UserInfo } from './login';
-
+import { global } from 'src/app/global';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -13,7 +13,7 @@ import { UserInfo } from './login';
 
 })
 export class RegistrationComponent {
-  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient,private app:AppComponent) { }
 
   registration = new Registration('', '', '', '');
   login = new Login('', '')
@@ -55,12 +55,23 @@ export class RegistrationComponent {
              
              localStorage.setItem("user_id", data.id);
              localStorage.setItem("ismanager",data.ismanager);
+             localStorage.setItem("loggedin","1");
+             this.app.ismanager();
              console.log(localStorage.getItem("user_id"))
              console.log(localStorage.getItem("ismanager"))
-            if(data.ismanager===true)
+            global.ismanager=data.ismanager;
+            console.log("check"+global.ismanager)
+            if(data.ismanager===true){
+                 this.router.navigate(['/app'])
                  this.router.navigateByUrl('user')
-            else
-                 this.router.navigateByUrl('shoppingcart')
+            }
+
+            else{
+              this.router.navigate(['/app'])
+              this.router.navigateByUrl('user')
+
+            }
+          
           }
         },
         error: (error: any) => {
@@ -112,7 +123,22 @@ export class RegistrationComponent {
     this.http.post('http://localhost:8080/register/', this.registration, { headers: headerr, responseType: 'text' })
       .subscribe({
         next: (data: any) => {
-          
+          console.log("hii")
+          console.log(data)
+          if (data === 'succeeded') {           
+            // Swal.fire({
+            //   position: 'center',
+            //   icon: 'success',
+            //   title: 'Registeration Succeeded, please login',
+            //   showConfirmButton: false,
+            //   timer: 1500
+            // })
+            //if there is token 
+            localStorage.setItem("ismanager",JSON.stringify(false));
+            localStorage.setItem("loggedin","1");
+            this.app.ismanager();
+            this.router.navigateByUrl('app')         
+            this.router.navigateByUrl('user')         
           console.log("hi "+data)
           if (data === -1) {           
            
@@ -123,6 +149,7 @@ export class RegistrationComponent {
             localStorage.setItem("user_id", data);
             this.router.navigateByUrl('user')               
           }
+        }
         },
         error: (error: any) => {
           alert("email already in use")      

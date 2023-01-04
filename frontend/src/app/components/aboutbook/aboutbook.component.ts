@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./aboutbook.component.css']
 })
 export class AboutbookComponent {
+  ismanager=JSON.parse(localStorage.getItem("ismanager")!);
   loggedin=JSON.parse( localStorage.getItem("UserLoggedIn")!);
   SelectedProduct=JSON.parse(localStorage.getItem("aboutProduct")!);
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
