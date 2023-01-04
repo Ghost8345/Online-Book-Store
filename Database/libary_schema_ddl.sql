@@ -33,6 +33,7 @@ CREATE TABLE BOOK(
 	threshold INT NOT NULL,
     stockQuantity INT NOT NULL,
 	CONSTRAINT THRESHOLD_RANGE CHECK (threshold >= 0),
+    CONSTRAINT STOCK_QUANTITY_RANGE CHECK (stockQuantity >= 0),
     CONSTRAINT BPK
 		PRIMARY KEY(ISBN),
 	CONSTRAINT PUBFK
@@ -40,6 +41,10 @@ CREATE TABLE BOOK(
 			ON UPDATE CASCADE ON DELETE RESTRICT 
 );
 
+<<<<<<< HEAD:Database/libary_schama_ddl.sql
+=======
+
+>>>>>>> e57ad007dbe37df8b6d1161aad65cefb144b1ee7:Database/libary_schema_ddl.sql
 CREATE TABLE STOCK_ORDER(
 	id INT NOT NULL AUTO_INCREMENT,
 	ISBN INT NOT NULL,
@@ -77,6 +82,7 @@ CREATE TABLE CUSTOMER_ORDER_ITEM(
 
 ALTER TABLE BOOK ADD INDEX categoryIndex(category);
 
+
 #----------Triggers----------------
 
 delimiter //
@@ -103,4 +109,3 @@ CREATE TRIGGER `stock_order_BEFORE_DELETE` BEFORE DELETE ON `stock_order` FOR EA
     SET B.stockQuantity = B.stockQuantity + OLD.quantity
     WHERE B.ISBN = OLD.ISBN;
 END //
-

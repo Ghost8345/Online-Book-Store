@@ -1,0 +1,19 @@
+<div  class="page">
+    <p class="bestseller">search result</p>
+    <form class="shape">
+        <input class="text" type="text" disabled="true">
+        </form>
+        <p class="decoration">_________________________________________</p>
+</div>
+    <div>
+        <a *ngFor="let product of  mostRecent">
+       
+        <button #w id={{product.isbn}} class="products"><div class="decor"  routerLink="/aboutbook" routerLinkActive="activebutton" (click)="aboutproduct(product.isbn,product.title,product.publisherName,product.authors,product.publicationYear,product.coverImage,product.price,product.stockQuantity,product.threshold,product.category)" >
+                <img height="200px" width="200px" class=" img" src="../assets/images/{{product.coverImage}}"><p class="info" >{{product.title}}<br><p class="price">{{product.price}} LE</p></p>
+        </div><button  class="cart"(click)="AddProduct(product.isbn)">Add to Cart</button>
+
+    </button>
+        </a>
+    </div>
+   
+   

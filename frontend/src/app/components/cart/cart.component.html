@@ -23,7 +23,7 @@
                
                
                     <div *ngIf="EmptyCart !=0"> 
-    <button class="proceed" routerLink="/payment" (click)="proceedToCheckOut()">Proceed To Checkout</button>
+    <button class="proceed"  (click)="yes()">Proceed To Checkout</button>
                     </div>
 
 <div  class="checker">
@@ -71,14 +71,14 @@
         <tr class="table">
             <td  class="table">
     
-                <button class="removeitem" (click)="removeItemFromCart(product.product_id)">x</button>
-                <img class="productimg" width="80" height="70" src={{product.image}}>
-                <p class="productname">{{product.name}} </p>
+                <button class="removeitem" (click)="removeItemFromCart(product.isbn)">x</button>
+                <img class="productimg" width="80" height="70" src="/../assets/images/{{product.image}}">
+                <p class="productname">{{product.title}}</p>
                 <p class="productprice">{{product.price}}&nbsp;LE</p>
-                <input class="input"   id={{product.product_id}} value="{{product.duplication}}" readonly />
-                <div  class="Decrease-button" id="decrease" (click)="decreaseValue(product.product_id)" value="Decrease Value">-</div>
-                <div  class="Increase-button" id="increase" (click)="increaseValue(product.product_id)" value="Increase Value">+</div>
-                <div id="sub{{product.product_id}}" class="subtotal"  >{{product.price*product.duplication}}</div>
+                <input class="input"   id={{product.isbn}} value="{{product.copies}}" readonly />
+                <div  class="Decrease-button" id="decrease" (click)="decreaseValue(product.isbn)" value="Decrease Value">-</div>
+                <div  class="Increase-button" id="increase" (click)="increaseValue(product.isbn)" value="Increase Value">+</div>
+                <div id="sub{{product.isbn}}" class="subtotal"  >{{product.price*product.copies}}</div>
                 <p class="seprator">______________________________________________________________________________</p>
             </td>
         </tr>

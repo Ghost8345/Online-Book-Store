@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Registration } from './registration';
 import { Login } from './login'
 import { UserInfo } from './login';
-
+import { global } from 'src/app/global';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -13,7 +13,7 @@ import { UserInfo } from './login';
 
 })
 export class RegistrationComponent {
-  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient,private app:AppComponent) { }
 
   registration = new Registration('', '', '', '');
   login = new Login('', '')
@@ -46,7 +46,7 @@ export class RegistrationComponent {
       .subscribe({
         next: (data: any) => {
           console.log(data)
-          if (data.id === "-1") {       
+          if (data=== null) {       
             alert("wrong")
           }
           else {
@@ -55,12 +55,23 @@ export class RegistrationComponent {
              
              localStorage.setItem("user_id", data.id);
              localStorage.setItem("ismanager",data.ismanager);
+             localStorage.setItem("loggedin","1");
+             this.app.ismanager();
              console.log(localStorage.getItem("user_id"))
              console.log(localStorage.getItem("ismanager"))
-            if(data.ismanager===true)
-                 this.router.navigateByUrl('addbook')
-            else
+            global.ismanager=data.ismanager;
+            console.log("check"+global.ismanager)
+            if(data.ismanager===true){
+                 this.router.navigate(['/app'])
                  this.router.navigateByUrl('user')
+            }
+
+            else{
+              this.router.navigate(['/app'])
+              this.router.navigateByUrl('user')
+
+            }
+          
           }
         },
         error: (error: any) => {
@@ -123,19 +134,25 @@ export class RegistrationComponent {
             //   timer: 1500
             // })
             //if there is token 
+            localStorage.setItem("ismanager",JSON.stringify(false));
+            localStorage.setItem("loggedin","1");
+            this.app.ismanager();
+            this.router.navigateByUrl('app')         
             this.router.navigateByUrl('user')         
+          console.log("hi "+data)
+          if (data === -1) {           
+           
+            alert("email already in use")      
           } else {
-            // Swal.fire({
-            //   position: 'center',
-            //   icon: 'error',
-            //   title: 'his Email is already used',
-            //   showConfirmButton: false,
-            //   timer: 1500
-            // })    
-            alert("email already in use")        
+          
+            // id of user 
+            localStorage.setItem("user_id", data);
+            this.router.navigateByUrl('user')               
           }
+        }
         },
         error: (error: any) => {
+          alert("email already in use")      
           console.error(error);
         }
       });

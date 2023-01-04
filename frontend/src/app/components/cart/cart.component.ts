@@ -19,26 +19,26 @@ EmptyCart=JSON.parse(localStorage.getItem("CartProducts")!).length;
 
  increaseValue(id:any) {
   let pos=0;
+  let itemsnum=0
   for( var i=0;i<this.bestsellerproducts.length;i++){
-    if(this.bestsellerproducts[i].product_id==id){
+    if(this.bestsellerproducts[i].isbn==id){
       pos=i;
       break;
     }
   }
   var value = parseInt((<HTMLInputElement>document.getElementById(id)).value, 10);
   value = isNaN(value) ? 1 : value;
-  if(this.bestsellerproducts[pos].quantity<=0){
-    return;
-  }
-  else{
-    this.bestsellerproducts[pos].quantity--;
+  
   value++;
   let val=String(value);
+  itemsnum=JSON.parse(localStorage.getItem("itemsincart")!)
+  itemsnum++;
+  localStorage.setItem("itemsincart",JSON.stringify(itemsnum))
  let  productprice=value*this.bestsellerproducts[pos].price;
  let sub=String( productprice);
  this.subtotal+=this.bestsellerproducts[pos].price;
  localStorage.setItem('subtotal',JSON.stringify( this.subtotal));
- this.bestsellerproducts[pos].duplication+=1;
+ this.bestsellerproducts[pos].copies+=1;
  localStorage.setItem("CartProducts",JSON.stringify( this.bestsellerproducts));
  this.Total=this.subtotal+20;
 
@@ -46,25 +46,29 @@ EmptyCart=JSON.parse(localStorage.getItem("CartProducts")!).length;
   (<HTMLInputElement>document.getElementById("sub"+id)).textContent=sub ;
 
   console.log("kkkkkkkkk")
-  }
+  
 }
 decreaseValue(id:any) {
   console.log("kkkkkkkkk")
   let pos=0;
+  let itemsnum=0
   for( var i=0;i<this.bestsellerproducts.length;i++){
-    if(this.bestsellerproducts[i].product_id==id){
+    if(this.bestsellerproducts[i].isbn==id){
       pos=i;
       break;
     }
   }
+
   var value = parseInt((<HTMLInputElement>document.getElementById(id)).value, 10);
   value = isNaN(value) ? 1 : value;
   if(value>1){
     value--;
-    this.bestsellerproducts[pos].quantity++;
   let val=String(value);
   (<HTMLInputElement>document.getElementById(id)).value = val;
-  this.bestsellerproducts[pos].duplication-=1;
+  this.bestsellerproducts[pos].copies-=1;
+  itemsnum=JSON.parse(localStorage.getItem("itemsincart")!)
+  itemsnum--;
+  localStorage.setItem("itemsincart",JSON.stringify(itemsnum))
   localStorage.setItem("CartProducts",JSON.stringify (this.bestsellerproducts));
   let productprice=value*this.bestsellerproducts[pos].price;
   this.subtotal-=this.bestsellerproducts[pos].price;
@@ -75,18 +79,18 @@ decreaseValue(id:any) {
   }
 }
 removeItemFromCart(id:any){
-  let productInCart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
+  let productInCart:{isbn:number,image:string,title:string,price:number,copies:number}[]=[];
   let itemsnum=0;
   productInCart=JSON.parse(localStorage.getItem("CartProducts")!);
   let index=productInCart.indexOf(id);
   console.log("from index"+index)
   for(var i=0;i<productInCart.length;i++){
-    if(productInCart[i].product_id==id){
+    if(productInCart[i].isbn==id){
       itemsnum=JSON.parse( localStorage.getItem('itemsincart')!)
-     itemsnum-=productInCart[i].duplication;
+     itemsnum-=productInCart[i].copies;
   localStorage.setItem('itemsincart',JSON.stringify (itemsnum));
       console.log("from loop: "+i);
-      this.subtotal-=productInCart[i].price*productInCart[i].duplication;
+      this.subtotal-=productInCart[i].price*productInCart[i].copies;
       this.Total=this.subtotal+20;
       localStorage.setItem("subtotal",JSON.stringify(this.subtotal))
       productInCart.splice(i,1);
@@ -94,7 +98,7 @@ removeItemFromCart(id:any){
       console.log("productsssss"+productInCart.length);
       this.bestsellerproducts=productInCart;
       if(productInCart.length==0){
-        this.router.navigate(['/bestseller'])
+        this.router.navigate(['/user'])
 
       }
       
@@ -109,20 +113,21 @@ proceedToCheckOut(){
 }
  
 yes(){
-  document.getElementById("myModal2")!.style.display="none";
-  document.getElementById("myModal3")!.style.display="block";
- let listDto:{UserID:Number,productId:Number,quantity:Number,time:Date}[]=[]
-  let dateTime = new Date();
-  let temp:{UserID:Number,productId:Number,quantity:Number,time:Date}={UserID:0,productId:0,quantity:0,time:dateTime}
-  let productInCart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
+
+ let listDto:{isbn:Number,copies:Number}[]=[]
+  let productInCart:{isbn:number,image:string,name:string,price:number,copies:number}[]=[];
   //temp.UserID=JSON.parse(localStorage.getItem("UserId")!);
-  temp.time=dateTime;
   productInCart=JSON.parse(localStorage.getItem("CartProducts")!);
   for(var i=0;i<productInCart.length;i++){
-    temp.productId=productInCart[i].product_id
-    temp.quantity=productInCart[i].duplication
+    let temp:{isbn:Number,copies:Number}={isbn:0,copies:0}
+    temp.isbn=productInCart[i].isbn
+    temp.copies=productInCart[i].copies
     listDto.push(temp);
   }
+  console.log(listDto);
+
+  localStorage.setItem("cart",JSON.stringify(listDto));
+  this.router.navigate(['/payment'])
  /* let p:Product[]=[];
   localStorage.setItem("CartProducts",JSON.stringify(p));
   console.log(localStorage.getItem("CartProducts"))

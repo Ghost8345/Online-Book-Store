@@ -1,3 +1,5 @@
+
+
 <body id="body" class="body">
     <div class="toolbar" role="banner">
       <button class="open" id="option"(click)="openNav()">&#9776;</button>
@@ -5,47 +7,67 @@
         <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
         <nav>
         <a href="#" #categories  id="cate" routerLink="/category"  routerLinkActive="activebutton" (click)="submit($event)">Categories</a>
-        <a href="#" #addbook  id="cate" routerLink="/addbook"  routerLinkActive="activebutton" >Add Book</a>
-        <a href="#" #addbook  id="cate" routerLink="/promote"  routerLinkActive="activebutton" >Promote User</a>
-        <a href="#" #addbook  id="cate" routerLink="/placeorder"  routerLinkActive="activebutton"(click)="submit($event)" >Place Order</a>
+        <a *ngIf="manager==true">
+        <a href="#" #addbook  id="add" routerLink="/addbook"  routerLinkActive="activebutton" >Add Book</a>
+        <a href="#" #addbook  id="promote" routerLink="/promote"  routerLinkActive="activebutton" >Promote User</a>
+        <a href="#" #addbook  id="place" routerLink="/placeorder"  routerLinkActive="activebutton"(click)="submit($event)" >Place Order</a>
+      </a>
 
         </nav>
       </div>
       <img  class="logo" height="100" width="100"  src="https://img.freepik.com/free-vector/gradient-quill-pen-logo-template_52683-99051.jpg?size=338&ext=jpg&ga=GA1.2.1979898065.1669814332" />
       <span class="store">Book<br>Store</span>
       <form class="search_button">
-    <div>
-        <input id="searchingFor" class="search" type="text" placeholder="Search.." ><i class="fa fa-search" style="font-size:24px"></i>
+    
+
+        <input id="searchingFor" class="search" type="text" placeholder="Search.." >
+        <div class="searchbtn">
+          <button class="searchbtn" (click)="search()"><i class="fa fa-search" style="font-size:20px"></i></button> 
+         </div>
+        <div  class="searchoption">
+        <label for="search">search By:</label>
+        <select name="search" id="search">
+          <option  value="isbn">ISBN</option>
+          <option  value="title">Title</option>
+          <option  value="category">Category</option>
+          <option  value="author">Author</option>
+          <option  value="publisherName">Publisher</option>
+        </select>
     </div>
       </form>
 
       <form class="profile" >
 
         <button type="submit" routerLink="/user" routerLinkActive="activebutton"><i class="fa fa-home" style="font-size:35px ;"></i></button>
-    
-        <button type="submit" routerLink="/shoppingcart" routerLinkActive="activebutton"><i class="fa fa-shopping-cart" style="font-size:35px ;"></i></button>
-        <button type="submit" ><i class="fa fa-user" style="font-size:35px ;"></i></button>
+
+        <button type="submit" routerLink="/shoppingcart" routerLinkActive="activebutton" (click)="cart()"><i class="fa fa-shopping-cart" style="font-size:35px ;"></i></button>
+        <button type="submit" routerLink="/profile" routerLinkActive="activebutton"><i class="fa fa-user" style="font-size:35px ;"></i></button>
+        <a *ngIf="manager==true">
         <button type="submit"routerLink="/notifications" routerLinkActive="activebutton" ><i class="fa fa-bell" style="font-size:35px ;"></i></button>
 
+        </a>
+        <a *ngIf="loggedin==1">
+          <button (click)="logout()">Log-out <span class="glyphicon glyphicon-log-out"></span></button>
+        </a>
 
-       
-    
+
+
         <!--<button type="submit" *ngSwitchCase="true" routerLink="/profile" routerLinkActive="activebutton" ><i class="fa fa-user" style="font-size:35px ;"></i></button>
         -->
-    
+
         <p id="Welcome"class="logged"style="margin-left:700px; margin-top: 30px;; color: rgb(249, 208, 24); font-family:Arial, Helvetica, sans-serif; font-size:xx-large;" >
-    
+
         </p>
-        
+
         <label id="Welcome" style="margin-left: 220px; color: rgb(249, 208, 24); font-family:Arial, Helvetica, sans-serif; font-size:xx-large;" >
         <br></label>
       </form>
-    
+
       <p #num id="itemsnum" class="numofitemsinshoppingcart" style="display: none;">0</p>
     </div>
-    
-    
-    
+
+
+
     </body>
 <nav></nav>
 <router-outlet></router-outlet>

@@ -1,0 +1,87 @@
+<div class="login-wrap">
+	<div class="login-html">
+	
+         <span class="Store">Book Store</span><br>
+		<input id="tab-1" type="radio" name="tab" class="sign-in"  checked ><label for="tab-1" class="tab">Sign In</label>
+		<input id="tab-2" type="radio" name="tab" class="sign-up" ><label for="tab-2" class="tab">Sign Up</label>
+		<div class="login-form">
+			<div class="sign-in-htm">
+				<div class="group">
+					<label for="userSignIn" class="label"><span ><i for="userSignIn" class="fa fa-envelope"></i>
+					</span> Email Address</label><br>
+					<input id="userSignIn" type="email"  pattern=".+@globex\.com" class="input">
+
+
+				</div>
+				<div class="group">
+					<label for="passSignIn" class="label" >
+                         <span ><i for="user" class="fa fa-key"></i></span>
+                        Password</label><br>
+                      <input id="passSignIn" type="password" class="input" minlength="9" oninvalid="alert('Weak password');" data-type="password">
+
+				</div>
+				<!-- <div class="group">
+					<input id="checkSignIn" type="checkbox" class="check" checked>
+					<label for="check"><span class="icon"></span> Keep me Signed in</label>
+				</div> -->
+				<div class="group">
+                    <button style="color: black;" class="button" (click)="ValidateRequest($event)"> Sign In</button>
+
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<a href="#forgot">Forgot Password?</a>
+				</div>
+			</div>
+
+			
+		 <form name="register" class="inputs"  (ngSubmit)="onSubmit()" #signupForm="ngForm">
+			<div class="sign-up-htm" >
+				<h1 style="color:blanchedalmond"> Fill in this form ,To create an account</h1><br>
+				<div class="group">
+					<label for="FirstName"  class="label"><span ><i for="FirstName" class="fa fa-user-circle"></i>
+					</span> First Name</label>
+					<input id="FirstName" name="FirstName" type="text" #fname="ngModel" class="input"  [(ngModel)]=" registration.firstName" required>				
+				</div>
+
+				<div class="group">
+					<label for="LastName"  class="label"><span ><i for="LastName" class="fa fa-user-circle"></i>
+					</span> Last Name</label>
+					<input id="LastName" name="LastName" type="text"#lname="ngModel" class="input" [(ngModel)]=" registration.lastName"  required>				
+				</div>
+
+				<div class="group">
+					<label for="mail" class="label" ><span ><i for="mail" class="fa fa-envelope"></i>
+					</span> Email Address</label>
+					<input name="uEmail" id="mail" type="email" #email="ngModel"  pattern=".+@globex\.com" class="input" [(ngModel)] = "registration.email" required >
+				</div>
+
+				<div class="group">
+					<label for="passSignUp"  class="label"><span ><i for="passSignUp" class="fa fa-key"></i>
+					</span>Password</label>
+
+					<input  name="password" id="passSignUp" type="password" #pswd="ngModel" class="input" data-type="password" [(ngModel)]=" registration.password" required>
+			
+				</div>
+				<div class="group">
+					<label for="passSignUp2" class="label"><span ><i for="passSignUp2" class="fa fa-key"></i>
+					</span>Repeat Password</label>
+					<input id="passSignUp2" type="password" class="input" data-type="password">
+				</div>
+				<div class="group"   >
+					<button  type="submit" style="color: black;" class="button"  > Sign Up</button>
+					<!-- <button type="submit" class="button" [disabled]="!signupForm.form.valid">Sign Up</button> -->
+					
+				</div>
+				<div class="hr"></div>
+				<div class="foot-lnk">
+					<label for="tab-1">Already Member?</label>
+				</div>
+			</div>
+		 </form>
+		</div>
+	</div>
+   
+
+</div>
+

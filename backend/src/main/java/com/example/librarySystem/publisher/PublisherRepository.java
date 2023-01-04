@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository
 public interface PublisherRepository extends CrudRepository<Publisher, String> {
 
+
     @Query("SELECT * FROM publisher as p where p.name = :name")
     Publisher findPublisherByName(@Param("name") String name);
 
@@ -23,5 +24,7 @@ public interface PublisherRepository extends CrudRepository<Publisher, String> {
     @Modifying
     @Query("UPDATE publisher SET name = :newName, address = :address, phone = :phone WHERE name = :oldName")
     void edit(@Param("oldName") String oldName, @Param("newName") String newName, @Param("address") String address, @Param("phone") String phone);
+
+    boolean existsByPhone(String phone);
 
 }

@@ -2,12 +2,10 @@ package com.example.librarySystem.customerOrder;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/api/orders")
 public class CustomerOrderController {
 
@@ -24,7 +22,7 @@ public class CustomerOrderController {
             return new ResponseEntity<>("Order placed successfully.",HttpStatus.ACCEPTED);
         } catch (Exception e) {
             System.out.println(e);
-            return new ResponseEntity<>("Failed to place the order.",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Failed to place the order." + e.getMessage(),HttpStatus.BAD_REQUEST);
         }
     }
 }
