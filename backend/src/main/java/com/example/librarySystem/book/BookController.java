@@ -4,6 +4,8 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -105,20 +107,24 @@ public class BookController {
     }
 
     @GetMapping("/isbn/{isbn}")
-    public ResponseEntity<Book> getBookByIsbn(@PathVariable int isbn) {
+    public ResponseEntity<List<Book>> getBookByIsbn(@PathVariable int isbn) {
         try {
             Book book = bookService.getBookByIsbn(isbn);
-            return new ResponseEntity<>(book, HttpStatus.OK);
+            List<Book> lis = new ArrayList<>();
+            lis.add(book);
+            return new ResponseEntity<>(lis, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
     @GetMapping("/title/{title}")
-    public ResponseEntity<Book> getBookByTitle(@PathVariable String title) {
+    public ResponseEntity<List<Book>> getBookByTitle(@PathVariable String title) {
         try {
             Book book = bookService.getBookByTitle(title);
-            return new ResponseEntity<>(book, HttpStatus.OK);
+            List<Book> lis = new ArrayList<>();
+            lis.add(book);
+            return new ResponseEntity<>(lis, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -12,12 +12,12 @@ import { UserComponent } from './components/user/user.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { InfoComponent } from './components/info/info.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-
 import { CategoryComponent } from './components/category/category.component';
 import { SelectedCategoryComponent } from './components/selected-category/selected-category.component';
 import { NotificationsComponent } from './components/notifications/notifications.component';
 import { PlaceorderComponent } from './components/placeorder/placeorder.component';
 import { EditFormComponent } from './components/edit-form/edit-form.component';
+import { SearchComponent } from './components/search/search.component';
 import { AppComponent } from './app.component';
 
 const routes: Routes = [
@@ -46,6 +46,8 @@ const routes: Routes = [
   { path: "selectedcategory", component: SelectedCategoryComponent },
   { path: "notifications", component: NotificationsComponent },
   { path: "placeorder", component: PlaceorderComponent },
+  {path: "editbook", component:EditFormComponent},
+  {path:"search",component:SearchComponent},
   {path: "editbook", component:EditFormComponent},
   {path: "app", component:AppComponent}
 

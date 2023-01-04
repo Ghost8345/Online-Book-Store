@@ -1,3 +1,4 @@
 export class global{
-public static ismanager:boolean
+    public static word:string="";
+    public static ismanager:boolean
 }

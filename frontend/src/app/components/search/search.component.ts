@@ -3,22 +3,33 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UploadItem } from '../add-book/add-book';
-
+import { global } from 'src/app/global';
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-
-export class UserComponent implements OnInit{
+export class SearchComponent implements OnInit{
   constructor(private router: Router, private http: HttpClient, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
   mostRecent:any;
+  categories = ['isbn', 'title', 'author', 'publisherName', 'category'];
+  categoryName="";
   ngOnInit(): void {
-    console.log("ismanager-->"+localStorage.getItem("ismanager"))
     document.getElementById("body")!.style.display="block";
+
+  }
+
+  //mostRecent:{id:0,cover:"",Title:"",price:0,category:"",publisher:"",Quantity:0}[]=[];
+ 
+ /* mostRecent=[{id:0,cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
+,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:1,authors:"lol"}];*/
+searchword:any;
+  search(){
+    this.searchword = (document.getElementById("searchingFor") as HTMLInputElement).value;
+    console.log(this.searchword)
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("token") + "" });
 
-    this.http.get<UploadItem[]>('http://localhost:8080/api/book', { headers: headerr }
+    this.http.get<UploadItem[]>('http://localhost:8080/api/book/'+this.categoryName+"/"+this.searchword, { headers: headerr }
     ).subscribe({
       next: (data: any) => {
         this.mostRecent=data;
@@ -29,12 +40,6 @@ export class UserComponent implements OnInit{
       }
     });
   }
-
-  //mostRecent:{id:0,cover:"",Title:"",price:0,category:"",publisher:"",Quantity:0}[]=[];
- 
- /* mostRecent=[{id:0,cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
-,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:1,authors:"lol"}];*/
-
   aboutproduct(
     isbn: number,
     title: string,
@@ -63,19 +68,24 @@ AddProduct(id:any){
            break;
     }
   }
- 
-  
+  if(this.mostRecent[pos].Quantity<=0){
+    document.getElementById("outofstock")!.style.visibility="visible"
+  }
+  else{
  /* localStorage.removeItem("CartProducts");
   localStorage.removeItem("subtotal");
   localStorage.removeItem('itemsincart')*/
-   let cart:{isbn:number,image:string,title:string,price:number,copies:number}[]=[];
-  let aux:{isbn:number,image:string,title:string,price:number,copies:number}={isbn:0,image:"",title:"",price:0,copies:0};
+  this.mostRecent[pos].Quantity-=1;
+   let cart:{product_id:number,image:string,name:string,price:number,duplication:number}[]=[];
+  let duplicate:{id:number,num:number}[]=[]
+  let aux:{product_id:number,image:string,name:string,price:number,duplication:number,quantity:number}={product_id:0,image:"",name:"",price:0,duplication:0,quantity:0};
   let subtotal=0;
-  aux.isbn=this. mostRecent[pos].isbn;
-  aux.image=this. mostRecent[pos].coverImage;
-  aux.title=this. mostRecent[pos].title;
+  aux.product_id=this. mostRecent[pos].id;
+  aux.image=this. mostRecent[pos].cover;
+  aux.name=this. mostRecent[pos].Title;
+  aux.quantity=this.mostRecent[pos].Quantity;
   aux.price=this. mostRecent[pos].price;
-  aux.copies=1;
+  aux.duplication=1;
   let flag=0;
 
   if(localStorage.getItem("CartProducts")==null){
@@ -88,10 +98,10 @@ AddProduct(id:any){
   else{
   cart=JSON.parse (localStorage.getItem("CartProducts")!)
   for(var i=0;i<cart.length;i++){
-    if(cart[i].isbn==this. mostRecent[pos].isbn){
+    if(cart[i].product_id==this. mostRecent[pos].isbn){
       
        flag=1;
-       cart[i].copies+=1;
+       cart[i].duplication+=1;
        subtotal=JSON.parse (localStorage.getItem("subtotal")!);
   subtotal+=this. mostRecent[pos].price;
   localStorage.setItem("subtotal",JSON.stringify (subtotal));
@@ -109,8 +119,7 @@ AddProduct(id:any){
 }
   let val=0;
   val=JSON.parse(localStorage.getItem("itemsincart")!);
-  console.log("ssssssssssssssssssssssssssssssssssssssssssss"+val)
-  if(val==null||val<=0){
+  if(val==null){
     val=1;
   }
   else{
@@ -122,11 +131,10 @@ localStorage.setItem("itemsincart",JSON.stringify(val));
   document.getElementById("itemsnum")!.style.display="block"
 
 }
+}
 
 clossing(){
  
   document.getElementById("myModal3")!.style.display="none";
 }
 }
-
-

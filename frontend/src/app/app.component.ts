@@ -11,12 +11,12 @@ import { global } from './global';
 export class AppComponent {
   loggedin=JSON.parse(localStorage.getItem("loggedin")!)
   manager=false;
-  constructor(private router:Router){ 
+  constructor(private router:Router){
     this.manager=JSON.parse( localStorage.getItem('ismanager')!)
        this.router.routeReuseStrategy.shouldReuseRoute=function(){
 
         console.log("ccccccccccccccccc"+JSON.parse( localStorage.getItem('ismanager')!))
-        
+
 
         return false
        }
@@ -38,7 +38,7 @@ console.log("yaaaaaaaaaaa"+this.manager)
     this.router.navigate(['/registration']);
   }
   change(){
-    
+
   }
   ismanager(){
     this.loggedin=JSON.parse(localStorage.getItem("loggedin")!)

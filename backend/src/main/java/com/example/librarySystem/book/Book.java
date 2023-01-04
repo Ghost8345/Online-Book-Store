@@ -26,6 +26,4 @@ public class Book {
     // Category Enum
     private Category category;
 
-
-
 }

@@ -24,7 +24,7 @@ public class CustomerOrderController {
             return new ResponseEntity<>("Order placed successfully.",HttpStatus.ACCEPTED);
         } catch (Exception e) {
             System.out.println(e);
-            return new ResponseEntity<>("Failed to place the order.",HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>("Failed to place the order." + e.getMessage(),HttpStatus.BAD_REQUEST);
         }
     }
 }
