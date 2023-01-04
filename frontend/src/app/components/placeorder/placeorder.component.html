@@ -1,12 +1,12 @@
 
 <h1 class="header">Place New Order</h1>
 <div class="data">
-<label class="id" for="Book id">Book Id:</label>
-        <input class="bookid" type="number"  id="isbn" >
+<label class="id" for="book_id">Book Id:</label>
+        <input class="bookid" type="number" #book_id name="book_id"  id="isbn"  >
         <br>
         <br>
         <label class="quantity" for="quantity">Quantity:</label>
-        <input class="q" type="number"  id="orderquantity" >
+        <input class="q" type="number"  #quantity name="quantity" id="orderquantity" >
     </div>
-    <button class="order">Order</button>
+    <button (click)="placeOrder(Number(book_id.value),Number(quantity.value))" class="order">Order</button>
 
