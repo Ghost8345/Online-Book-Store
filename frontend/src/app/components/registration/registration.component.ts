@@ -46,7 +46,7 @@ export class RegistrationComponent {
       .subscribe({
         next: (data: any) => {
           console.log(data)
-          if (data.id === "-1") {       
+          if (data=== null) {       
             alert("wrong")
           }
           else {
@@ -71,6 +71,7 @@ export class RegistrationComponent {
               this.router.navigateByUrl('user')
 
             }
+          
           }
         },
         error: (error: any) => {
@@ -135,18 +136,20 @@ export class RegistrationComponent {
             //if there is token 
             
             this.router.navigateByUrl('user')         
+          console.log("hi "+data)
+          if (data === -1) {           
+           
+            alert("email already in use")      
           } else {
-            // Swal.fire({
-            //   position: 'center',
-            //   icon: 'error',
-            //   title: 'his Email is already used',
-            //   showConfirmButton: false,
-            //   timer: 1500
-            // })    
-            alert("email already in use")        
+          
+            // id of user 
+            localStorage.setItem("user_id", data);
+            this.router.navigateByUrl('user')               
           }
+        }
         },
         error: (error: any) => {
+          alert("email already in use")      
           console.error(error);
         }
       });

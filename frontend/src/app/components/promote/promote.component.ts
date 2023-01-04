@@ -16,21 +16,27 @@ export class PromoteComponent implements OnInit {
   }
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
 
-  email: string = ""
+  userEmail: string = ""
   
 
   goback() {
     document.getElementById("body")!.style.display = "block";
   }
   submit() {
-     this.email = (document.getElementById("email") as HTMLInputElement).value;
-    console.log(this.email)
+     this.userEmail = (document.getElementById("email") as HTMLInputElement).value;
+    console.log(this.userEmail)
 
-    const headerr = new HttpHeaders({ 'Content-Type': 'application/text' });
-    this.http.post('http://localhost:8080/promote', this.email, { headers: headerr, responseType: 'text' })
+    const headerr = new HttpHeaders({ 'Content-Type': 'application/json' });
+    this.http.put('http://localhost:8080/manager/promote/'+localStorage.getItem("user_id"), this.userEmail, { headers: headerr, responseType: 'text' })
       .subscribe({
 
         next: (data: any) => {
+          if (data === "User has been promoted"){
+            console.log("promoted")
+            this.router.navigateByUrl('user')
+          }else{
+            alert ("cannot promote user");
+          }
           // Swal.fire({
           //   position: 'center',
           //   icon: 'success',

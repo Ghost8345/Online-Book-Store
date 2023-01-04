@@ -1,0 +1,38 @@
+<div class="main">
+  <div class="card">
+    <div class="card-body">
+      <i class="fa fa-pen fa-xs edit"></i>
+      <table>
+        <tbody>
+          <tr>
+            <td class="parameters">First Name</td>
+            <td>:</td>
+            <td class="rcorners2">{{(userdata$ | async)?.firstName}}</td>
+          </tr>
+          <tr>
+            <td class="parameters">Last Name</td>
+            <td>:</td>
+            <td class="rcorners2">{{(userdata$ | async)?.lastName}}</td>
+          </tr>
+          <tr>
+            <td class="parameters">Email</td>
+            <td>:</td>
+            <td class="rcorners2">{{(userdata$ | async)?.email}}</td>
+          </tr>
+          <tr>
+            <td class="parameters">Password</td>
+            <td>:</td>
+            <td class="rcorners2 password-field">{{getPassword((userdata$ | async)?.password)}} <i (click)="triggerPasswordButton()"
+                class="fa password-toggler"
+                [ngClass]="{'fa-eye': !showPasswordFlag,'fa-eye-slash' : showPasswordFlag}"></i>
+            </td>
+
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+</div>

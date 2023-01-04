@@ -32,4 +32,8 @@ public interface BookRepository extends CrudRepository<Book, Integer> {
     List<Book> findBooksByPublisherName(String publisherName);
 
     List<Book> findByAuthorsContaining(String author);
+
+    boolean existsByTitle(String title);
+
+
 }

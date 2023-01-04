@@ -1,0 +1,24 @@
+<br>
+<br>
+<div>
+    <form  class="container">
+      <label for="fname" style="font-weight: bold;font-size: large;"  >First Name</label>
+      <input type="text" #fname name="firstname" placeholder={{userdata.firstName}} value={{userdata.firstName}}>
+  
+      <label for="lname" style="font-weight: bold;font-size: large;">Last Name</label>
+      <input type="text" #lname  name="lastname" placeholder={{userdata.lastName}} value={{userdata.lastName}}> 
+      <label for="email" style="font-weight: bold;font-size: large;">Email</label>
+      <input type="text" #email name="email" placeholder={{userdata.email}} value={{userdata.email}}>
+
+      <label for="password" style="font-weight: bold;font-size: large;">Password</label>
+      <div class="password-container">
+        <input [type]="passwordFieldType" #password name="password" placeholder={{userdata.password}} value={{userdata.password}}>
+        <i (click)="triggerPasswordButton()" class="fa password-toggler" [ngClass]="{'fa-eye': !showPasswordFlag,'fa-eye-slash' : showPasswordFlag}"></i>
+      </div>
+     
+    <button (click)="updatedata(fname.value,lname.value,email.value,password.value)" routerLink="/profile" routerLinkActive="activebutton"> Save</button>
+
+    </form>  
+
+    
+  </div>
