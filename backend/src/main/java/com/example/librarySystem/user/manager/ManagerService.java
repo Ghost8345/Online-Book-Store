@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 public class ManagerService {
 
     UserRepository userRepository;
-    
+
     public String promoteUser(String userEmail, int managerId) throws Exception {
         managerCheck(managerId);
         int userId = userRepository.getUserId(userEmail);

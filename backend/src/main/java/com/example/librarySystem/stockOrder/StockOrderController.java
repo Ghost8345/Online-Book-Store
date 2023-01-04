@@ -27,12 +27,12 @@ public class StockOrderController {
 
     @DeleteMapping("/{managerId}/{orderId}")
     public ResponseEntity<String> confirmOrder(@PathVariable int managerId,
-                                                @PathVariable int orderId) throws Exception {
-//        try {
+                                                @PathVariable int orderId) {
+        try {
             return new ResponseEntity<>(stockOrderService.confirmOrder(managerId, orderId), HttpStatus.OK);
-//        }catch (Exception e){
-//            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
-//        }
+        }catch (Exception e){
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
+        }
     }
 
 }
