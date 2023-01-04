@@ -7,5 +7,5 @@ public class BookSale {
     private int isbn;
     private String title;
     private int copies;
-    private float totalRevenue;
+    private float total;
 }
