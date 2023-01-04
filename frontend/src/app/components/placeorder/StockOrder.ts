@@ -6,5 +6,5 @@ export class StockOrder {
   constructor( isbn: number, quantity: number) {
     this.isbn = isbn;
     this.quantity = quantity;
-  }
+  };
 }
