@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { Payment} from './payment';
+import {CreditCard} from './CreditCard';
 
 @Component({
   selector: 'app-payment',
@@ -11,9 +11,9 @@ export class PaymentComponent {
   ngOnInit(): void {
     document.getElementById("body")!.style.display="block";
     }
-    payment =new Payment('','','')
+    creditCard =new CreditCard(0,0,0,0)
     submit(){
-      console.log(this.payment.CVC +" "+ this.payment.CardNumber+ " "+ this.payment.expiryDate)
+      //console.log(this.payment.CVC +" "+ this.payment.CardNumber+ " "+ this.payment.expiryDate)
     }
 
 
