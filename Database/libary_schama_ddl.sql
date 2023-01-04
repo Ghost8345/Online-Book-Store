@@ -40,16 +40,6 @@ CREATE TABLE BOOK(
 			ON UPDATE CASCADE ON DELETE RESTRICT 
 );
 
--- CREATE TABLE BOOK_AUTHORS(
--- 	ISBN INT NOT NULL,
--- 	authorName VARCHAR(30) NOT NULL,
---     CONSTRAINT APK 
--- 		PRIMARY KEY(ISBN, authorName),
--- 	CONSTRAINT AFK
--- 		FOREIGN KEY(ISBN) REFERENCES BOOK(ISBN)
--- 			ON UPDATE RESTRICT ON DELETE CASCADE
--- );
-
 CREATE TABLE STOCK_ORDER(
 	id INT NOT NULL AUTO_INCREMENT,
 	ISBN INT NOT NULL,
@@ -85,10 +75,32 @@ CREATE TABLE CUSTOMER_ORDER_ITEM(
 			ON UPDATE RESTRICT ON DELETE CASCADE
 );
 
-ALTER TABLE PUBLISHER ADD INDEX nameIndex(`name`);
-
 ALTER TABLE BOOK ADD INDEX categoryIndex(category);
 
+#----------Triggers----------------
 
+delimiter //
+CREATE TRIGGER `book_BEFORE_UPDATE` BEFORE UPDATE ON `book`
+ FOR EACH ROW BEGIN
+	IF NEW.stockQuantity < 0 THEN
+	  SIGNAL SQLSTATE '45000' SET 
+      MESSAGE_TEXT = 'Stock quantity of book can not be negative!';
+    END IF;
+END //
 
+delimiter //
+CREATE TRIGGER `book_AFTER_UPDATE` AFTER UPDATE ON `book` FOR EACH ROW BEGIN
+	IF NEW.stockQuantity < NEW.threshold THEN
+		UPDATE BOOK AS B
+        SET B.stockQuantity = NEW.threshold + 20
+        WHERE B.ISBN = NEW.ISBN;
+	END IF;
+END //
+
+delimiter //
+CREATE TRIGGER `stock_order_BEFORE_DELETE` BEFORE DELETE ON `stock_order` FOR EACH ROW BEGIN
+	UPDATE BOOK AS B
+    SET B.stockQuantity = B.stockQuantity + OLD.quantity
+    WHERE B.ISBN = OLD.ISBN;
+END //
 
