@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="hstack">
+    <button class="button" (click)="getBooksSales()">Books sales</button>
+    <button class="button" (click)="getTop10BooksSales()">
+      Top 10 Books sales
+    </button>
+    <button class="button" (click)="getTop10Customers()">Top Customers</button>
+  </div>
+  <div class="hstack">
+    <h1 *ngIf="loading">Loading</h1>
+  </div>
+  <div [innerHTML]="reportHtml" class="report-container"></div>
+</div>

@@ -23,11 +23,11 @@ import { EditFormComponent } from './components/edit-form/edit-form.component';
 import { CommonModule } from '@angular/common';
 import { SearchComponent } from './components/search/search.component';
 import { ProfileComponent } from './components/profile/profile.component';
-import {InfoComponent} from "./components/info/info.component";
+import { InfoComponent } from './components/info/info.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
 import { MessageComponent } from './components/message/message.component';
-import {MatDialogModule} from "@angular/material/dialog";
-
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReportComponent } from './components/report/report.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +52,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     ProfileComponent,
     InfoComponent,
     EditProfileComponent,
-    MessageComponent
+    MessageComponent,
+    ReportComponent
   ],
   imports: [
     CommonModule,
@@ -65,6 +66,6 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
