@@ -6,6 +6,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @CrossOrigin
 @RequestMapping("/api/stock")
@@ -13,7 +15,16 @@ import org.springframework.web.bind.annotation.*;
 public class StockOrderController {
     private final StockOrderService stockOrderService;
 
-    //AUTOMATIC WHEN QUANTITY OF BOOK X DECREASES THAN THRESHOLD
+    @GetMapping("/{managerId}")
+    public ResponseEntity<List<StockOrder>> getPendingOrders(@PathVariable int managerId){
+        try {
+            List<StockOrder> orders = stockOrderService.getOrders(managerId);
+            return new ResponseEntity<>(orders, HttpStatus.OK);
+        }catch (Exception e){
+            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
+        }
+    }
+
     //RETURNS ID CREATED
     @PutMapping("/{managerId}")
     public ResponseEntity<Integer> makeOrder(@PathVariable int managerId,

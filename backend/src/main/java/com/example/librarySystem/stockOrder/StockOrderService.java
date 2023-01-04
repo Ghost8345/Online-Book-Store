@@ -1,9 +1,11 @@
 package com.example.librarySystem.stockOrder;
 
 import com.example.librarySystem.user.manager.ManagerService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -22,4 +24,11 @@ public class StockOrderService {
         stockOrderRepository.deleteById(orderId);
         return "Order confirmed successfully ... book quantity updated";
     }
+
+    public List<StockOrder> getOrders(int managerId) throws Exception {
+        managerService.managerCheck(managerId);
+        List<StockOrder> orders =  (List<StockOrder>) stockOrderRepository.findAll();
+        return orders;
+    }
 }
+

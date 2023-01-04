@@ -1,7 +1,5 @@
 package com.example.librarySystem.stockOrder;
 
-import com.example.librarySystem.customerOrder.CustomerOrder;
-import com.example.librarySystem.customerOrder.CustomerOrderItem;
 import lombok.AllArgsConstructor;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
@@ -25,8 +23,8 @@ public class StockOrderDAO {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(connection -> {
             PreparedStatement ps = connection.prepareStatement(sql, new String[]{"id"});
-            ps.setInt(1, order.isbn());
-            ps.setInt(2, order.quantity());
+            ps.setInt(1, order.getIsbn());
+            ps.setInt(2, order.getQuantity());
             return ps;
         }, keyHolder);
 
