@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 public class ManagerService {
 
     UserRepository userRepository;
-    public String promoteUser(int userId, int managerId) throws Exception {
+    
+    public String promoteUser(String userEmail, int managerId) throws Exception {
         managerCheck(managerId);
+        int userId = userRepository.getUserId(userEmail);
         userRepository.promoteUser(userId);
         return "User has been promoted";
     }
