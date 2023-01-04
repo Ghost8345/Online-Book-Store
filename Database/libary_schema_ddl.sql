@@ -41,10 +41,6 @@ CREATE TABLE BOOK(
 			ON UPDATE CASCADE ON DELETE RESTRICT 
 );
 
-<<<<<<< HEAD:Database/libary_schama_ddl.sql
-=======
-
->>>>>>> e57ad007dbe37df8b6d1161aad65cefb144b1ee7:Database/libary_schema_ddl.sql
 CREATE TABLE STOCK_ORDER(
 	id INT NOT NULL AUTO_INCREMENT,
 	ISBN INT NOT NULL,
