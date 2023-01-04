@@ -134,7 +134,10 @@ export class RegistrationComponent {
             //   timer: 1500
             // })
             //if there is token 
-            
+            localStorage.setItem("ismanager",JSON.stringify(false));
+            localStorage.setItem("loggedin","1");
+            this.app.ismanager();
+            this.router.navigateByUrl('app')         
             this.router.navigateByUrl('user')         
           console.log("hi "+data)
           if (data === -1) {           
