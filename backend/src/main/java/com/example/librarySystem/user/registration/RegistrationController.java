@@ -14,13 +14,13 @@ public class RegistrationController {
     RegistrationService registrationService;
 
     @PostMapping("/")
-    public ResponseEntity<String> registerUser(@RequestBody User user){
+    public ResponseEntity<Integer> registerUser(@RequestBody User user){
         try {
-            registrationService.createUser(user);
-            return ResponseEntity.ok().body("succeeded");
+
+            return ResponseEntity.ok().body( registrationService.createUser(user));
         }
         catch (Exception e){
-            return ResponseEntity.badRequest().body("Couldn't create the user");
+            return ResponseEntity.badRequest().body(-1);
         }
     }
 }

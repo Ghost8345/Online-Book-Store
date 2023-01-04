@@ -15,6 +15,9 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     @Query("SELECT * FROM USER u WHERE u.email = :email")
     Optional<User> emailExists(@Param("email") String email);
 
+    @Query("SELECT id FROM User u WHERE u.email= :email")
+     int getUserId(@Param("email") String userEmail);
+
     @Transactional
     @Modifying
     @Query("UPDATE User u SET u.manager = 1 WHERE u.id = :id")
