@@ -18,19 +18,21 @@
       <img  class="logo" height="100" width="100"  src="https://img.freepik.com/free-vector/gradient-quill-pen-logo-template_52683-99051.jpg?size=338&ext=jpg&ga=GA1.2.1979898065.1669814332" />
       <span class="store">Book<br>Store</span>
       <form class="search_button">
-    <div>
-        <input id="searchingFor" class="search" type="text" placeholder="Search.." ><i class="fa fa-search" style="font-size:24px"></i>
+    
+
+        <input id="searchingFor" class="search" type="text" placeholder="Search.." >
+        <div class="searchbtn">
+          <button class="searchbtn" (click)="search()"><i class="fa fa-search" style="font-size:20px"></i></button> 
+         </div>
         <div  class="searchoption">
         <label for="search">search By:</label>
         <select name="search" id="search">
-          <option value="ISBN">ISBN</option>
-          <option value="Title">Title</option>
-          <option value="Category">Category</option>
-          <option value="Author">Author</option>
-          <option value="Publisher">Publisher</option>
-        
+          <option  value="isbn">ISBN</option>
+          <option  value="title">Title</option>
+          <option  value="category">Category</option>
+          <option  value="author">Author</option>
+          <option  value="publisherName">Publisher</option>
         </select>
-      </div>
     </div>
       </form>
 
