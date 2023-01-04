@@ -3,22 +3,33 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UploadItem } from '../add-book/add-book';
-
+import { global } from 'src/app/global';
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.css']
 })
-
-export class UserComponent implements OnInit{
+export class SearchComponent implements OnInit{
   constructor(private router: Router, private http: HttpClient, private activatedRoute: ActivatedRoute, private sanitizer: DomSanitizer) { }
   mostRecent:any;
+  categories = ['isbn', 'title', 'author', 'publisherName', 'category'];
+  categoryName="";
   ngOnInit(): void {
-    console.log("ismanager-->"+localStorage.getItem("ismanager"))
     document.getElementById("body")!.style.display="block";
+
+  }
+
+  //mostRecent:{id:0,cover:"",Title:"",price:0,category:"",publisher:"",Quantity:0}[]=[];
+ 
+ /* mostRecent=[{id:0,cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
+,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:1,authors:"lol"}];*/
+searchword:any;
+  search(){
+    this.searchword = (document.getElementById("searchingFor") as HTMLInputElement).value;
+    console.log(this.searchword)
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization': localStorage.getItem("token") + "" });
 
-    this.http.get<UploadItem[]>('http://localhost:8080/api/book', { headers: headerr }
+    this.http.get<UploadItem[]>('http://localhost:8080/api/book/'+this.categoryName+"/"+this.searchword, { headers: headerr }
     ).subscribe({
       next: (data: any) => {
         this.mostRecent=data;
@@ -29,12 +40,6 @@ export class UserComponent implements OnInit{
       }
     });
   }
-
-  //mostRecent:{id:0,cover:"",Title:"",price:0,category:"",publisher:"",Quantity:0}[]=[];
- 
- /* mostRecent=[{id:0,cover:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8JsyV5aGFWhpAaPlG-R6gbwxUNkMSWR2k3A&usqp=CAU"
-,Title:"Harry Poter",price:600,category:"action",publisher:"Elshrouk",Quantity:1,authors:"lol"}];*/
-
   aboutproduct(
     isbn: number,
     title: string,
@@ -133,5 +138,3 @@ clossing(){
   document.getElementById("myModal3")!.style.display="none";
 }
 }
-
-
