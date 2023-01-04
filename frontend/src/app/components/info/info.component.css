@@ -1,0 +1,64 @@
+
+  
+  .main {
+    margin-top: 2%;
+    margin-left: 10%;
+    font-size: 28px;
+    padding: 0 10px;
+    width: 58%;
+  }
+  
+  
+  .rcorners2 {
+  
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 25px;
+    border: 2px solid rgb(21, 189, 169);;
+    padding: 20px;
+    height: 15px;
+    font-size: x-large;
+  } 
+  .parameters{
+    font-size: x-large;
+    font: bold;
+  }
+  .main h2 {
+    color: rgb(0, 0, 0);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .main .card {
+    background-color: #fff;
+    border-radius: 18px;
+    box-shadow: 1px 1px 8px 0 rgb(21, 189, 169);;
+    height: auto;
+    margin-bottom: 20px;
+    padding: 20px 0 20px 50px;
+  }
+  
+  .main .card table {
+    border: none;
+    font-size: 16px;
+    height: 270px;
+    width: 80%;
+  }
+  .edit {
+    position: absolute;
+    color: rgb(21, 189, 169);
+    right: 14%;
+  }
+  .password-field{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .password-toggler{
+    cursor: pointer;
+
+  }
+  .password-toggler:hover{
+    color: rgb(21, 189, 169);
+  }
