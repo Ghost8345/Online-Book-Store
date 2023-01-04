@@ -97,11 +97,10 @@ END //
 delimiter //
 CREATE TRIGGER `book_AFTER_UPDATE` AFTER UPDATE ON `book` FOR EACH ROW BEGIN
 	IF NEW.stockQuantity < NEW.threshold THEN
-		UPDATE BOOK AS B
-        SET B.stockQuantity = NEW.threshold + 20
-        WHERE B.ISBN = NEW.ISBN;
+		CALL place_order(NEW.ISBN, NEW.threshold - NEW.stockQuantity + 20);
 	END IF;
 END //
+
 
 delimiter //
 CREATE TRIGGER `stock_order_BEFORE_DELETE` BEFORE DELETE ON `stock_order` FOR EACH ROW BEGIN
@@ -109,3 +108,12 @@ CREATE TRIGGER `stock_order_BEFORE_DELETE` BEFORE DELETE ON `stock_order` FOR EA
     SET B.stockQuantity = B.stockQuantity + OLD.quantity
     WHERE B.ISBN = OLD.ISBN;
 END //
+
+#-----Stored procedure------
+
+DELIMITER $$
+USE `library`$$
+CREATE PROCEDURE `place_order` (ISBN INT, quantity INT)
+BEGIN
+	INSERT INTO STOCK_ORDER VALUE(ISBN, quantity);
+END$$
