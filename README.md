@@ -10,10 +10,12 @@ There are two types of system users: **Normal User** and **Manager**. Each can d
   - Search for books by different categories.
   - Adding books to a cart.
   - Checkout and buy books in your cart.
+  - View and edit profile info 
 ---
 In addition to what user can do, a **manager** can do the following:
   - Add books to the system.
   - Edit books in the system.
+  - delete books from the system
   - Add publishers to the system.
   - Promote users.
   - View urgent book orders.
