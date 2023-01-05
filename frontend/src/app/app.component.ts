@@ -43,7 +43,6 @@ console.log("yaaaaaaaaaaa"+this.manager)
             let p:UploadItem[]=[];
           localStorage.setItem("CartProducts",JSON.stringify(p))
     localStorage.setItem("loggedin","0");
-    localStorage.clear();
     this.router.navigate(['/registration']);
   }
   change(){
