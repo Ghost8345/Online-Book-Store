@@ -41,7 +41,7 @@ export class SelectedCategoryComponent {
       stockQuantity: number,
       threshold:number,
       category: string){
-      let  product={id:isbn,name:title,publisher:publisherName,authors:authors,publicationYear:publicationYear,img:"/../assets/images/"+coverImage,price:price,Quantity:stockQuantity,threshold:threshold,category:category};
+      let  product={id:isbn,name:title,publisher:publisherName,authors:authors,publicationYear:publicationYear,img:coverImage,price:price,Quantity:stockQuantity,threshold:threshold,category:category};
     localStorage.setItem("aboutProduct",JSON.stringify(product));
    
   
@@ -81,7 +81,7 @@ AddProduct(id:any){
   else{
   cart=JSON.parse (localStorage.getItem("CartProducts")!)
   for(var i=0;i<cart.length;i++){
-    if(cart[i].isbn==this.categorybooks[pos].id){
+    if(cart[i].isbn==this.categorybooks[pos].isbn){
        flag=1;
        cart[i].copies+=1;
        subtotal=JSON.parse (localStorage.getItem("subtotal")!);

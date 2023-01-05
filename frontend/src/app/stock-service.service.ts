@@ -5,7 +5,7 @@ import {StockOrder} from "./components/placeorder/StockOrder"
 import {MessageComponent} from "./components/message/message.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
-
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -48,18 +48,22 @@ export class StockServiceService {
 
   public makeOrder(managerId: number, newOrder: StockOrder): any {
     this.http.put<number>(`http://localhost:8080/api/stock/` + managerId, newOrder).pipe(catchError(err => {
-      this.dialog.open(MessageComponent, {
-        data: {
-          name: "Please Enter a valid ISBN"
-        }
-      });
+      Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Invalid ISBN',
+        showConfirmButton: false,
+        timer: 1500
+      })
       return throwError(err);
     })).subscribe((response) => {
-      this.dialog.open(MessageComponent, {
-        data: {
-          name: "Your order is placed successfully"
-        }
-      });
+      Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Order placed Successfully',
+        showConfirmButton: false,
+        timer: 1500
+      })
       return response;
     });
   }

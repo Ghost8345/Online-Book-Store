@@ -19,7 +19,7 @@ a{color:inherit;text-decoration:none}
    position: relative;
    bottom:  80px;
     
-    color: rgb(249, 208, 24);
+    color: rgb(21, 189, 169);
     font-size: 50px;
     font-weight: bold;
     font-family: 'Times New Roman', Times, serif;
@@ -95,7 +95,7 @@ input:valid {
 .login-html .sign-in:checked + .tab,
 .login-html .sign-up:checked + .tab{
 	color:#fff;
-	border-color:rgb(249, 208, 24);
+	border-color:rgb(21, 189, 169);
 }
 .login-form{
 	min-height:345px;
@@ -133,7 +133,7 @@ input:valid {
 	font-size:20px;
 }
 .login-form .group .button{
-	background:rgb(249, 208, 24);
+	background:rgb(21, 189, 169);
 }
 .login-form .group label .icon{
 	width:15px;
@@ -167,7 +167,7 @@ input:valid {
 	color:#fff;
 }
 .login-form .group .check:checked + label .icon{
-	background:rgb(249, 208, 24);
+	background:rgb(21, 189, 169);
 }
 .login-form .group .check:checked + label .icon:before{
 	transform:scale(1) rotate(45deg);

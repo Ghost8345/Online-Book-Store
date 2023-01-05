@@ -46,7 +46,7 @@ export class UserComponent implements OnInit{
     stockQuantity: number,
     threshold:number,
     category: string){
-    let  product={id:isbn,name:title,publisher:publisherName,authors:authors,publicationYear:publicationYear,img:"/../assets/images/"+coverImage,price:price,Quantity:stockQuantity,threshold:threshold,category:category};
+    let  product={id:isbn,name:title,publisher:publisherName,authors:authors,publicationYear:publicationYear,img:coverImage,price:price,Quantity:stockQuantity,threshold:threshold,category:category};
   localStorage.setItem("aboutProduct",JSON.stringify(product));
  
 
@@ -123,10 +123,7 @@ localStorage.setItem("itemsincart",JSON.stringify(val));
 
 }
 
-clossing(){
- 
-  document.getElementById("myModal3")!.style.display="none";
-}
+
 }
 window.addEventListener("load", (event) => {
   (<HTMLInputElement>document.getElementById('radio1')).checked=true;

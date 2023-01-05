@@ -66,6 +66,7 @@ public class BookController {
     @PutMapping("/edit/{isbn}")
     public ResponseEntity<String> editBook(@PathVariable int isbn, @RequestBody Book book) {
         try {
+            System.out.println(book);
 
             if(book.getPublicationYear().length() != 4)
                 return new ResponseEntity<>("Publication Year must be 4 letters.", HttpStatus.BAD_REQUEST);

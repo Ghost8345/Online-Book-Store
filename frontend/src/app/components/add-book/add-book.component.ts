@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UploadItem } from './add-book';
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-add-book',
   templateUrl: './add-book.component.html',
@@ -121,11 +122,25 @@ export class AddBookComponent implements OnInit {
 
         next: (data: any) => {
           console.log(data)
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Book Added successfully',
+            showConfirmButton: false,
+            timer: 1500
+          }) 
           this.router.navigateByUrl('user')
 
         },
         error: (error: any) => {
-          alert(error.error)
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: error.error,
+            showConfirmButton: false,
+            timer: 2000
+          })         
+        
         }
       });
 

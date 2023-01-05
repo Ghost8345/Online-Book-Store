@@ -3,6 +3,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UploadItem } from './edit';
+import Swal from 'sweetalert2';
+
+
 @Component({
   selector: 'app-edit-form',
   templateUrl: './edit-form.component.html',
@@ -20,10 +23,10 @@ export class EditFormComponent implements OnInit {
 
   categories = ['Science', 'Art', 'Religion', 'History', 'Geography'];
   
-  uploadItem = new UploadItem(this.SelectedProduct.id,this.SelectedProduct.name,this.SelectedProduct.publisher,this.SelectedProduct.authors,this.SelectedProduct.publicationYear,this.SelectedProduct.img,this.SelectedProduct.price , this.SelectedProduct.Quantity, this.SelectedProduct.threshold, this.SelectedProduct.category);
+  uploadItem = new UploadItem(this.SelectedProduct.id,this.SelectedProduct.name,this.SelectedProduct.publisher,this.SelectedProduct.authors,this.SelectedProduct.publicationYear,"/../assets/images/"+this.SelectedProduct.img,this.SelectedProduct.price , this.SelectedProduct.Quantity, this.SelectedProduct.threshold, this.SelectedProduct.category);
   categoryName=this.uploadItem.category;
 
-  imageSrc=this.SelectedProduct.img;
+  imageSrc="/../assets/images/"+this.SelectedProduct.img;
   imageName: string = "";
   imageBlob: string = "";
   
@@ -123,11 +126,23 @@ export class EditFormComponent implements OnInit {
       .subscribe({
 
         next: (data: any) => {
-         this.router.navigateByUrl('aboutbook')
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Edit Successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+         this.router.navigateByUrl('user')
         },
         error: (error: any) => {
-          alert(error.error)
-        }
+          Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: error.error,
+            showConfirmButton: false,
+            timer: 1500
+          })        }
       });
 
   }

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import Swal from 'sweetalert2';
 import { Publisher } from './publisher';
 @Component({
   selector: 'app-publisher-form',
@@ -34,12 +34,39 @@ export class PublisherFormComponent implements OnInit {
         next: (data: any) => {
          if(data=="Publisher was created successfully."){
           console.log("Publisher was created successfully.")
+          Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Publisher added Successfully',
+            showConfirmButton: false,
+            timer: 1500
+          })
+          
           this.router.navigateByUrl('addbook')
          }
+         
         },
         error: (error: any) => {
-          alert(error.error)
-        }
+          console.log(error.error)
+           if(error.error=="Publisher Phone Already Exists"){
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Publisher Phone Already Exists',
+              showConfirmButton: false,
+              timer: 1500
+            })
+           }
+           else if(error.error=="Publisher Name Already Exists"){
+            Swal.fire({
+              position: 'center',
+              icon: 'error',
+              title: 'Publisher Name Already Exists',
+              showConfirmButton: false,
+              timer: 1500
+            }) 
+           }
+                }
       });
   }
 }
