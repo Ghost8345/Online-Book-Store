@@ -75,6 +75,7 @@ export class RegistrationComponent {
           }
         },
         error: (error: any) => {
+          alert("wrong information")
           console.error(error);
         }
       });
@@ -117,29 +118,32 @@ export class RegistrationComponent {
       
     }
   }
-
+datareq:Number=0
   signup() {
     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' });
     this.http.post('http://localhost:8080/register/', this.registration, { headers: headerr, responseType: 'text' })
       .subscribe({
         next: (data: any) => {
-          console.log("hii")
+         
           console.log(data)
-        
-          if (data === -1) {           
-           
-            alert("email already in use")      
-          } else {
+           this.datareq=data
           
+         
             // id of user 
             localStorage.setItem("user_id", data);
-            localStorage.setItem("ismanager",JSON.stringify(false));
-            localStorage.setItem("loggedin","1");
-            this.app.ismanager();
-            this.router.navigateByUrl('app')         
-            this.router.navigateByUrl('user')     
-           
-          }
+            if(data==='1'){
+              localStorage.setItem("ismanager",JSON.stringify(true));  
+             
+            }else{
+              localStorage.setItem("ismanager",JSON.stringify(false));    
+             
+            }
+           // localStorage.setItem("ismanager",JSON.stringify(false));
+           localStorage.setItem("loggedin","1");
+           this.app.ismanager();
+           this.router.navigateByUrl('app')         
+           this.router.navigateByUrl('user') 
+          
         
         },
         error: (error: any) => {
@@ -147,6 +151,9 @@ export class RegistrationComponent {
           console.error(error);
         }
       });
+
+
+      
   }
 
 
