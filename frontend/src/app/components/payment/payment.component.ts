@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {CreditCard} from './CreditCard';
 import { Requests } from './request';
+import { UploadItem } from '../add-book/add-book';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
@@ -34,6 +35,10 @@ export class PaymentComponent {
         next: (data: any) => {
           console.log("hii")
           console.log(data)
+          let p:UploadItem[]=[];
+          localStorage.setItem("CartProducts",JSON.stringify(p))
+          localStorage.setItem('itemsincart',"0");
+          this.router.navigateByUrl("user")
          
         },
         error: (error: any) => {

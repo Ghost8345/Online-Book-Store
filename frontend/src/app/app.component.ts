@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { Router } from '@angular/router';
 import { global } from './global';
+import { UploadItem } from './components/add-book/add-book';
 
 @Component({
   selector: 'app-root',
@@ -34,7 +35,13 @@ console.log("yaaaaaaaaaaa"+this.manager)
 
   }
   logout(){
-    localStorage.setItem("loggedin","0");
+    localStorage.removeItem("loggedin");
+    localStorage.removeItem('ismanager');
+    localStorage.removeItem("user_id");
+    localStorage.setItem('itemsincart',"0")
+    localStorage.setItem("subtotal","0")
+            let p:UploadItem[]=[];
+          localStorage.setItem("CartProducts",JSON.stringify(p))
     this.router.navigate(['/registration']);
   }
   change(){
