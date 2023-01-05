@@ -41,7 +41,6 @@ CREATE TABLE BOOK(
 			ON UPDATE CASCADE ON DELETE RESTRICT 
 );
 
-
 CREATE TABLE STOCK_ORDER(
 	id INT NOT NULL AUTO_INCREMENT,
 	ISBN INT NOT NULL,
@@ -79,6 +78,9 @@ CREATE TABLE CUSTOMER_ORDER_ITEM(
 
 ALTER TABLE BOOK ADD INDEX categoryIndex(category);
 
+
+#----------Triggers----------------
+
 delimiter //
 CREATE TRIGGER `book_BEFORE_UPDATE` BEFORE UPDATE ON `book`
  FOR EACH ROW BEGIN
@@ -90,12 +92,11 @@ END //
 
 delimiter //
 CREATE TRIGGER `book_AFTER_UPDATE` AFTER UPDATE ON `book` FOR EACH ROW BEGIN
-	DECLARE message VARCHAR(150);
-	IF NEW.stockQuantity < NEW.threshold THEN
-		SET message = CONCAT('WARNING! PLEASE PLACE AN ORDER FOR ', NEW.title);
-		SIGNAL SQLSTATE '45000' SET MESSAGE_TEXT = message;
+	IF NEW.stockQuantity < NEW.threshold AND NOT EXISTS (SELECT * FROM STOCK_ORDER AS S WHERE S.ISBN = NEW.ISBN) THEN
+		CALL place_order(NEW.ISBN, NEW.threshold - NEW.stockQuantity + 0.6 * NEW.threshold);
 	END IF;
 END //
+
 
 delimiter //
 CREATE TRIGGER `stock_order_BEFORE_DELETE` BEFORE DELETE ON `stock_order` FOR EACH ROW BEGIN
@@ -103,3 +104,12 @@ CREATE TRIGGER `stock_order_BEFORE_DELETE` BEFORE DELETE ON `stock_order` FOR EA
     SET B.stockQuantity = B.stockQuantity + OLD.quantity
     WHERE B.ISBN = OLD.ISBN;
 END //
+
+#-----Stored procedure------
+
+DELIMITER $$
+USE `library`$$
+CREATE PROCEDURE `place_order` (ISBN INT, quantity INT)
+BEGIN
+	INSERT INTO STOCK_ORDER VALUE(ISBN, quantity);
+END$$

@@ -25,7 +25,9 @@ import { SearchComponent } from './components/search/search.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { InfoComponent } from './components/info/info.component';
 import { EditProfileComponent } from './components/edit-profile/edit-profile.component';
-
+import { MessageComponent } from './components/message/message.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ReportComponent } from './components/report/report.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +51,9 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     EditFormComponent,
     ProfileComponent,
     InfoComponent,
-    EditProfileComponent
+    EditProfileComponent,
+    MessageComponent,
+    ReportComponent
   ],
   imports: [
     CommonModule,
@@ -59,8 +63,9 @@ import { EditProfileComponent } from './components/edit-profile/edit-profile.com
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
+    MatDialogModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -125,21 +125,7 @@ export class RegistrationComponent {
         next: (data: any) => {
           console.log("hii")
           console.log(data)
-          if (data === 'succeeded') {           
-            // Swal.fire({
-            //   position: 'center',
-            //   icon: 'success',
-            //   title: 'Registeration Succeeded, please login',
-            //   showConfirmButton: false,
-            //   timer: 1500
-            // })
-            //if there is token 
-            localStorage.setItem("ismanager",JSON.stringify(false));
-            localStorage.setItem("loggedin","1");
-            this.app.ismanager();
-            this.router.navigateByUrl('app')         
-            this.router.navigateByUrl('user')         
-          console.log("hi "+data)
+        
           if (data === -1) {           
            
             alert("email already in use")      
@@ -147,9 +133,14 @@ export class RegistrationComponent {
           
             // id of user 
             localStorage.setItem("user_id", data);
-            this.router.navigateByUrl('user')               
+            localStorage.setItem("ismanager",JSON.stringify(false));
+            localStorage.setItem("loggedin","1");
+            this.app.ismanager();
+            this.router.navigateByUrl('app')         
+            this.router.navigateByUrl('user')     
+           
           }
-        }
+        
         },
         error: (error: any) => {
           alert("email already in use")      

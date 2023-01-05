@@ -1,21 +1,51 @@
 import { Component } from '@angular/core';
-
-import { Payment} from './payment';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {CreditCard} from './CreditCard';
+import { Requests } from './request';
 @Component({
   selector: 'app-payment',
   templateUrl: './payment.component.html',
   styleUrls: ['./payment.component.css']
 })
 export class PaymentComponent {
+  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
   ngOnInit(): void {
     document.getElementById("body")!.style.display="block";
     }
-    payment =new Payment('','','')
+    //creditCard:any=""
+    creditCard =new CreditCard('',0,0,0)
+    request= new Requests(0,this.creditCard,[])
     submit(){
+      
+
+      //console.log(this.payment.CVC +" "+ this.payment.CardNumber+ " "+ this.payment.expiryDate)
+
      let cart=JSON.parse(localStorage.getItem('cart')!);
      console.log(cart);
-      console.log(this.payment.CVC +" "+ this.payment.CardNumber+ " "+ this.payment.expiryDate)
+     this.request.userId=JSON.parse (localStorage.getItem("user_id")!)
+     this.request.creditCard=this.creditCard
+     this.request.items=cart
+
+     console.log(this.creditCard.number+" "+this.creditCard.cvv+" " +this.creditCard.expMonth +" "+this.creditCard.expYear)
+     const headerr = new HttpHeaders({ 'Content-Type': 'application/json', 'authentication': 'key' });
+    this.http.post('http://localhost:8080/api/orders', this.request, { headers: headerr, responseType: 'text' })
+      .subscribe({
+        next: (data: any) => {
+          console.log("hii")
+          console.log(data)
+         
+        },
+        error: (error: any) => {
+         console.log(error)
+        
+          alert("Failed to place the order.")
+         
+        }
+      });
+
+      //console.log(this.payment.CVC +" "+ this.payment.CardNumber+ " "+ this.payment.expiryDate)
+
     }
 
 
