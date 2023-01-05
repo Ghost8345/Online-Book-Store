@@ -5,11 +5,12 @@
 }
 
 body {
+    background:linear-gradient(to bottom,rgb(1, 148, 131) 10%, rgb(96, 96, 96) 50%);
+
     margin: 0;
     padding: 0;
     font-weight: 300;
     min-height: 100vh;
-    background-image: url('/../assets/images/img1.jpg');
     background-size:contain;
     font-size: 16px;
     overflow: hidden;

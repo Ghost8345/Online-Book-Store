@@ -41,7 +41,8 @@ a{color:inherit;text-decoration:none}
 	min-height:1380px;
 
 	position:relative;
-  background:url(https://w0.peakpx.com/wallpaper/595/92/HD-wallpaper-man-made-library-book.jpg) no-repeat center;
+	background:linear-gradient(to bottom,rgb(1, 148, 131) 10%, rgb(182, 182, 182) 50%);
+
     
 	
 	background-size:100% 100%;
