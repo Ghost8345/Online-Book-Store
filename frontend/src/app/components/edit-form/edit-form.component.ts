@@ -124,6 +124,7 @@ export class EditFormComponent implements OnInit {
 
         next: (data: any) => {
          console.log(data)
+         this.router.navigateByUrl('aboutbook')
         },
         error: (error: any) => {
           console.error(error);

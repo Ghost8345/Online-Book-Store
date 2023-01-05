@@ -34,6 +34,7 @@ export class PublisherFormComponent implements OnInit {
         next: (data: any) => {
          if(data=="Publisher was created successfully."){
           console.log("Publisher was created successfully.")
+          this.router.navigateByUrl('addbook')
          }
         },
         error: (error: any) => {
