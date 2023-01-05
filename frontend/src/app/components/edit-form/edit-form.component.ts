@@ -123,10 +123,10 @@ export class EditFormComponent implements OnInit {
       .subscribe({
 
         next: (data: any) => {
-         console.log(data)
+         alert(data)
         },
         error: (error: any) => {
-          console.error(error);
+          alert(error.error)
         }
       });
 

@@ -34,9 +34,15 @@ export class PaymentComponent {
         next: (data: any) => {
           console.log("hii")
           console.log(data)
+          localStorage.removeItem("cart")
+          localStorage.removeItem("CartProducts")
+          localStorage.removeItem("itemsincart")
+          localStorage.removeItem("subtotal")
+          this.router.navigate(["/user"])
          
         },
         error: (error: any) => {
+
          console.log(error)
         
           alert("Failed to place the order.")

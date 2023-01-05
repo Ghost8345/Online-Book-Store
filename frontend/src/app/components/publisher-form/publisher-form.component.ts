@@ -37,7 +37,7 @@ export class PublisherFormComponent implements OnInit {
          }
         },
         error: (error: any) => {
-          console.error(error);
+          alert(error.error)
         }
       });
   }

@@ -47,10 +47,11 @@ public class CustomerOrderService {
             throw new IllegalArgumentException("Card number is invalid");
 
         Date now = new Date();
+        int currentYear = now.getYear() + 1900;
 
         boolean isValidExpirationDate =
-               (card.getExpYear() > now.getYear())
-            || (card.getExpYear() == now.getYear() && card.getExpMonth() >= now.getMonth());
+               (card.getExpYear() > currentYear)
+            || (card.getExpYear() == currentYear && card.getExpMonth() >= now.getMonth() + 1);
 
         if (!isValidExpirationDate)
             throw new IllegalArgumentException("Card is expired.");

@@ -82,9 +82,10 @@ this.http.delete('http://localhost:8080/api/book/delete/'+this.SelectedProduct.i
 
     next: (data: any) => {
      console.log(data)
+     this.router.navigate(["/user"])
     },
     error: (error: any) => {
-      console.error(error);
+      alert(error.error)
     }
   });
 
