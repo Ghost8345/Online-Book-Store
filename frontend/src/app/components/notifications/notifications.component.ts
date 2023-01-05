@@ -13,6 +13,16 @@ import {StockOrder} from "../placeorder/StockOrder";
 export class NotificationsComponent {
   constructor(@Inject(StockServiceService) private stockService: StockServiceService) {
   };
+  ngOnInit(): void {
+    let id = localStorage.getItem("user_id");
+    this.stockService.getPendingOrders(Number(id)).subscribe((response) => {
+        this.stockOrders = response;
+        for (let i = 0; i < response.length; i++) {
+            console.log(response[i].id, response[i].isbn,response[i].quantity);
+        }
+      }
+    );
+  }
 
  stockOrders: StockOrder[] = [];
   neworders = [[{name: "harrypoter", quantity: 5}], [{name: "harrypoter", quantity: 5}, {
@@ -20,7 +30,7 @@ export class NotificationsComponent {
     quantity: 5
   }]];
  
-  onConfirm(orderId: number): void {
+  onConfirm(orderId: any): void {
     let pos=0;
     for(var i =0;i<this.neworders.length;i++){
       if(this.stockOrders[i].id==orderId){
@@ -34,14 +44,5 @@ export class NotificationsComponent {
     this.stockService.confirmOrder(Number(id), orderId);
   }
 
-  getPendingOrders(): any {
-    let id = localStorage.getItem("user_id");
-    this.stockService.getPendingOrders(Number(id)).subscribe((response) => {
-        this.stockOrders = response;
-        for (let i = 0; i < response.length; i++) {
-            console.log(response[i].id, response[i].isbn,response[i].quantity);
-        }
-      }
-    );
-  }
+  
 }

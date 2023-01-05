@@ -38,6 +38,7 @@ export class PaymentComponent {
           let p:UploadItem[]=[];
           localStorage.setItem("CartProducts",JSON.stringify(p))
           localStorage.setItem('itemsincart',"0");
+          localStorage.setItem("subtotal","0")
           this.router.navigateByUrl("user")
          
         },

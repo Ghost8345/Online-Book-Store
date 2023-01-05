@@ -1,8 +1,8 @@
 <div class="notify">
 <button class="neworder">new order</button>
 </div>
-<div *ngFor="let order of neworders; let i=index">
-    <button class="orders"><a class="title">Book Id:</a> {{order.isbn}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="title">Quantity:</a> {{order.quantity}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <button class="confirm" (click)="confirm(order.id)">Confirm</button>
+<div *ngFor="let order of stockOrders; let i=index">
+    <button class="orders"><a class="title">Book Id:</a> {{order.isbn}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="title">Quantity:</a> {{order.quantity}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;    <button class="confirm" (click)="onConfirm(order.id)">Confirm</button>
 </button>
 
 </div>
