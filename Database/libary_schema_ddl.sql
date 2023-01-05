@@ -115,5 +115,3 @@ BEGIN
 END$$
 
 Update library.user SET manager = 1 WHERE id = 1;
-
-drop schema library;
