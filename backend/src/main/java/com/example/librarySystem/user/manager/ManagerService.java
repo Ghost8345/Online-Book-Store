@@ -10,8 +10,7 @@ public class ManagerService {
 
     UserRepository userRepository;
 
-    public String promoteUser(String userEmail, int managerId) throws Exception {
-        managerCheck(managerId);
+    public String promoteUser(String userEmail) throws Exception {
         int userId = userRepository.getUserId(userEmail);
         userRepository.promoteUser(userId);
         return "User has been promoted";

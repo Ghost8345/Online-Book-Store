@@ -1,0 +1,35 @@
+.container {
+    margin-top: 150px;
+    height: 100vh;
+}
+
+.report-container {
+    padding: 2rem 0;
+}
+
+.hstack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.button {
+    font-size: 1rem;
+	color: white;
+    padding: 5px 10px;
+	background-color: #18BDA9;
+	border: 5px solid transparent;
+	transition: .2s ease;
+	border-radius: 50px;
+    cursor: pointer;
+}
+
+.button:hover {
+	transform: scale(1.1);
+}
+
+.button:active {
+    background-color: #129182;
+}
+

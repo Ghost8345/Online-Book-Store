@@ -33,10 +33,10 @@ public class ReportService {
 
         if (format.equals("html")) {
             JasperExportManager.exportReportToHtmlFile(jasperPrint, dir.getAbsolutePath() + "\\bookSales.html");
-            return dir.getAbsolutePath() + "\\bookSales.html";
+            return "bookSales.html";
         } else if (format.equals("pdf")) {
             JasperExportManager.exportReportToPdfFile(jasperPrint, dir.getAbsolutePath() + "\\bookSales.pdf");
-            return dir.getAbsolutePath() + "\\bookSales.pdf";
+            return "bookSales.pdf";
         }
         throw new IllegalStateException("invalid format!");
     }
@@ -53,10 +53,10 @@ public class ReportService {
 
         if (format.equals("html")) {
             JasperExportManager.exportReportToHtmlFile(jasperPrint, dir.getAbsolutePath() + "\\customerPurchases.html");
-            return dir.getAbsolutePath() + "\\customerPurchases.html";
+            return "customerPurchases.html";
         } else if (format.equals("pdf")) {
             JasperExportManager.exportReportToPdfFile(jasperPrint, dir.getAbsolutePath() + "\\customerPurchases.pdf");
-            return dir.getAbsolutePath() + "\\customerPurchases.pdf";
+            return "customerPurchases.pdf";
         }
         throw new IllegalStateException("invalid format!");
     }

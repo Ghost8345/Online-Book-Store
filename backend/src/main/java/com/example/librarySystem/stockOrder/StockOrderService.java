@@ -10,23 +10,19 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class StockOrderService {
-    private final ManagerService managerService;
     private final StockOrderDAO stockOrderDAO;
     private final StockOrderRepository stockOrderRepository;
 
-    public int makeOrder(int managerId,StockOrder newOrder) throws Exception {
-        managerService.managerCheck(managerId);
+    public int makeOrder(StockOrder newOrder) throws Exception {
         return stockOrderDAO.save(newOrder);
     }
 
-    public String confirmOrder(int managerId, int orderId) throws Exception {
-        managerService.managerCheck(managerId);
+    public String confirmOrder(int orderId) throws Exception {
         stockOrderRepository.deleteById(orderId);
         return "Order confirmed successfully ... book quantity updated";
     }
 
-    public List<StockOrder> getOrders(int managerId) throws Exception {
-        managerService.managerCheck(managerId);
+    public List<StockOrder> getOrders() throws Exception {
         List<StockOrder> orders =  (List<StockOrder>) stockOrderRepository.findAll();
         return orders;
     }

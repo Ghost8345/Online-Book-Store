@@ -15,7 +15,8 @@ public class ManagerController {
     @PutMapping("/promote/{managerId}")
     public ResponseEntity<String> promoteUser(@PathVariable int managerId,@RequestBody String userEmail){
         try {
-            return ResponseEntity.ok().body(managerService.promoteUser(userEmail, managerId));
+            managerService.managerCheck(managerId);
+            return ResponseEntity.ok().body(managerService.promoteUser(userEmail));
         }
         catch (Exception e){
             return ResponseEntity.badRequest().body("Couldn't promote user");
