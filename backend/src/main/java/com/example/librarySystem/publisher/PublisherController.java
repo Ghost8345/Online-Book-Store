@@ -62,6 +62,8 @@ public class PublisherController {
     @PostMapping
     public ResponseEntity<String> createPublisher(@RequestBody Publisher publisher) {
         System.out.println("IN Create");
+        if (publisher.getPhone().equals("") || publisher.getName().equals("") || publisher.getAddress().equals(""))
+            return new ResponseEntity<>("Field is empty, please enter all fields", HttpStatus.BAD_REQUEST);
         try {
             publisherService.createPublisher(publisher);
             return new ResponseEntity<>("Publisher was created successfully.", HttpStatus.CREATED);

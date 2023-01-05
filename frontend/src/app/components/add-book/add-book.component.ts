@@ -125,22 +125,7 @@ export class AddBookComponent implements OnInit {
 
         },
         error: (error: any) => {
-          if (error === "Publication Year must be 4 letters.") {
-            alert("Publication Year must be 4 letters")
-          } else if (error === "Price can't be negative.") {
-            alert("Price can't be negative.")
-          } else if (error === "Threshold can't be negative.") {
-            alert("Threshold can't be negative.")
-          } else if (error === "Quantity can't be negative.") {
-            alert("Quantity can't be negative.")
-          } else if (error === "Publisher Not Found.") {
-            alert("Publisher Not Found.")
-          } else if (error === "ISBN already in use.") {
-            alert("ISBN already in use.")
-          } else if (error === "Another book has the same title.") {
-            alert("Another book has the same title.")
-          }
-          //console.error(error);
+          alert(error.error)
         }
       });
 

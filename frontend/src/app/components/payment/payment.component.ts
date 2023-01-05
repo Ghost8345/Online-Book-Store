@@ -39,10 +39,14 @@ export class PaymentComponent {
           localStorage.setItem("CartProducts",JSON.stringify(p))
           localStorage.setItem('itemsincart',"0");
           localStorage.setItem("subtotal","0")
+          localStorage.removeItem("cart")
+          localStorage.removeItem("CartProducts")
           this.router.navigateByUrl("user")
+
          
         },
         error: (error: any) => {
+
          console.log(error)
         
           alert("Failed to place the order.")

@@ -109,7 +109,7 @@ END //
 
 DELIMITER $$
 USE `library`$$
-CREATE PROCEDURE `place_order` (ISBN INT, quantity INT)
+CREATE PROCEDURE `place_order` (isbn INT, quan INT)
 BEGIN
-	INSERT INTO STOCK_ORDER VALUE(ISBN, quantity);
+	INSERT INTO STOCK_ORDER (ISBN, quantity) VALUE(isbn, quan);
 END$$
