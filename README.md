@@ -1,6 +1,7 @@
 # Online Book Store
 ---
-![alt text](image.png)
+![alt text](homebook.png)
+
 Online Book Store is a simple online bookstore implementation using Angular, Springboot, and MySQL JDBC as a project for Database Systems CSE 371, University of Alexandria.
 ## Features
 There are two types of system users: **Normal User** and **Manager**. Each can do the following:
