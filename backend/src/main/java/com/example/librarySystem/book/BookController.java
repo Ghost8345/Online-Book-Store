@@ -76,19 +76,20 @@ public class BookController {
             if(book.getThreshold() < 0)
                 return new ResponseEntity<>("Threshold can't be negative.", HttpStatus.BAD_REQUEST);
 
-            if(book.getStockQuantity() < 0)
-                return new ResponseEntity<>("Quantity can't be negative.", HttpStatus.BAD_REQUEST);
             book.setCoverImage(bookService.StorePhotoInPath(book.getCoverImage(), book.getIsbn()));
             bookService.editBook(isbn, book);
+            
             return new ResponseEntity<>("Book edited successfully", HttpStatus.OK);
         } catch (Exception e) {
+            System.out.println(e.getMessage());
 
+            if(book.getStockQuantity() < 0)
+                return new ResponseEntity<>("Quantity can't be negative.", HttpStatus.BAD_REQUEST);
             if (!publisherService.publisherExists(book.getPublisherName()))
                 return new ResponseEntity<>("Publisher Not Found.", HttpStatus.BAD_REQUEST);
             if (bookService.BookExistsByTitle(book.getTitle()))
                 return new ResponseEntity<>("Another book has the same title.", HttpStatus.BAD_REQUEST);
 
-            System.out.println(e.getMessage()+book.getIsbn());
             return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
