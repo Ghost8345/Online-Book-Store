@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import {Component, Inject} from '@angular/core';
+import {StockServiceService} from "../../stock-service.service";
+import {catchError, throwError} from "rxjs";
+import {MessageComponent} from "../message/message.component";
+import {StockOrder} from "../placeorder/StockOrder";
+
 
 @Component({
   selector: 'app-notifications',
@@ -6,17 +11,37 @@ import { Component } from '@angular/core';
   styleUrls: ['./notifications.component.css']
 })
 export class NotificationsComponent {
-neworders=[{id:1,isbn:1122,quantity:50},{id:2,isbn:1515,quantity:15},{id:3,isbn:1223,quantity:15}]
-confirm(id:any){
-  let pos=0;
-  for(var i =0;i<this.neworders.length;i++){
-    if(this.neworders[i].id==id){
-      pos=i;
-      break;
-    }
+  constructor(@Inject(StockServiceService) private stockService: StockServiceService) {
+  };
 
+ stockOrders: StockOrder[] = [];
+  neworders = [[{name: "harrypoter", quantity: 5}], [{name: "harrypoter", quantity: 5}, {
+    name: "harrypoter",
+    quantity: 5
+  }]];
+ 
+  onConfirm(orderId: number): void {
+    let pos=0;
+    for(var i =0;i<this.neworders.length;i++){
+      if(this.stockOrders[i].id==orderId){
+        pos=i;
+        break;
+      }
+  
+    }
+    this.stockOrders.splice(pos,1);
+    let id = localStorage.getItem("user_id");
+    this.stockService.confirmOrder(Number(id), orderId);
   }
-  this.neworders.splice(pos,1);
-//call back
-}
+
+  getPendingOrders(): any {
+    let id = localStorage.getItem("user_id");
+    this.stockService.getPendingOrders(Number(id)).subscribe((response) => {
+        this.stockOrders = response;
+        for (let i = 0; i < response.length; i++) {
+            console.log(response[i].id, response[i].isbn,response[i].quantity);
+        }
+      }
+    );
+  }
 }
