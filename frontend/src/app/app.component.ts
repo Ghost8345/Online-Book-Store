@@ -35,14 +35,14 @@ console.log("yaaaaaaaaaaa"+this.manager)
 
   }
   logout(){
-    localStorage.removeItem("loggedin");
-    localStorage.removeItem('ismanager');
-    localStorage.removeItem("user_id");
-    localStorage.setItem('itemsincart',"0")
-    localStorage.setItem("subtotal","0")
+    localStorage.clear();
+    
             let p:UploadItem[]=[];
           localStorage.setItem("CartProducts",JSON.stringify(p))
+          localStorage.setItem("subtotal","0")
+
     localStorage.setItem("loggedin","0");
+    
     this.router.navigate(['/registration']);
   }
   change(){
