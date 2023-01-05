@@ -128,5 +128,15 @@ clossing(){
   document.getElementById("myModal3")!.style.display="none";
 }
 }
+window.addEventListener("load", (event) => {
+  (<HTMLInputElement>document.getElementById('radio1')).checked=true;
+  var counter=2;
+  setInterval(function(){
+    (<HTMLInputElement>document.getElementById('radio'+counter)).checked=true;
+    counter++;
+          if(counter>5){
+              counter=1;
+          }
+  },4000)});
 
 
