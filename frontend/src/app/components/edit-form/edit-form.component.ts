@@ -123,7 +123,7 @@ export class EditFormComponent implements OnInit {
       .subscribe({
 
         next: (data: any) => {
-         alert(data)
+         this.router.navigateByUrl('aboutbook')
         },
         error: (error: any) => {
           alert(error.error)
