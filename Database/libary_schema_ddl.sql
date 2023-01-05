@@ -76,6 +76,8 @@ CREATE TABLE CUSTOMER_ORDER_ITEM(
 			ON UPDATE RESTRICT ON DELETE CASCADE
 );
 
+#-----creating index on category attribute in BOOK table
+
 ALTER TABLE BOOK ADD INDEX categoryIndex(category);
 
 
