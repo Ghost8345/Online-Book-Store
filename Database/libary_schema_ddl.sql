@@ -92,8 +92,8 @@ END //
 
 delimiter //
 CREATE TRIGGER `book_AFTER_UPDATE` AFTER UPDATE ON `book` FOR EACH ROW BEGIN
-	IF NEW.stockQuantity < NEW.threshold THEN
-		CALL place_order(NEW.ISBN, NEW.threshold - NEW.stockQuantity + 20);
+	IF NEW.stockQuantity < NEW.threshold AND NOT EXISTS (SELECT * FROM STOCK_ORDER AS S WHERE S.ISBN = NEW.ISBN) THEN
+		CALL place_order(NEW.ISBN, NEW.threshold - NEW.stockQuantity + 0.6 * NEW.threshold);
 	END IF;
 END //
 

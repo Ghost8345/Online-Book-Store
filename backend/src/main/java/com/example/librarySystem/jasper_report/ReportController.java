@@ -27,11 +27,11 @@ public class ReportController {
 
     @GetMapping("/topCustomers/{format}")
     public ResponseEntity<String> getPublisherReportPath(@PathVariable String format) throws JRException, FileNotFoundException {
-//        try{
+        try{
             return ResponseEntity.status(HttpStatus.OK).body(reportService.exportCustomerPurchasesReport(format));
-//        }catch (Exception e){
-//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
-//        }
+        }catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
+        }
     }
 
     @GetMapping("/top10Sales/{format}")
@@ -42,14 +42,4 @@ public class ReportController {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
         }
     }
-
-//    @GetMapping("/{format}")
-//    public ResponseEntity<String> getPublisherReport(@PathVariable String format) throws JRException, FileNotFoundException {
-//        try{
-//            return ResponseEntity.status(HttpStatus.OK).body(reportService.exportReport(format));
-//        }catch (Exception e){
-//            return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null);
-//        }
-//    }
-
 }
